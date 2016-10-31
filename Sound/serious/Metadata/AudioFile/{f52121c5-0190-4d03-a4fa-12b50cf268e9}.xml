@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{f52121c5-0190-4d03-a4fa-12b50cf268e9}">
+        <property name="assetPath">
+            <value>soundtrack/Outil/buche.mp3</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>38.640000000000001</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{5b86f9b3-07c3-4ecf-bbd5-33687639e8f4}</destination>
+        </relationship>
+    </object>
+</objects>
