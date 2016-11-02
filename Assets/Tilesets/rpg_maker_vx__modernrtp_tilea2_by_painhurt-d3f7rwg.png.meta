@@ -1,10 +1,201 @@
 fileFormatVersion: 2
 guid: fbb4fc6ddae444e3585553e61ff8ebbc
-timeCreated: 1477920283
+timeCreated: 1478019623
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_0
+    21300002: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_1
+    21300004: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_2
+    21300006: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_3
+    21300008: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_4
+    21300010: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_5
+    21300012: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_6
+    21300014: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_7
+    21300016: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_8
+    21300018: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_9
+    21300020: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_10
+    21300022: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_11
+    21300024: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_12
+    21300026: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_13
+    21300028: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_14
+    21300030: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_15
+    21300032: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_16
+    21300034: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_17
+    21300036: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_18
+    21300038: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_19
+    21300040: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_20
+    21300042: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_21
+    21300044: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_22
+    21300046: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_23
+    21300048: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_24
+    21300050: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_25
+    21300052: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_26
+    21300054: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_27
+    21300056: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_28
+    21300058: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_29
+    21300060: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_30
+    21300062: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_31
+    21300064: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_32
+    21300066: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_33
+    21300068: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_34
+    21300070: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_35
+    21300072: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_36
+    21300074: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_37
+    21300076: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_38
+    21300078: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_39
+    21300080: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_40
+    21300082: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_41
+    21300084: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_42
+    21300086: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_43
+    21300088: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_44
+    21300090: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_45
+    21300092: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_46
+    21300094: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_47
+    21300096: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_48
+    21300098: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_49
+    21300100: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_50
+    21300102: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_51
+    21300104: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_52
+    21300106: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_53
+    21300108: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_54
+    21300110: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_55
+    21300112: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_56
+    21300114: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_57
+    21300116: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_58
+    21300118: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_59
+    21300120: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_60
+    21300122: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_61
+    21300124: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_62
+    21300126: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_63
+    21300128: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_64
+    21300130: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_65
+    21300132: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_66
+    21300134: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_67
+    21300136: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_68
+    21300138: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_69
+    21300140: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_70
+    21300142: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_71
+    21300144: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_72
+    21300146: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_73
+    21300148: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_74
+    21300150: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_75
+    21300152: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_76
+    21300154: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_77
+    21300156: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_78
+    21300158: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_79
+    21300160: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_80
+    21300162: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_81
+    21300164: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_82
+    21300166: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_83
+    21300168: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_84
+    21300170: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_85
+    21300172: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_86
+    21300174: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_87
+    21300176: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_88
+    21300178: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_89
+    21300180: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_90
+    21300182: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_91
+    21300184: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_92
+    21300186: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_93
+    21300188: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_94
+    21300190: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_95
+    21300192: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_96
+    21300194: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_97
+    21300196: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_98
+    21300198: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_99
+    21300200: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_100
+    21300202: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_101
+    21300204: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_102
+    21300206: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_103
+    21300208: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_104
+    21300210: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_105
+    21300212: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_106
+    21300214: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_107
+    21300216: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_108
+    21300218: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_109
+    21300220: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_110
+    21300222: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_111
+    21300224: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_112
+    21300226: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_113
+    21300228: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_114
+    21300230: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_115
+    21300232: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_116
+    21300234: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_117
+    21300236: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_118
+    21300238: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_119
+    21300240: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_120
+    21300242: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_121
+    21300244: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_122
+    21300246: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_123
+    21300248: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_124
+    21300250: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_125
+    21300252: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_126
+    21300254: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_127
+    21300256: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_128
+    21300258: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_129
+    21300260: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_130
+    21300262: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_131
+    21300264: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_132
+    21300266: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_133
+    21300268: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_134
+    21300270: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_135
+    21300272: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_136
+    21300274: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_137
+    21300276: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_138
+    21300278: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_139
+    21300280: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_140
+    21300282: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_141
+    21300284: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_142
+    21300286: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_143
+    21300288: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_144
+    21300290: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_145
+    21300292: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_146
+    21300294: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_147
+    21300296: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_148
+    21300298: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_149
+    21300300: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_150
+    21300302: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_151
+    21300304: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_152
+    21300306: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_153
+    21300308: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_154
+    21300310: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_155
+    21300312: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_156
+    21300314: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_157
+    21300316: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_158
+    21300318: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_159
+    21300320: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_160
+    21300322: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_161
+    21300324: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_162
+    21300326: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_163
+    21300328: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_164
+    21300330: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_165
+    21300332: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_166
+    21300334: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_167
+    21300336: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_168
+    21300338: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_169
+    21300340: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_170
+    21300342: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_171
+    21300344: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_172
+    21300346: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_173
+    21300348: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_174
+    21300350: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_175
+    21300352: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_176
+    21300354: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_177
+    21300356: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_178
+    21300358: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_179
+    21300360: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_180
+    21300362: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_181
+    21300364: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_182
+    21300366: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_183
+    21300368: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_184
+    21300370: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_185
+    21300372: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_186
+    21300374: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_187
+    21300376: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_188
+    21300378: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_189
+    21300380: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_190
+    21300382: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_191
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,13 +253,13 @@ TextureImporter:
       name: rpg_maker_vx__modernrtp_tilea2_by_painhurt-d3f7rwg_0
       rect:
         serializedVersion: 2
-        x: 131
-        y: 289
+        x: 132
+        y: 291
         width: 60
         height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 5, z: 3, w: 0}
       outline: []
       tessellationDetail: 0
     outline: []
