@@ -12,7 +12,8 @@ public class InventaireController : MonoBehaviour {
         GetComponent<Canvas>().enabled = false;
         panel = transform.GetChild(0).gameObject;
         slots = new int[panel.transform.childCount];
-	}
+        GetComponent<Canvas>().enabled = activation;
+    }
 	
 	// Update is called once per frame
 	void Update () { 
