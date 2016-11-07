@@ -14,7 +14,7 @@ var jour : int;
 var mois : String;
 var saison : int;
 var annee : int;
-var rangeSecond : int;
+var rangeTime : int;
 var sunInitialIntensity : float;
 
 var sunPointIntensity = [ 0f ];
@@ -35,6 +35,24 @@ var month = [
 	"Décembre"
 ];
 
+function dormir () {
+	// Le joueur se lève à 7h
+
+	// 1) On calcule la différence d'heure entre l'heure actuelle et l'heure à laquelle se lever
+
+	if (minute < 60) {
+		rangeTime += (60 - minute) * 60;
+		minute = 0;
+		++heure;
+	}
+
+	if (heure > 7) {
+		rangeTime += (24 - heure) * 3600 + 7 * 3600;
+	} else {
+		rangeTime +=  (7 - heure) * 3600;
+	}
+}
+
 function Start () {
 	sunInitialIntensity = sun.intensity;
 	canvasObj = GameObject.Find("Canvas");
@@ -47,7 +65,7 @@ function Start () {
 	mois = month[0];
 	saison = 0;
 	annee = 0;
-	rangeSecond = 0;
+	rangeTime = 0;
 
 	// On fixe un minimum, en dessous de cette valeur la gestion de la lumière peut bugger.
 	if (secondGamedByRealSecond < 60) {
@@ -61,23 +79,28 @@ function tick () {
 	while (true) {
 		yield WaitForSeconds(0.5);
 
-		++rangeSecond;
+
+		if (Input.GetAxis("Horizontal")) {
+			dormir();
+		}
+
+		rangeTime += (secondGamedByRealSecond / 2);
 		
-		var sec : int;
-		sec = (rangeSecond / 2) * secondGamedByRealSecond; 
-		heure = (sec / 3600) % 24;
-		minute = ((sec / 300) * 5 ) % 60; // Toutes les 5 minutes
-		jour = (sec / (3600 * 24)) % 3;
-		mois = month[(sec / (3600 * 24 * 3)) % 12];
-		annee = (sec / (3600 * 24 * 3 * 12));
-		saison = (sec / (3600 * 24 * 3)) % 12 / 4;
+		heure = (rangeTime / 3600) % 24;
+		minute = ((rangeTime / 300) * 5 ) % 60; // Toutes les 5 minutes
+		jour = (rangeTime / (3600 * 24)) % 3;
+		mois = month[(rangeTime / (3600 * 24 * 3)) % 12];
+		annee = (rangeTime / (3600 * 24 * 3 * 12));
+		saison = (rangeTime / (3600 * 24 * 3)) % 12 / 4;
 
 		if (isMidnight()) {
 			selectSunCurve();
 		}
-		timer.text = heure + "H" + minute + " " + mois + " : " + jour + " annee " + annee;
+		
+		timer.text = " " + heure + "H" + minute + " "  + mois  + " : " + jour + " annee " + annee;
 
 		updateSun();
+		
 	}
 }
 
@@ -147,4 +170,5 @@ function intensityMultiplier(u : float) {
 
 
 
-function Update () { }
+function Update () { 
+}
