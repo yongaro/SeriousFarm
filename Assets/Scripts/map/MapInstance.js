@@ -1,15 +1,19 @@
 ﻿#pragma strict
 
+/**
+* MAP = Zone cultivable, l'état peut changer
+*/
+
 var mapW : int = 32;
 var mapH : int = 32;
 var map : Map;
 
 function beginDay(){
-	 map.beginDay();
+	map.beginDay();
 }
 
 function endDay(){
-	 map.endDay();
+	map.endDay();
 }
 
 function Start () {

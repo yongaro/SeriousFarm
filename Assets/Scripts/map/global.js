@@ -2,12 +2,16 @@
 
 
 enum FarmTools{ Axe, Hoe, Pickaxe, Scythe, WateringCan }
-//Interface de manipulation des objets
+//Interface (sens java) de manipulation des objets
 //Définit si les objets peuvent être traversés
 //Détermine un comportement journalier en début et fin de journée
 //Un objet possede ses coordonnées sur la map pour éventuellement agir sur d'autres objets de la map
 //ou vérifier certaines conditions auprès des cases voisines
-public class MapObject{
+
+/**
+* Composant
+*/
+public class MapObject {
 	 var mapX : int;
 	 var mapY : int;
 	 var collision : boolean;
@@ -29,7 +33,7 @@ public class MapObject{
 }
 
 //Une plante par défaut prend 16 jours pour donner son produit et doit être arrosée tous les 2 jours. 
-public class Plant extends MapObject{
+public class Plant extends MapObject {
 	 var growthCur : int;
 	 var growthMax : int;
 	 var growthStep : int;
@@ -60,6 +64,7 @@ public class Sprinkler extends MapObject{
 		  super();
 		  collision = false;
 	 }
+
 	 function beginDay(){
 		  var tile : MapTile;
 		  for( var x : int = -1; x < 2; ++x ){
@@ -77,7 +82,7 @@ public class Sprinkler extends MapObject{
 
 
 //Objet contenant toutes les informations de chaque case d'une zone cultivable
-public class MapTile{
+public class MapTile {
 	 var tileX : int;
 	 var tileY : int;
 	 var waterCur : int;
@@ -115,6 +120,9 @@ public class MapTile{
 
 
 //Classe contenant la map et accessible depuis les autres scripts
+/**
+* Matrice de MapTile
+*/
 public class Map{
 	 var width : int;
 	 var height : int;

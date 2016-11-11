@@ -16,6 +16,7 @@ var saison : int;
 var annee : int;
 var rangeTime : int;
 var sunInitialIntensity : float;
+var numMois : int;
 
 var sunPointIntensity = [ 0f ];
 var sunPointTime = [ 0f ];
@@ -48,9 +49,11 @@ function dormir () {
 
 	if (heure > 7) {
 		rangeTime += (24 - heure) * 3600 + 7 * 3600;
+		selectSunCurve();
 	} else {
 		rangeTime +=  (7 - heure) * 3600;
 	}
+
 }
 
 function Start () {
@@ -66,6 +69,9 @@ function Start () {
 	saison = 0;
 	annee = 0;
 	rangeTime = 0;
+	numMois = 0;
+
+	selectSunCurve();
 
 	// On fixe un minimum, en dessous de cette valeur la gestion de la lumière peut bugger.
 	if (secondGamedByRealSecond < 60) {
@@ -89,7 +95,8 @@ function tick () {
 		heure = (rangeTime / 3600) % 24;
 		minute = ((rangeTime / 300) * 5 ) % 60; // Toutes les 5 minutes
 		jour = (rangeTime / (3600 * 24)) % 3;
-		mois = month[(rangeTime / (3600 * 24 * 3)) % 12];
+		numMois = (rangeTime / (3600 * 24 * 3)) % 12;
+		mois = month[numMois];
 		annee = (rangeTime / (3600 * 24 * 3 * 12));
 		saison = (rangeTime / (3600 * 24 * 3)) % 12 / 4;
 
@@ -110,29 +117,88 @@ function isMidnight() {
 
 function selectSunCurve() {
 	// Pour une journée normale
-	sunPointTime = [0.16, 0.25, 0.35, 0.5, 0.58, 0.75, 0.83, 1];
-	sunPointIntensity = [0.2, 0.25, 0.5, 0.9, 1, 0.6, 0.2, 0.1];
+	switch (numMois) {
+		case 0 :
+			sunPointTime = [0.3375, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.2, 0.5, 0.6, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
 
-	/*
-		// On peut adapter à la saison 
-		switch (saison) {
-			case 0 :
-				// gestion effet météo
-			break;
+		case 1 :
+			sunPointTime = [0.317, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
 
-			case 1 :
-				// gestion effet météo
-			break;
+		case 2 :
+			sunPointTime = [0.291, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 3 :
+			sunPointTime = [0.25, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 4 :
+			sunPointTime = [0.208, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 5 :
+			sunPointTime = [0.18, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 6 :
+			sunPointTime = [0.18, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 7 :
+			sunPointTime = [0.197, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 8 :
+			sunPointTime = [0.236, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 9 :
+			sunPointTime = [0.277, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		case 10 :
+			sunPointTime = [0.298, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+
+		default:
+			sunPointTime = [0.323, 0.4, 0.45, 0.5, 0.58, 0.75, 0.83, 1];
+			sunPointIntensity = [0.15, 0.4, 0.48, 0.86, 0.98, 0.6, 0.2, 0.1];
+		break;
+	} 
+
+	switch (saison) {
+		case 0 :
+			// gestion effet météo
+		break;
+
+		case 1 :
+			// gestion effet météo		
+		break;
+		
+		case 2 :
+			// gestion effet météo
 			
-			case 2 :
-				// gestion effet météo
-			break;
+		break;
 
-			case 3 :
-				// gestion effet météo
-			break;
-		}
-	*/
+		case 3 :
+			// gestion effet météo
+			
+		break;
+	}
+	
 }
 
 function updateSun() {
@@ -153,7 +219,8 @@ function updateSun() {
 function intensityMultiplier(u : float) {
 	// On recherche notre point sur la courbe
 	var i = 0;
-	while ( u > sunPointTime[i]) {
+	
+	while ( (u > sunPointTime[i]) ) {
 		++i;
 	}
 
@@ -165,6 +232,8 @@ function intensityMultiplier(u : float) {
 		// Interpolation et renvoi de la bonne intensité
 		return sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
 	}
+	
+	//return 1.0;
 }
 
 

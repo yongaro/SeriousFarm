@@ -23,7 +23,7 @@ function casserCailloux(){
 
 
 function Start () {
-	 mapReference = GameObject.Find("World").GetComponent(MapInstance);
+	 mapReference = GameObject.Find(mapGameObjectName).GetComponent(MapInstance);
 	 tile = mapReference.map.tileAt(mapX,mapY);
 }
 
