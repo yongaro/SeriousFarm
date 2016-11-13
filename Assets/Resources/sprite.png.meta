@@ -1,84 +1,84 @@
 fileFormatVersion: 2
-guid: cb010649cdb3b2541bc09247b6b5c32b
-timeCreated: 1478977855
+guid: 9c62519e3750be6408f27e21c3ec37c1
+timeCreated: 1478977692
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: tumblr_lf47beQXHM1qftxmxo1_400_0
-    21300002: tumblr_lf47beQXHM1qftxmxo1_400_1
-    21300004: tumblr_lf47beQXHM1qftxmxo1_400_2
-    21300006: tumblr_lf47beQXHM1qftxmxo1_400_3
-    21300008: tumblr_lf47beQXHM1qftxmxo1_400_4
-    21300010: tumblr_lf47beQXHM1qftxmxo1_400_5
-    21300012: tumblr_lf47beQXHM1qftxmxo1_400_6
-    21300014: tumblr_lf47beQXHM1qftxmxo1_400_7
-    21300016: tumblr_lf47beQXHM1qftxmxo1_400_8
-    21300018: tumblr_lf47beQXHM1qftxmxo1_400_9
-    21300020: tumblr_lf47beQXHM1qftxmxo1_400_10
-    21300022: tumblr_lf47beQXHM1qftxmxo1_400_11
-    21300024: tumblr_lf47beQXHM1qftxmxo1_400_12
-    21300026: tumblr_lf47beQXHM1qftxmxo1_400_13
-    21300028: tumblr_lf47beQXHM1qftxmxo1_400_14
-    21300030: tumblr_lf47beQXHM1qftxmxo1_400_15
-    21300032: tumblr_lf47beQXHM1qftxmxo1_400_16
-    21300034: tumblr_lf47beQXHM1qftxmxo1_400_17
-    21300036: tumblr_lf47beQXHM1qftxmxo1_400_18
-    21300038: tumblr_lf47beQXHM1qftxmxo1_400_19
-    21300040: tumblr_lf47beQXHM1qftxmxo1_400_20
-    21300042: tumblr_lf47beQXHM1qftxmxo1_400_21
-    21300044: tumblr_lf47beQXHM1qftxmxo1_400_22
-    21300046: tumblr_lf47beQXHM1qftxmxo1_400_23
-    21300048: tumblr_lf47beQXHM1qftxmxo1_400_24
-    21300050: tumblr_lf47beQXHM1qftxmxo1_400_25
-    21300052: tumblr_lf47beQXHM1qftxmxo1_400_26
-    21300054: tumblr_lf47beQXHM1qftxmxo1_400_27
-    21300056: tumblr_lf47beQXHM1qftxmxo1_400_28
-    21300058: tumblr_lf47beQXHM1qftxmxo1_400_29
-    21300060: tumblr_lf47beQXHM1qftxmxo1_400_30
-    21300062: tumblr_lf47beQXHM1qftxmxo1_400_31
-    21300064: tumblr_lf47beQXHM1qftxmxo1_400_32
-    21300066: tumblr_lf47beQXHM1qftxmxo1_400_33
-    21300068: tumblr_lf47beQXHM1qftxmxo1_400_34
-    21300070: tumblr_lf47beQXHM1qftxmxo1_400_35
-    21300072: tumblr_lf47beQXHM1qftxmxo1_400_36
+    21300000: sprite_0
+    21300002: sprite_1
+    21300004: sprite_2
+    21300006: sprite_3
+    21300008: sprite_4
+    21300010: sprite_5
+    21300012: sprite_6
+    21300014: sprite_7
+    21300016: sprite_8
+    21300018: sprite_9
+    21300020: graineTomate
+    21300022: sprite_11
+    21300024: sprite_12
+    21300026: sprite_13
+    21300028: sprite_14
+    21300030: sprite_15
+    21300032: sprite_16
+    21300034: sprite_17
+    21300036: sprite_18
+    21300038: sprite_19
+    21300040: sprite_20
+    21300042: sprite_21
+    21300044: sprite_22
+    21300046: sprite_23
+    21300048: sprite_24
+    21300050: sprite_25
+    21300052: sprite_26
+    21300054: sprite_27
+    21300056: sprite_28
+    21300058: sprite_29
+    21300060: sprite_30
+    21300062: sprite_31
+    21300064: sprite_32
+    21300066: sprite_33
+    21300068: sprite_34
+    21300070: sprite_35
+    21300072: sprite_36
     21300074: pelle
-    21300076: tumblr_lf47beQXHM1qftxmxo1_400_38
-    21300078: tumblr_lf47beQXHM1qftxmxo1_400_39
-    21300080: tumblr_lf47beQXHM1qftxmxo1_400_40
-    21300082: tumblr_lf47beQXHM1qftxmxo1_400_41
-    21300084: tumblr_lf47beQXHM1qftxmxo1_400_42
-    21300086: tumblr_lf47beQXHM1qftxmxo1_400_43
-    21300088: tumblr_lf47beQXHM1qftxmxo1_400_44
-    21300090: tumblr_lf47beQXHM1qftxmxo1_400_45
-    21300092: tumblr_lf47beQXHM1qftxmxo1_400_46
-    21300094: tumblr_lf47beQXHM1qftxmxo1_400_47
-    21300096: tumblr_lf47beQXHM1qftxmxo1_400_48
-    21300098: tumblr_lf47beQXHM1qftxmxo1_400_49
-    21300100: tumblr_lf47beQXHM1qftxmxo1_400_50
-    21300102: tumblr_lf47beQXHM1qftxmxo1_400_51
-    21300104: tumblr_lf47beQXHM1qftxmxo1_400_52
-    21300106: tumblr_lf47beQXHM1qftxmxo1_400_53
-    21300108: tumblr_lf47beQXHM1qftxmxo1_400_54
-    21300110: tumblr_lf47beQXHM1qftxmxo1_400_55
-    21300112: tumblr_lf47beQXHM1qftxmxo1_400_56
-    21300114: tumblr_lf47beQXHM1qftxmxo1_400_57
-    21300116: tumblr_lf47beQXHM1qftxmxo1_400_58
-    21300118: tumblr_lf47beQXHM1qftxmxo1_400_59
-    21300120: tumblr_lf47beQXHM1qftxmxo1_400_60
-    21300122: tumblr_lf47beQXHM1qftxmxo1_400_61
-    21300124: tumblr_lf47beQXHM1qftxmxo1_400_62
-    21300126: tumblr_lf47beQXHM1qftxmxo1_400_63
-    21300128: tumblr_lf47beQXHM1qftxmxo1_400_64
-    21300130: tumblr_lf47beQXHM1qftxmxo1_400_65
-    21300132: tumblr_lf47beQXHM1qftxmxo1_400_66
-    21300134: tumblr_lf47beQXHM1qftxmxo1_400_67
-    21300136: tumblr_lf47beQXHM1qftxmxo1_400_68
-    21300138: tumblr_lf47beQXHM1qftxmxo1_400_69
-    21300140: tumblr_lf47beQXHM1qftxmxo1_400_70
-    21300142: tumblr_lf47beQXHM1qftxmxo1_400_71
-    21300144: tumblr_lf47beQXHM1qftxmxo1_400_72
-    21300146: tumblr_lf47beQXHM1qftxmxo1_400_73
-    21300148: tumblr_lf47beQXHM1qftxmxo1_400_74
+    21300076: sprite_38
+    21300078: sprite_39
+    21300080: sprite_40
+    21300082: sprite_41
+    21300084: sprite_42
+    21300086: sprite_43
+    21300088: sprite_44
+    21300090: sprite_45
+    21300092: sprite_46
+    21300094: sprite_47
+    21300096: sprite_48
+    21300098: sprite_49
+    21300100: hache
+    21300102: sprite_51
+    21300104: sprite_52
+    21300106: sprite_53
+    21300108: sprite_54
+    21300110: sprite_55
+    21300112: sprite_56
+    21300114: sprite_57
+    21300116: sprite_58
+    21300118: sprite_59
+    21300120: sprite_60
+    21300122: sprite_61
+    21300124: sprite_62
+    21300126: sprite_63
+    21300128: sprite_64
+    21300130: sprite_65
+    21300132: sprite_66
+    21300134: sprite_67
+    21300136: sprite_68
+    21300138: sprite_69
+    21300140: sprite_70
+    21300142: sprite_71
+    21300144: sprite_72
+    21300146: sprite_73
+    21300148: sprite_74
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_0
+      name: sprite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,7 +141,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_1
+      name: sprite_1
       rect:
         serializedVersion: 2
         x: 16
@@ -154,7 +154,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_2
+      name: sprite_2
       rect:
         serializedVersion: 2
         x: 32
@@ -167,7 +167,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_3
+      name: sprite_3
       rect:
         serializedVersion: 2
         x: 48
@@ -180,7 +180,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_4
+      name: sprite_4
       rect:
         serializedVersion: 2
         x: 64
@@ -193,7 +193,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_5
+      name: sprite_5
       rect:
         serializedVersion: 2
         x: 80
@@ -206,7 +206,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_6
+      name: sprite_6
       rect:
         serializedVersion: 2
         x: 100
@@ -219,7 +219,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_7
+      name: sprite_7
       rect:
         serializedVersion: 2
         x: 115
@@ -232,7 +232,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_8
+      name: sprite_8
       rect:
         serializedVersion: 2
         x: 129
@@ -245,7 +245,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_9
+      name: sprite_9
       rect:
         serializedVersion: 2
         x: 144
@@ -258,7 +258,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_10
+      name: graineTomate
       rect:
         serializedVersion: 2
         x: 162
@@ -271,7 +271,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_11
+      name: sprite_11
       rect:
         serializedVersion: 2
         x: 178
@@ -284,7 +284,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_12
+      name: sprite_12
       rect:
         serializedVersion: 2
         x: 194
@@ -297,7 +297,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_13
+      name: sprite_13
       rect:
         serializedVersion: 2
         x: 209
@@ -310,7 +310,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_14
+      name: sprite_14
       rect:
         serializedVersion: 2
         x: 225
@@ -323,7 +323,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_15
+      name: sprite_15
       rect:
         serializedVersion: 2
         x: 243
@@ -336,7 +336,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_16
+      name: sprite_16
       rect:
         serializedVersion: 2
         x: 0
@@ -349,7 +349,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_17
+      name: sprite_17
       rect:
         serializedVersion: 2
         x: 113
@@ -362,7 +362,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_18
+      name: sprite_18
       rect:
         serializedVersion: 2
         x: 134
@@ -375,7 +375,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_19
+      name: sprite_19
       rect:
         serializedVersion: 2
         x: 144
@@ -388,7 +388,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_20
+      name: sprite_20
       rect:
         serializedVersion: 2
         x: 162
@@ -401,7 +401,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_21
+      name: sprite_21
       rect:
         serializedVersion: 2
         x: 176
@@ -414,7 +414,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_22
+      name: sprite_22
       rect:
         serializedVersion: 2
         x: 192
@@ -427,7 +427,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_23
+      name: sprite_23
       rect:
         serializedVersion: 2
         x: 225
@@ -440,7 +440,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_24
+      name: sprite_24
       rect:
         serializedVersion: 2
         x: 241
@@ -453,7 +453,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_25
+      name: sprite_25
       rect:
         serializedVersion: 2
         x: 112
@@ -466,7 +466,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_26
+      name: sprite_26
       rect:
         serializedVersion: 2
         x: 145
@@ -479,7 +479,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_27
+      name: sprite_27
       rect:
         serializedVersion: 2
         x: 160
@@ -492,7 +492,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_28
+      name: sprite_28
       rect:
         serializedVersion: 2
         x: 243
@@ -505,7 +505,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_29
+      name: sprite_29
       rect:
         serializedVersion: 2
         x: 16
@@ -518,7 +518,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_30
+      name: sprite_30
       rect:
         serializedVersion: 2
         x: 146
@@ -531,7 +531,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_31
+      name: sprite_31
       rect:
         serializedVersion: 2
         x: 241
@@ -544,7 +544,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_32
+      name: sprite_32
       rect:
         serializedVersion: 2
         x: 249
@@ -557,7 +557,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_33
+      name: sprite_33
       rect:
         serializedVersion: 2
         x: 147
@@ -570,7 +570,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_34
+      name: sprite_34
       rect:
         serializedVersion: 2
         x: 210
@@ -583,7 +583,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_35
+      name: sprite_35
       rect:
         serializedVersion: 2
         x: 226
@@ -596,7 +596,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_36
+      name: sprite_36
       rect:
         serializedVersion: 2
         x: 242
@@ -617,51 +617,51 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 9
-      pivot: {x: 0.16614494, y: 0.16614482}
+      pivot: {x: 0.032602906, y: -0.034168497}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_38
+      name: sprite_38
       rect:
         serializedVersion: 2
-        x: 17
-        y: 161
-        width: 16
-        height: 16
-      alignment: 9
-      pivot: {x: 0.12441325, y: 0.18701077}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_39
-      rect:
-        serializedVersion: 2
-        x: 31
+        x: 16
         y: 160
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.18701124, y: 0.249609}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_40
+      name: sprite_39
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprite_40
       rect:
         serializedVersion: 2
         x: 48
         y: 160
         width: 16
         height: 16
-      alignment: 9
-      pivot: {x: 0.187011, y: 0.249609}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_41
+      name: sprite_41
       rect:
         serializedVersion: 2
         x: 64
@@ -674,7 +674,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_42
+      name: sprite_42
       rect:
         serializedVersion: 2
         x: 112
@@ -687,7 +687,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_43
+      name: sprite_43
       rect:
         serializedVersion: 2
         x: 145
@@ -700,20 +700,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_44
+      name: sprite_44
       rect:
         serializedVersion: 2
         x: 0
         y: 144
         width: 16
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_45
+      name: sprite_45
       rect:
         serializedVersion: 2
         x: 16
@@ -726,7 +726,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_46
+      name: sprite_46
       rect:
         serializedVersion: 2
         x: 32
@@ -739,20 +739,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_47
+      name: sprite_47
       rect:
         serializedVersion: 2
         x: 48
         y: 144
         width: 14
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_48
+      name: sprite_48
       rect:
         serializedVersion: 2
         x: 112
@@ -765,7 +765,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_49
+      name: sprite_49
       rect:
         serializedVersion: 2
         x: 1
@@ -778,20 +778,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_50
+      name: hache
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 128
         width: 14
         height: 16
       alignment: 9
-      pivot: {x: 0.1244133, y: 0.1870108}
+      pivot: {x: 0.03260291, y: -0.0341685}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_51
+      name: sprite_51
       rect:
         serializedVersion: 2
         x: 32
@@ -804,72 +804,72 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_52
+      name: sprite_52
       rect:
         serializedVersion: 2
         x: 48
         y: 128
         width: 32
         height: 16
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_53
+      name: sprite_53
       rect:
         serializedVersion: 2
         x: 2
         y: 112
         width: 14
         height: 16
-      alignment: 9
-      pivot: {x: 0.28537908, y: 0.12441301}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_54
+      name: sprite_54
       rect:
         serializedVersion: 2
-        x: 15
+        x: 16
         y: 112
         width: 13
         height: 15
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_55
+      name: sprite_55
       rect:
         serializedVersion: 2
         x: 33
         y: 112
         width: 13
         height: 15
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_56
+      name: sprite_56
       rect:
         serializedVersion: 2
         x: 50
         y: 112
         width: 13
         height: 15
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_57
+      name: sprite_57
       rect:
         serializedVersion: 2
         x: 66
@@ -882,7 +882,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_58
+      name: sprite_58
       rect:
         serializedVersion: 2
         x: 112
@@ -895,7 +895,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_59
+      name: sprite_59
       rect:
         serializedVersion: 2
         x: 112
@@ -908,7 +908,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_60
+      name: sprite_60
       rect:
         serializedVersion: 2
         x: 112
@@ -921,7 +921,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_61
+      name: sprite_61
       rect:
         serializedVersion: 2
         x: 1
@@ -934,7 +934,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_62
+      name: sprite_62
       rect:
         serializedVersion: 2
         x: 32
@@ -947,7 +947,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_63
+      name: sprite_63
       rect:
         serializedVersion: 2
         x: 48
@@ -960,7 +960,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_64
+      name: sprite_64
       rect:
         serializedVersion: 2
         x: 64
@@ -973,7 +973,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_65
+      name: sprite_65
       rect:
         serializedVersion: 2
         x: 32
@@ -986,7 +986,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_66
+      name: sprite_66
       rect:
         serializedVersion: 2
         x: 113
@@ -999,7 +999,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_67
+      name: sprite_67
       rect:
         serializedVersion: 2
         x: 129
@@ -1012,7 +1012,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_68
+      name: sprite_68
       rect:
         serializedVersion: 2
         x: 145
@@ -1025,7 +1025,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_69
+      name: sprite_69
       rect:
         serializedVersion: 2
         x: 161
@@ -1038,7 +1038,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_70
+      name: sprite_70
       rect:
         serializedVersion: 2
         x: 0
@@ -1051,7 +1051,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_71
+      name: sprite_71
       rect:
         serializedVersion: 2
         x: 16
@@ -1064,7 +1064,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_72
+      name: sprite_72
       rect:
         serializedVersion: 2
         x: 80
@@ -1077,7 +1077,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_73
+      name: sprite_73
       rect:
         serializedVersion: 2
         x: 96
@@ -1090,7 +1090,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: tumblr_lf47beQXHM1qftxmxo1_400_74
+      name: sprite_74
       rect:
         serializedVersion: 2
         x: 129

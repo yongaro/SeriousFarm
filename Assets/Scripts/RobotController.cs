@@ -9,17 +9,17 @@ public class RobotController : MonoBehaviour
     private Animator anim;
 
 
-    private Rigidbody2D rb;
+
     private PlayerController pc;
     private Vector2 currentHolder;
-    private bool isMoving;
+
 
 
     void Start()
     {
 
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+
         pc = player.GetComponent<PlayerController>();
     }
 
@@ -27,30 +27,7 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
-        isMoving = false;
-
-
-
-        /*
-         if (pc.move.x > 0.5f  || pc.move.x < -0.5f){
-
-                 rb.velocity = pc.lastMove * moveSpeed ;
-             isMoving = true;
-         }
-         if (pc.move.y > 0.5f || pc.move.y < -0.5f)
-         {
-             rb.velocity = pc.lastMove * moveSpeed;
-             isMoving = true;
-         }
-         if (pc.move.x < 0.5f && pc.move.x > -0.5f)
-         {
-             rb.velocity = new Vector2(0f, rb.velocity.y);
-         }
-         if (pc.move.y < 0.5f && pc.move.y > -0.5f)
-         {
-             rb.velocity = new Vector2( rb.velocity.x, 0f);
-         }
-         */
+      
          
 
 
