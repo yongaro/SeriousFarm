@@ -89,6 +89,8 @@ public class MapTile {
 	 var waterMax : int;
 	 var object : MapObject;
 
+	 var sprite : Sprite;
+
 	 
 	 function MapTile(){
 		  tileX = 0;
@@ -115,6 +117,11 @@ public class MapTile {
 				if( object.destroyWithTool(tool) ){ removeObject(); }
 		  }
 		  else{ water(); }
+	 }
+
+
+	 function setSprite( spriteName : String){
+		  //var spriteShiet = Resources.Load<Sprite>("fubar");
 	 }
 }
 
