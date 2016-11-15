@@ -24,7 +24,7 @@ public abstract class MapObject{
 		collision = false;
 		tool2Destroy = FarmTools.Pickaxe;
 		map = null;
-		objectView = new GameObject();
+		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
 		objectView.AddComponent<BoxCollider>();
 	}
@@ -35,6 +35,23 @@ public abstract class MapObject{
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
 	
 }
+
+
+public class LegumeSprites{
+	public Sprite[] sprites;
+	public int nbSprites;
+	
+	public LegumeSprites(){}
+	public LegumeSprites(int nb, string[] spritesPath){
+		sprites = new Sprite[nb];
+		for( int i = 0; i < nb; ++i ){
+			sprites[i] = Resources.Load<Sprite>(spritesPath[i]);
+		}
+	}
+}
+
+public enum PlantList{ carotte, chou_fleur, navet, plant_number }
+
 
 //Une plante par défaut prend 16 jours pour donner son produit et doit être arrosée tous les 2 jours. 
 public class Plant : MapObject {
@@ -171,7 +188,7 @@ public class Map{
 				map[x,y].tileX = x;
 				map[x,y].tileY = y;
 				map[x,y].map = this;
-				map[x,y].tileView = new GameObject();
+				map[x,y].tileView = new GameObject("MapTile");
 				map[x,y].tileView.AddComponent<SpriteRenderer>();
 				map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = M_Sprite;
 				temp = new Vector3();

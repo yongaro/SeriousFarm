@@ -21,8 +21,6 @@ public class MapInstance : MonoBehaviour {
 	public Sprite ULC_Sprite;
 	public Sprite ULR_Sprite;
 	
-	private GameObject test;
-	
 	// Use this for initialization
 	void Start () {
 		map = new Map();
@@ -35,10 +33,7 @@ public class MapInstance : MonoBehaviour {
 		map.MU_Sprite  = MU_Sprite;
 		map.ULC_Sprite = ULC_Sprite;
 		map.ULR_Sprite = ULR_Sprite;
-		test = new GameObject();
-		test.AddComponent<SpriteRenderer>();
-		test.GetComponent<SpriteRenderer>().sprite = M_Sprite;//(Sprite)Resources.Load<Sprite>("champ");
-		float tileSize = test.GetComponent<SpriteRenderer>().sprite.bounds.size.x; //erk
+		float tileSize = M_Sprite.bounds.size.x;//test.GetComponent<SpriteRenderer>().sprite.bounds.size.x; //erk
 		//test.transform.position = transform.position;
 		map.init(width, height, tileSize, transform);
 	}
