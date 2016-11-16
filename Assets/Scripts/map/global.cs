@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+
+
+/**
+ * Enumeration de tous les outils utilisables
+ */
 public enum FarmTools{  Axe, Hoe, Pickaxe, Scythe, WateringCan }
 
 
 
-//Interface (sens java) de manipulation des objets
-//Définit si les objets peuvent être traversés
-//Détermine un comportement journalier en début et fin de journée
-//Un objet possede ses coordonnées sur la map pour éventuellement agir sur d'autres objets de la map
-//ou vérifier certaines conditions auprès des cases voisines
+/**
+ * Interface (sens java) de manipulation des objets
+ * Définit si les objets peuvent être traversés
+ * Détermine un comportement journalier en début et fin de journée
+ * Un objet possede ses coordonnées sur la map pour éventuellement agir sur d'autres objets de la map
+ * ou vérifier certaines conditions auprès des cases voisines
+ */
 public abstract class MapObject{
 	public int mapX;
 	public int mapY;
@@ -26,7 +34,6 @@ public abstract class MapObject{
 		map = null;
 		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
-		objectView.AddComponent<BoxCollider>();
 	}
 	public virtual bool collide(){ return collision; }
 	public virtual void beginDay(){}
@@ -36,7 +43,10 @@ public abstract class MapObject{
 	
 }
 
-
+/**
+ * Structure permettant de contenir tous les sprites d un legume pour
+ * toutes ses etapes de croissance.
+ */
 public class LegumeSprites{
 	public Sprite[] sprites;
 	public int nbSprites;
@@ -49,11 +59,19 @@ public class LegumeSprites{
 		}
 	}
 }
-
+/**
+ * Enumeration de toutes les plantes possibles
+ */
 public enum PlantList{ carotte, chou_fleur, navet, plant_number }
 
-
-//Une plante par défaut prend 16 jours pour donner son produit et doit être arrosée tous les 2 jours. 
+/**
+ * Classe generique pour toutes les plantes du jeu
+ * Des points de parametrage permettent de definir 
+ *   la croissance a chaque journee
+ *   la consomation d eau
+ *   la fin de croissance 
+ *   etc
+ */
 public class Plant : MapObject {
 	public int growthCur;
 	public int growthMax;
@@ -79,10 +97,14 @@ public class Plant : MapObject {
 	}
 }
 
-
+/**
+ * Objet d arrosage automatique
+ * en debut de chaque journee arrose ses 8 voisins
+ */
 public class Sprinkler : MapObject{
 
 	public Sprinkler() : base(){
+		objectView.AddComponent<BoxCollider>();
 		collision = false;
 	}
 
@@ -99,7 +121,23 @@ public class Sprinkler : MapObject{
 }
 
 
-//Objet contenant toutes les informations de chaque case d'une zone cultivable
+/**
+ * Classe gerant tous les objets de types obstacles ( pierres, branches, etc...)
+ */
+public class Obstacle : MapObject{
+	
+
+}
+
+
+
+
+/**
+ * Tuile d une zone cultivable 
+ * Represente la terre qui dispose de plusieurs socles pour y inserer divers composants
+ * Gere egalement le volume d eau ce morceau de terrain et dispose de quelques informations 
+ * pratiques pour d autres utilisations
+ */
 public class MapTile {
 	public int tileX;
 	public int tileY;
@@ -149,16 +187,24 @@ public class MapTile {
 }
 
 
-//Classe contenant la map et accessible depuis les autres scripts
+
 /**
-* Matrice de MapTile
-*/
+ * Classe contenant une zone cultivable et accessible depuis les autres scripts
+ * Matrice de MapTile
+ */
 public class Map{
 	public int width;
 	public int height;
 	public Vector3 pos;
+	public float tileSize;
 	public MapTile[,] map;
-	
+
+	/**
+	 * Sprites a fournir depuis une Map Instance pour creer une zone carree / rectangulaire
+	 * Un carre de 3x3 demande 9 tuiles differentes(4 coins + tuiles entre les coins + tuile centrale)
+	 * une zone de n importe quelle dimension peut etre affichee a partir de ces 9 tuiles
+	 * C=Corner -- D=Down -- L=Left -- M=Middle -- R = Right -- U=Up  
+	 */
 	public Sprite DLC_Sprite;
 	public Sprite DRC_Sprite;
 	public Sprite M_Sprite;
@@ -169,6 +215,10 @@ public class Map{
 	public Sprite ULC_Sprite;
 	public Sprite ULR_Sprite;
 
+	//Gestion de l'ensemble des maps sur une scene
+	private static List<Map> mapList;
+	
+	
 	public Map(){
 		width = 10;
 		height = 10;
@@ -179,7 +229,8 @@ public class Map{
 		pos = new Vector3();
 		pos.x = worldPos.position.x;
 		pos.y = worldPos.position.y;
-		
+		this.tileSize = tileSize;
+
 		map = new MapTile[width,height];
 		Vector3 temp;
 		for( int x = 0; x < width; ++x ){
@@ -219,4 +270,53 @@ public class Map{
 			}
 		}
 	}
+
+	/**
+	 * Permet de trouver une tuile grace a ses coordonnees reelles sur la scene
+	 * Une tuile est situee selon le centre de son GameObject il faut donc utiliser une offset 
+	 * supplementaire de la moitie de la taille d une tuile pour calculer la position dans la matrice
+	 */
+	public MapTile tileAt(Vector3 posRef){
+		float halfSize = tileSize / 2.0f;
+		float tileWorldPosX = 0.0f;
+		float tileWorldPosY = 0.0f;
+
+		for( int x = 0; x < width; ++x ){
+			for( int y = 0; y < height; ++y ){
+				tileWorldPosX = pos.x + x*tileSize;
+				if( posRef.x >= (tileWorldPosX-halfSize) && posRef.x < (tileWorldPosX+halfSize) ){
+					tileWorldPosY = pos.y + y*tileSize;
+					if( posRef.y >= (tileWorldPosY-halfSize) && posRef.y < (tileWorldPosY+halfSize) ){
+						return tileAt(x,y);
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Ajoute une zone cultivable a une liste statique qui repertorie toutes les zones.
+	 * Cette structure sert a modifier une tuile de n importe quelle zone cultivable
+	 * en utilisant uniquement une position sur le repere de la scene.
+	 */
+	public static void ajoutMap(Map mapRef){
+		if( mapList == null ){ mapList = new List<Map>(); }
+		if( !mapList.Contains(mapRef) ){ mapList.Add(mapRef); }
+	}
+
+	/**
+	 * Parcours toutes les zones cultivables repertoriees et renvoie 
+	 * une reference vers MapTile a la position designee par posRef(repere de la scene)
+	 * retourne null si aucune tuile n a ete trouve
+	 */
+	public static MapTile getTileAt(Vector3 posRef){
+		MapTile res = null;
+		foreach( Map mapRef in mapList ){
+			res = mapRef.tileAt(posRef);
+			if( res != null ){ return res; }
+		}
+		return null;
+	}
+	
 }
