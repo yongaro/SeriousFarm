@@ -47,6 +47,7 @@ public class MapInstance : MonoBehaviour {
 		map.init(width, height, tileSize, transform);
 		//ajout de la zone cultivable dans la liste des map
 		Map.ajoutMap(map);
+		test_tileFromWorldPos();
 	}
 	
 	// Update is called once per frame
@@ -61,15 +62,19 @@ public class MapInstance : MonoBehaviour {
 	 */
 	bool test_tileFromWorldPos(){
 		Vector3 testPos = new Vector3();
-		testPos.x = 1.0f;
+		testPos.x = -15.0f;
 		testPos.y = 1.0f;
 		testPos.z = 0.0f;
 		MapTile test = Map.getTileAt(testPos);
 		if( test == null ){ print("NURUPO"); }
 		else{
-			print(test.tileX+" "+test.tileY);
+			Obstacle obsTest = new Obstacle();
+			obsTest.defineType(ObstacleType.Bois);
+			test.addObject(obsTest);
 			return true;
 		}
+		
+		
 		return false;
 	}
 

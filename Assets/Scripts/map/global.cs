@@ -34,13 +34,19 @@ public abstract class MapObject{
 		map = null;
 		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
+		objectView.GetComponent<SpriteRenderer>().sortingOrder = 1;
 	}
 	public virtual bool collide(){ return collision; }
 	public virtual void beginDay(){}
 	public virtual void endDay(){}
 	public virtual void activate(){}
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
-	
+	public virtual void moveGameObject(){
+		Vector3 newPos = new Vector3();
+		newPos.x = map.pos.x + mapX * map.tileSize;
+		newPos.y = map.pos.y + mapY * map.tileSize;
+		objectView.transform.position = newPos;
+	}
 }
 
 /**
@@ -104,7 +110,7 @@ public class Plant : MapObject {
 public class Sprinkler : MapObject{
 
 	public Sprinkler() : base(){
-		objectView.AddComponent<BoxCollider>();
+		objectView.AddComponent<BoxCollider2D>();
 		collision = false;
 	}
 
@@ -121,12 +127,39 @@ public class Sprinkler : MapObject{
 }
 
 
+
+/**
+ * Enumeration des differents types d'obstacles 
+ */
+public enum ObstacleType { Bois, Rocher, obstacles_number }
+ 
 /**
  * Classe gerant tous les objets de types obstacles ( pierres, branches, etc...)
  */
 public class Obstacle : MapObject{
+	public static Sprite[] obstacleSprites;
+	public static int[] obstaclesIndices;
 	
-
+	
+	public static void initStatic(){
+		if( obstacleSprites == null ){
+			obstacleSprites = Resources.LoadAll<Sprite>("champ");
+			obstaclesIndices = new int[(int)ObstacleType.obstacles_number];
+			obstaclesIndices[(int)ObstacleType.Bois] = 297;
+			obstaclesIndices[(int)ObstacleType.Bois] = 292;
+		}
+	}
+	
+	public Obstacle() : base(){
+		objectView.AddComponent<BoxCollider2D>();
+		collision = false;
+		initStatic();
+	}
+	
+	public void defineType(ObstacleType type){
+		if( type == ObstacleType.Bois ){ objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ obstaclesIndices[(int)ObstacleType.Bois] ]; }
+		if( type == ObstacleType.Rocher ){ objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ obstaclesIndices[(int)ObstacleType.Bois] ]; }
+	}
 }
 
 
@@ -170,6 +203,7 @@ public class MapTile {
 		m_object.mapX = tileX;
 		m_object.mapY = tileY;
 		m_object.map = map;
+		m_object.moveGameObject();
 	}
 	public void removeObject(){ m_object = null; } //Incomplet ?
 	public void useTool(FarmTools tool){
