@@ -23,6 +23,7 @@ var lastDay : int;
 
 var pluie : GameObject;
 var neige : GameObject;
+
 var rand : float;
 
 var sunPointIntensity = [ 0f ];
@@ -69,7 +70,7 @@ function Start () {
 	canvasObj = GameObject.Find("Canvas");
 	child = canvasObj.transform.Find("TimerText");
 	timer = child.GetComponent(UI.Text);
-
+	
 /*
 	heure = 0;
 	minute = 0;
@@ -169,16 +170,33 @@ function isMidnight() {
 
 function selectSunCurve() {
     Debug.Log("selectSunCurve");
-pluie.SetActive(false);
-pluie.GetComponent.<Renderer>().enabled = false;
-pluie.GetComponent.<ParticleSystem>().Stop();
 
+    //GameObject.DestroyImmediate(pluie.GetComponent.<ParticleSystem>(), true);
+	//GameObject.DestroyImmediate(neige.GetComponent.<ParticleSystem>(), true);
+	
 
-
-Debug.Log("rain" + pluie.GetComponent.<Renderer>().enabled);
-
+    //var p = pluie.GetComponent.<ParticleSystem>();
+    //var n = neige.GetComponent.<ParticleSystem>();
+//pluie.SetActive(true)	;
 //neige.SetActive(false);
-neige.GetComponent.<Renderer>().enabled = false;
+//Debug.Log(pluie.activeSelf + " " + neige.activeSelf);
+
+//if (p.isPlaying) pluie.GetComponent.<Renderer>().enabled = false;
+//neige.GetComponent.<Renderer>().enabled = false;
+
+//pluie.GetComponent.<ParticleSystem>().Pause();
+//neige.GetComponent.<ParticleSystem>().Pause();
+pluie.SetActive(false);
+neige.SetActive(false);
+if(pluie.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Stop();
+if(neige.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Stop();
+//if (n.isPlaying) n.Stop();
+//p.emission.enabled = false;
+//n.emission.enabled = false;
+//p.Clear();
+//n.Clear();
+//pluie.GetComponent.<ParticleSystem>().Clear();
+//neige.GetComponent.<ParticleSystem>().Clear();
 
 	// Pour une journée normale
 	switch (numMois) {
@@ -251,26 +269,45 @@ neige.GetComponent.<Renderer>().enabled = false;
 			if (rand <= 0.40f) {
 
 				pluie.SetActive(true);
-				pluie.GetComponent.<Renderer>().enabled = true;
-				pluie.GetComponent.<ParticleSystem>().Play();
-
-				Debug.Log("rain" + pluie.GetComponent.<Renderer>().enabled);
+				//pluie.GetComponent.<Renderer>().enabled = true;
+				//p.emission.enabled = true;
+				//p.Play();
+				//if (!p.isPlaying) p.Play();
+				//pluie = GameObject.Instantiate(copyOfPluie);
+				Debug.Log("Il pleut");
+				//Debug.Log("rain" + pluie.GetComponent.<Renderer>().enabled);
+				if (!pluie.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Play();
 
 			} else {
 				rand = Random.Range(0.0f, 1.0f);
 				if (rand < 0.50) {
+				neige.SetActive(true);
+				if (!neige.GetComponent.<ParticleSystem>().isPlaying) neige.GetComponent.<ParticleSystem>().Play();
+				//if (!n.isPlaying) n.Play();
+				//neige = GameObject.Instantiate(copyOfNeige);
+					Debug.Log("Il neige");
+					//n.emission.enabled = true;
+					//n.Play();
+
 					//neige.setActive(true);
-					rend = neige.GetComponent.<Renderer>();
-					rend.enabled = true;
-				}	
+					//rend = neige.GetComponent.<Renderer>();
+					//rend.enabled = true;
+				} else {
+					Debug.Log("Il fait rien");
+				}
+
 			}
+
+ 
+			
+				//Debug.Log("Pluie : " + p.isPlaying + p.isStopped + " Neige : "  + n.isPlaying + n.isStopped );
 			// gestion effet météo
 		break;
 
 		case 1 :
 			rand = Random.Range(0.0f, 1.0f);
 			if (rand <= 0.15f) {
-				Debug.Log("rain");
+				Debug.Log("Il pleut");
 				//pluie.setActive(true);
 				rend = pluie.GetComponent.<Renderer>();
 				rend.enabled = true;
@@ -399,16 +436,9 @@ function intensityMultiplier(u : float) {
 
 function Update () { 
 
-	  if (Input.GetKeyDown(KeyCode.Z)) {
-      // show
-      // renderer.enabled = true;
-      pluie.GetComponent.<Renderer>().enabled = true;
-  }
-  
-  if (Input.GetKeyDown(KeyCode.X)) {
-      // hide
-      // renderer.enabled = false;
-      pluie.GetComponent.<Renderer>().enabled = false;
+	//pluie.GetComponent.<ParticleSystem>().emission.enabled = false;
+	//neige.GetComponent.<ParticleSystem>().emission.enabled = false;
 
-  }
+	//if (neige.GetComponent.<ParticleSystem>().isPlaying) neige.GetComponent.<ParticleSystem>().Stop();
+
 }
