@@ -450,8 +450,10 @@ public class Map{
 	 * Fonction declenchant le debut de journee sur toutes les zones cultivables listees
 	 */
 	public static void globalBeginDay(){
-		foreach( Map mapRef in mapList ){
-			mapRef.beginDay();
+		if( mapList != null ){
+			foreach( Map mapRef in mapList ){
+				mapRef.beginDay();
+			}
 		}
 	}
 
@@ -459,8 +461,10 @@ public class Map{
 	 * Fonction declenchant la fin de journee sur toutes les zones cultivables listees
 	 */
 	public static void globalEndDay(){
-		foreach( Map mapRef in mapList ){
-			mapRef.endDay();
+		if( mapList != null ){
+			foreach( Map mapRef in mapList ){
+				mapRef.endDay();
+			}
 		}
 	}
 
@@ -470,5 +474,9 @@ public class Map{
 	public static void globalEvent(EventType type){
 		
 	}
-	
+
+	public static void useTool(FarmTools tool, Vector3 tilePos){
+		MapTile tile = Map.getTileAt(tilePos);
+		if( tile != null ){ tile.useTool(tool); }		
+	}
 }
