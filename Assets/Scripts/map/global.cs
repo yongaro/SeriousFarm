@@ -53,6 +53,7 @@ public abstract class MapObject{
  * Structure permettant de contenir tous les sprites d un legume pour
  * toutes ses etapes de croissance.
  */
+/*
 public class LegumeSprites{
 	public Sprite[] sprites;
 	public int nbSprites;
@@ -64,11 +65,11 @@ public class LegumeSprites{
 			sprites[i] = Resources.Load<Sprite>(spritesPath[i]);
 		}
 	}
-}
+}*/
 /**
  * Enumeration de toutes les plantes possibles
  */
-public enum PlantList{ carotte, chou_fleur, navet, plant_number }
+public enum PlantList{ carotte, chou_fleur, navet, plant_number } // @TODO : mettre nom ici
 
 /**
  * Classe generique pour toutes les plantes du jeu
@@ -79,18 +80,30 @@ public enum PlantList{ carotte, chou_fleur, navet, plant_number }
  *   etc
  */
 public class Plant : MapObject {
+	public static Sprite[] bank;
+	public static int[,] bankIndices;
+	public PlantList type;
 	public int growthCur;
 	public int growthMax;
 	public int growthStep;
 	public int waterCons;
 
-	public Plant() : base(){
-		  growthCur = 0;
-		  growthMax = 16;
-		  growthStep = 1;
-		  waterCons = 5;
+	public Plant(PlantList type) : base(){
+		this.type = type;
+		initStatic();
+		growthCur = 0;
+		growthMax = 16;
+		growthStep = 1;
+		waterCons = 5;
+		updateSprite();
 	}
-	public void growth(){ if( growthCur < growthMax ){ growthCur += growthStep; } }
+
+	public void growth(){ 
+		if( growthCur < growthMax ){ 
+			growthCur += growthStep; 
+			updateSprite();
+		} 
+	}
 	public override void beginDay(){}
 	public override void endDay(){
 		MapTile tile = map.tileAt(mapX,mapY);
@@ -100,6 +113,36 @@ public class Plant : MapObject {
 	}
 	public override void activate(){
 		//TODO donner un fruit une fois growthMax
+	}
+
+
+	public static void initStatic(){
+		if( bank == null ) {
+			bank = Resources.LoadAll<Sprite>("celian");
+			bankIndices = new int [(int)PlantList.plant_number, 3];
+			bankIndices[(int)PlantList.carotte, 0] = 36;
+			bankIndices[(int)PlantList.carotte, 1] = 37;
+			bankIndices[(int)PlantList.carotte, 2] = 38;
+
+			bankIndices[(int)PlantList.navet, 0] = 0;
+			bankIndices[(int)PlantList.navet, 1] = 1;
+			bankIndices[(int)PlantList.navet, 2] = 2;
+
+			bankIndices[(int)PlantList.chou_fleur, 0] = 51;
+			bankIndices[(int)PlantList.chou_fleur, 1] = 52;
+			bankIndices[(int)PlantList.chou_fleur, 2] = 53;
+		}
+	}
+	
+	public void updateSprite () {
+		float stade = ((float)growthCur / (float)growthMax);
+		if (stade < 0.33) {
+			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 0] ];
+		} else if (stade < 0.66) {
+			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 1] ];
+		} else {
+			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 2] ];
+		}
 	}
 }
 
@@ -146,7 +189,7 @@ public class Obstacle : MapObject{
 			obstacleSprites = Resources.LoadAll<Sprite>("champ");
 			obstaclesIndices = new int[(int)ObstacleType.obstacles_number];
 			obstaclesIndices[(int)ObstacleType.Bois] = 297;
-			obstaclesIndices[(int)ObstacleType.Bois] = 292;
+			obstaclesIndices[(int)ObstacleType.Rocher] = 292;
 		}
 	}
 	

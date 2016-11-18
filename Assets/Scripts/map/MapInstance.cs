@@ -68,10 +68,25 @@ public class MapInstance : MonoBehaviour {
 		MapTile test = Map.getTileAt(testPos);
 		if( test == null ){ print("NURUPO"); }
 		else{
-			Obstacle obsTest = new Obstacle();
+			/*Obstacle obsTest = new Obstacle();
 			obsTest.defineType(ObstacleType.Bois);
 			test.addObject(obsTest);
 			return true;
+			*/
+			Plant plantTest = new Plant(PlantList.chou_fleur);
+			//planTest.defineType(ObstacleType.Bois);
+			test.addObject(plantTest);
+			test.waterCur = 10000;
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			plantTest.growth();
+			return true;
+			
 		}
 		
 		

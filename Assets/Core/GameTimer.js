@@ -170,7 +170,10 @@ function isMidnight() {
 
 function selectSunCurve() {
     Debug.Log("selectSunCurve");
+    var v : Vector3;
+    v = new Vector3();
 
+    //Map.getTileAt(v);
     //GameObject.DestroyImmediate(pluie.GetComponent.<ParticleSystem>(), true);
 	//GameObject.DestroyImmediate(neige.GetComponent.<ParticleSystem>(), true);
 	
