@@ -3,11 +3,10 @@ using System.Collections;
 
 public class MapManager : MonoBehaviour {
 
-	void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
+	void Start(){ }
+	void Update(){ }
+	public void pleuvoir(){ Map.globalEvent(EventType.rain); }
+	public void neiger(){ Map.globalEvent(EventType.snow); }
+	public void begindDay(){ Map.globalBeginDay(); }
+	public void endDay(){ Map.globalEndDay(); }
 }
