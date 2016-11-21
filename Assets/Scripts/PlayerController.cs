@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D myRigidbody;
     public GameObject tool;
+    public ObjectController objectC;
 
     private bool tooling;
     private float timeTooling = 1.0f;
@@ -26,7 +27,9 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent < Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         moves = new Stack<Vector2>();
-	}
+        objectC = GetComponent<ObjectController>();
+        //tool = transform.GetChild(0).gameObject;
+    }
 
     // Update is called once per frame
     void Update() {
@@ -64,13 +67,13 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            
             timeToolingCounter = timeTooling;
             tool.SetActive(true);
             tooling = true;
             myRigidbody.velocity = Vector2.zero;
             anim.SetBool("useTool", true);
-
+            objectC.useObject();
 
         }
     }

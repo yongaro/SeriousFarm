@@ -21,7 +21,7 @@ public class QuickBar : MonoBehaviour
     public bool draggingItem;
     public Item draggedItem;
     public int indexDraggedItem;
-
+    public int indexSelectItem;
    
 
 
@@ -29,7 +29,7 @@ public class QuickBar : MonoBehaviour
     {
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         inventaire = inventairePanel.GetComponent<Inventaire>();
-       
+        indexSelectItem = 0;
        
         slotamount = 0;
         draggingItem = false;
@@ -89,7 +89,6 @@ public class QuickBar : MonoBehaviour
 
     void addItem(int id)
     {
-        Debug.Log(database.items.Count);
         for (int i = 0; i < database.items.Count; i++)
         {
            
@@ -109,9 +108,7 @@ public class QuickBar : MonoBehaviour
                 }
 
             }
-
         }
-
     }
 
     void addItemAtEmptySlot(Item item)
@@ -122,7 +119,6 @@ public class QuickBar : MonoBehaviour
             if (Items[i].itemName == null)
             {
                 Items[i] = item;
-               
                 break;
             }
         }
@@ -143,6 +139,5 @@ public class QuickBar : MonoBehaviour
         draggingItem = false;
         draggedItemObject.SetActive(false);
     }
-
     
 }

@@ -23,12 +23,6 @@ public class MainPanelScript : MonoBehaviour {
             activationMenu = !activationMenu;
             mainPanel.SetActive(activationMenu);
             quickBar.SetActive(activationQuick);
-        }/*
-        
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            activationQuick = !activationQuick;
-            quickBar.SetActive(activationQuick);
-        }*/
+        }
     }
 }

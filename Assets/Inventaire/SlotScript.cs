@@ -50,7 +50,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     {
         if (inventaire.Items[slotNumber].itemType != Item.ItemType.Tool)
         {
-            inventaire.Items[slotNumber].itemValue--;
+            //inventaire.Items[slotNumber].itemValue--;
             if (inventaire.Items[slotNumber].itemValue  == 0)
             {
                 inventaire.Items[slotNumber] = new Item();
@@ -109,10 +109,10 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (inventaire.Items[slotNumber].itemType != Item.ItemType.Tool)
+       /* if (inventaire.Items[slotNumber].itemType != Item.ItemType.Tool)
         {
             inventaire.Items[slotNumber].itemValue++;
-        }
+        }*/
         
         if (inventaire.Items[slotNumber].itemName != null)
         {

@@ -38,7 +38,6 @@ public class Item  {
             
             if (sprites[i].name == name)
             {
-                Debug.Log(name);
                 itemIcon = sprites[i];
             }
         }

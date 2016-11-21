@@ -19,7 +19,7 @@ public class ItemDatabase : MonoBehaviour {
         items.Add(new Item("Hoe", 5, "retourne la terre", 10, 10, 1, Item.ItemType.Tool));
         items.Add(new Item("Pickaxe", 6, "casse les pierres", 10, 10, 1, Item.ItemType.Tool));
         items.Add(new Item("Scythe", 7, "coupe les herbes", 10, 10, 1, Item.ItemType.Tool));
-        items.Add(new Item("WateringCan", 8, "reservoir a eau", 10, 10, 1, Item.ItemType.Tool));
+        items.Add(new Item("WateringCan", 8, "reservoir a eau", 40, 10, 1, Item.ItemType.Tool));
         items.Add(new Item("marteau", 9, "tape tape", 10, 10, 1, Item.ItemType.Tool));
 
     }
