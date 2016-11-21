@@ -28,7 +28,7 @@ var rand : float;
 
 var sunPointIntensity = [ 0f ];
 var sunPointTime = [ 0f ];
-
+var mapManager : GameObject;
 
 var month = [
 	"Janvier",
@@ -70,17 +70,8 @@ function Start () {
 	canvasObj = GameObject.Find("Canvas");
 	child = canvasObj.transform.Find("TimerText");
 	timer = child.GetComponent(UI.Text);
+	mapManager = GameObject.Find("MapManager");
 	
-/*
-	heure = 0;
-	minute = 0;
-	jour = 0;
-	
-	saison = 0;
-	annee = 0;
-	rangeTime = 0;
-	numMois = 0;
-*/
 	if (heure < 0) {
 		heure = 0;
 	} else if (heure >= 24) {
@@ -168,39 +159,46 @@ function isMidnight() {
 	return ((heure == 0) && (minute == 0));
 }
 
+function pleuvoir () {
+	pluie.SetActive(true);
+	if (!pluie.GetComponent.<ParticleSystem>().isPlaying) {
+		pluie.GetComponent.<ParticleSystem>().Play();
+	}
+
+	mapManager.SendMessage("pleuvoir");
+}
+
+function neiger() {
+	neige.SetActive(true);
+	if (!neige.GetComponent.<ParticleSystem>().isPlaying) {
+		neige.GetComponent.<ParticleSystem>().Play();
+	}
+
+	mapManager.SendMessage("neiger");
+}
+
+function clearMeteo() {
+	pluie.SetActive(false);
+	neige.SetActive(false);
+	if (pluie.GetComponent.<ParticleSystem>().isPlaying) {
+		pluie.GetComponent.<ParticleSystem>().Stop();	
+	} 
+
+	if (neige.GetComponent.<ParticleSystem>().isPlaying) {
+		pluie.GetComponent.<ParticleSystem>().Stop();
+	}
+
+}
+
 function selectSunCurve() {
     Debug.Log("selectSunCurve");
     var v : Vector3;
     v = new Vector3();
 
-    //Map.getTileAt(v);
-    //GameObject.DestroyImmediate(pluie.GetComponent.<ParticleSystem>(), true);
-	//GameObject.DestroyImmediate(neige.GetComponent.<ParticleSystem>(), true);
-	
+    clearMeteo();
 
-    //var p = pluie.GetComponent.<ParticleSystem>();
-    //var n = neige.GetComponent.<ParticleSystem>();
-//pluie.SetActive(true)	;
-//neige.SetActive(false);
-//Debug.Log(pluie.activeSelf + " " + neige.activeSelf);
-
-//if (p.isPlaying) pluie.GetComponent.<Renderer>().enabled = false;
-//neige.GetComponent.<Renderer>().enabled = false;
-
-//pluie.GetComponent.<ParticleSystem>().Pause();
-//neige.GetComponent.<ParticleSystem>().Pause();
-pluie.SetActive(false);
-neige.SetActive(false);
-if(pluie.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Stop();
-if(neige.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Stop();
-//if (n.isPlaying) n.Stop();
-//p.emission.enabled = false;
-//n.emission.enabled = false;
-//p.Clear();
-//n.Clear();
-//pluie.GetComponent.<ParticleSystem>().Clear();
-//neige.GetComponent.<ParticleSystem>().Clear();
-
+	mapManager.SendMessage("endDay");
+	mapManager.SendMessage("beginDay");
 	// Pour une journée normale
 	switch (numMois) {
 		case 0 :
@@ -270,41 +268,18 @@ if(neige.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<Particle
 			rand = Random.Range(0.0f, 1.0f);
 			Debug.Log(rand);
 			if (rand <= 0.40f) {
-
-				pluie.SetActive(true);
-				//pluie.GetComponent.<Renderer>().enabled = true;
-				//p.emission.enabled = true;
-				//p.Play();
-				//if (!p.isPlaying) p.Play();
-				//pluie = GameObject.Instantiate(copyOfPluie);
 				Debug.Log("Il pleut");
-				//Debug.Log("rain" + pluie.GetComponent.<Renderer>().enabled);
-				if (!pluie.GetComponent.<ParticleSystem>().isPlaying) pluie.GetComponent.<ParticleSystem>().Play();
-
+				pleuvoir();
 			} else {
 				rand = Random.Range(0.0f, 1.0f);
 				if (rand < 0.50) {
-				neige.SetActive(true);
-				if (!neige.GetComponent.<ParticleSystem>().isPlaying) neige.GetComponent.<ParticleSystem>().Play();
-				//if (!n.isPlaying) n.Play();
-				//neige = GameObject.Instantiate(copyOfNeige);
+					neiger();
 					Debug.Log("Il neige");
-					//n.emission.enabled = true;
-					//n.Play();
-
-					//neige.setActive(true);
-					//rend = neige.GetComponent.<Renderer>();
-					//rend.enabled = true;
 				} else {
 					Debug.Log("Il fait rien");
 				}
 
 			}
-
- 
-			
-				//Debug.Log("Pluie : " + p.isPlaying + p.isStopped + " Neige : "  + n.isPlaying + n.isStopped );
-			// gestion effet météo
 		break;
 
 		case 1 :
@@ -425,7 +400,7 @@ function intensityMultiplier(u : float) {
     	return sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
     }
 
-		
+
 
 		//sun.intensity = sunInitialIntensity * sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
 		

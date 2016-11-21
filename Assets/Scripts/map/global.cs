@@ -69,7 +69,7 @@ public class LegumeSprites{
 /**
  * Enumeration de toutes les plantes possibles
  */
-public enum PlantList{ carotte, chou_fleur, navet, plant_number } // @TODO : mettre nom ici
+public enum PlantList{ aubergine, ble, carotte, chou, chou_fleur, citrouille, concombre, fraise, mais, navet, oignon, patate, poivron, salade, tomate, plant_number } // @TODO : mettre nom ici
 
 /**
  * Classe generique pour toutes les plantes du jeu
@@ -117,22 +117,71 @@ public class Plant : MapObject {
 
 
 	public static void initStatic(){
-		if( bank == null ) {
-			bank = Resources.LoadAll<Sprite>("celian");
-			bankIndices = new int [(int)PlantList.plant_number, 3];
-			bankIndices[(int)PlantList.carotte, 0] = 36;
-			bankIndices[(int)PlantList.carotte, 1] = 37;
-			bankIndices[(int)PlantList.carotte, 2] = 38;
-
-			bankIndices[(int)PlantList.navet, 0] = 0;
-			bankIndices[(int)PlantList.navet, 1] = 1;
-			bankIndices[(int)PlantList.navet, 2] = 2;
-
-			bankIndices[(int)PlantList.chou_fleur, 0] = 51;
-			bankIndices[(int)PlantList.chou_fleur, 1] = 52;
-			bankIndices[(int)PlantList.chou_fleur, 2] = 53;
-		}
-	}
+        if( bank == null ) {
+            bank = Resources.LoadAll<Sprite>("celian");
+            bankIndices = new int [(int)PlantList.plant_number, 3];
+            bankIndices[(int)PlantList.carotte, 0] = 36;
+            bankIndices[(int)PlantList.carotte, 1] = 37;
+            bankIndices[(int)PlantList.carotte, 2] = 38;
+ 
+            bankIndices[(int)PlantList.navet, 0] = 0;
+            bankIndices[(int)PlantList.navet, 1] = 1;
+            bankIndices[(int)PlantList.navet, 2] = 2;
+ 
+            bankIndices[(int)PlantList.chou, 0] = 3;
+            bankIndices[(int)PlantList.chou, 1] = 4;
+            bankIndices[(int)PlantList.chou, 2] = 5;
+ 
+            bankIndices[(int)PlantList.oignon, 0] = 6;
+            bankIndices[(int)PlantList.oignon, 1] = 7;
+            bankIndices[(int)PlantList.oignon, 2] = 8;
+           
+            bankIndices[(int)PlantList.tomate, 0] = 9;
+            bankIndices[(int)PlantList.tomate, 1] = 10;
+            bankIndices[(int)PlantList.tomate, 2] = 11;
+ 
+            bankIndices[(int)PlantList.patate, 0] = 27;
+            bankIndices[(int)PlantList.patate, 1] = 28;
+            bankIndices[(int)PlantList.patate, 2] = 29;
+ 
+            bankIndices[(int)PlantList.mais, 0] = 30;
+            bankIndices[(int)PlantList.mais, 1] = 31;
+            bankIndices[(int)PlantList.mais, 2] = 32;
+ 
+            bankIndices[(int)PlantList.ble, 0] = 33;
+            bankIndices[(int)PlantList.ble, 1] = 34;
+            bankIndices[(int)PlantList.ble, 2] = 35;
+ 
+            bankIndices[(int)PlantList.aubergine, 0] = 48;
+            bankIndices[(int)PlantList.aubergine, 1] = 49;
+            bankIndices[(int)PlantList.aubergine, 2] = 50;
+ 
+            bankIndices[(int)PlantList.citrouille, 0] = 54;
+            bankIndices[(int)PlantList.citrouille, 1] = 55;
+            bankIndices[(int)PlantList.citrouille, 2] = 56;
+ 
+            bankIndices[(int)PlantList.poivron, 0] = 57;
+            bankIndices[(int)PlantList.poivron, 1] = 58;
+            bankIndices[(int)PlantList.poivron, 2] = 59;
+ 
+            bankIndices[(int)PlantList.concombre, 0] = 72;
+            bankIndices[(int)PlantList.concombre, 1] = 73;
+            bankIndices[(int)PlantList.concombre, 2] = 74;
+           
+            bankIndices[(int)PlantList.fraise, 0] = 75;
+            bankIndices[(int)PlantList.fraise, 1] = 76;
+            bankIndices[(int)PlantList.fraise, 2] = 77;
+ 
+            bankIndices[(int)PlantList.salade, 0] = 78;
+            bankIndices[(int)PlantList.salade, 1] = 79;
+            bankIndices[(int)PlantList.salade, 2] = 80;
+ 
+ 
+            bankIndices[(int)PlantList.chou_fleur, 0] = 51;
+            bankIndices[(int)PlantList.chou_fleur, 1] = 52;
+            bankIndices[(int)PlantList.chou_fleur, 2] = 53;
+        }
+    }
 	
 	public void updateSprite () {
 		float stade = ((float)growthCur / (float)growthMax);
@@ -263,6 +312,7 @@ public class MapTile {
 	}
 }
 
+public enum EventType{ rain, snow, event_number };
 
 
 /**
@@ -395,5 +445,38 @@ public class Map{
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Fonction declenchant le debut de journee sur toutes les zones cultivables listees
+	 */
+	public static void globalBeginDay(){
+		if( mapList != null ){
+			foreach( Map mapRef in mapList ){
+				mapRef.beginDay();
+			}
+		}
+	}
+
+	/**
+	 * Fonction declenchant la fin de journee sur toutes les zones cultivables listees
+	 */
+	public static void globalEndDay(){
+		if( mapList != null ){
+			foreach( Map mapRef in mapList ){
+				mapRef.endDay();
+			}
+		}
+	}
+
+	/**
+	 * Fonction gerant les evenements meteo 
+	 */
+	public static void globalEvent(EventType type){
+		
+	}
+
+	public static void useTool(FarmTools tool, Vector3 tilePos){
+		MapTile tile = Map.getTileAt(tilePos);
+		if( tile != null ){ tile.useTool(tool); }		
+	}
 }
