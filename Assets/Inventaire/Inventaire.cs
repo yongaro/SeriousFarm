@@ -14,7 +14,7 @@ public class Inventaire : MonoBehaviour
     public int slotamount;
 
     public GameObject tooltip;
-    
+
     public GameObject draggedItemObject;
     public bool draggingItem;
     public Item draggedItem;
@@ -41,16 +41,13 @@ public class Inventaire : MonoBehaviour
                 slotamount++;
             }
         }
-        addItem(0);
-        addItem(1);
-        addItem(1);
-        
+
         addItem(4);
     }
 
     public void showTooltip(Vector3 toolPosition, Item item)
     {
-        tooltip.GetComponent<RectTransform>().localPosition = new Vector3(toolPosition.x + 60, toolPosition.y-100, 0);
+        tooltip.GetComponent<RectTransform>().localPosition = new Vector3(toolPosition.x + 60, toolPosition.y - 100, 0);
         tooltip.SetActive(true);
         tooltip.transform.GetChild(0).GetComponent<Text>().text = item.itemName;
         tooltip.transform.GetChild(1).GetComponent<Text>().text = item.itemDesc;
@@ -103,7 +100,7 @@ public class Inventaire : MonoBehaviour
 
     void addItem(int id)
     {
-        
+
         for (int i = 0; i < database.items.Count; i++)
         {
             if (database.items[i].itemID == id)
@@ -117,30 +114,32 @@ public class Inventaire : MonoBehaviour
                 else
                 {
                     addItemAtEmptySlot(item);
-               }
+                }
             }
         }
     }
-	
+
     void addItemAtEmptySlot(Item item)
     {
         for (int i = 0; i < Items.Count; i++)
         {
-            if (Items[i].itemName == null) { 
+            if (Items[i].itemName == null)
+            {
                 Items[i] = item;
-               
+
                 break;
             }
         }
     }
 
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         if (draggingItem)
         {
             Vector3 posi = (Input.mousePosition - GameObject.FindGameObjectWithTag("Canvas").GetComponent<RectTransform>().localPosition);
             draggedItemObject.GetComponent<RectTransform>().localPosition = new Vector3(posi.x + 21, posi.y - 21, 0);
         }
-	}
+    }
 }

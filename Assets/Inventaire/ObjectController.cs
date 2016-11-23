@@ -50,7 +50,11 @@ public class ObjectController : MonoBehaviour {
                 tool.SetActive(false);
                 tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Pelle;
             }
-        }   
+        } 
+        else
+        {
+            objet.GetComponent<SpriteRenderer>().sprite = null;
+        }  
 	}
 
     public void useObject()

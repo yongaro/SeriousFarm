@@ -22,13 +22,15 @@ public class PlayerController : MonoBehaviour {
     private float timeTooling = 1.0f;
     private float timeToolingCounter;
 
+    public GameObject shopPanel;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent < Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         moves = new Stack<Vector2>();
         objectC = GetComponent<ObjectController>();
-        //tool = transform.GetChild(0).gameObject;
+       
     }
 
     // Update is called once per frame
@@ -93,5 +95,15 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.name == "Shop")
+        {
+            shopPanel.SetActive(true);
+        }
+
     }
 }

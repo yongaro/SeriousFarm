@@ -30,7 +30,7 @@ public class QuickBar : MonoBehaviour
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         inventaire = inventairePanel.GetComponent<Inventaire>();
         indexSelectItem = 0;
-       
+    
         slotamount = 0;
         draggingItem = false;
         for (int j = 0; j < 15; j++)
@@ -43,7 +43,6 @@ public class QuickBar : MonoBehaviour
                     slot.transform.SetParent(this.gameObject.transform);
                     slotamount++;
                 }
-     
         addItem(4);
         addItem(5);
         addItem(6);
@@ -61,7 +60,19 @@ public class QuickBar : MonoBehaviour
         }
            
     }
-
+    public bool estPlein()
+    {
+        int nbitem = 0;
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (Items[i].itemName != null)
+                nbitem++;
+        }
+        if (nbitem == Items.Count - 1)
+            return true;
+        else
+            return false;
+    }
 
    
     public void checkIfItemExist(int itemID, Item item)
@@ -72,7 +83,8 @@ public class QuickBar : MonoBehaviour
             if (Items[i].itemName != null)
                 nbitem++;
         }
-        for (int i = 0; i < database.items.Count; i++)
+       
+        for (int i = 0; i < Items.Count; i++)
         {
             if (Items[i].itemID == itemID)
             {
@@ -87,7 +99,7 @@ public class QuickBar : MonoBehaviour
         }
     }
 
-    void addItem(int id)
+    public void addItem(int id)
     {
         for (int i = 0; i < database.items.Count; i++)
         {
@@ -113,10 +125,9 @@ public class QuickBar : MonoBehaviour
 
     void addItemAtEmptySlot(Item item)
     {
-      
         for (int i = 0; i < Items.Count; i++)
         {
-            if (Items[i].itemName == null)
+            if (Items[i].itemValue == 0)
             {
                 Items[i] = item;
                 break;
