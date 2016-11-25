@@ -69,7 +69,15 @@ public class LegumeSprites{
 /**
  * Enumeration de toutes les plantes possibles
  */
-public enum PlantList{ aubergine, ble, carotte, chou, chou_fleur, citrouille, concombre, fraise, mais, navet, oignon, patate, poivron, salade, tomate, plant_number } // @TODO : mettre nom ici
+public enum PlantList{ aubergine, ble, carotte, chou, chou_fleur, citrouille,
+					   concombre, fraise, mais, navet, oignon, patate, poivron, salade, tomate, plant_number }
+
+/**
+ * Enumeration des mois 
+ */
+public enum Months{ Janvier, Fevrier, Mars, Avril, Mai, Juin,
+					Juillet, Aout, Septembre, Octobre, Novembre, Decembre, months_number }
+
 
 /**
  * Classe generique pour toutes les plantes du jeu
@@ -82,6 +90,9 @@ public enum PlantList{ aubergine, ble, carotte, chou, chou_fleur, citrouille, co
 public class Plant : MapObject {
 	public static Sprite[] bank;
 	public static int[,] bankIndices;
+	public static List<Months>[] beginMonths;
+	public static List<Months>[] endMonths;
+	
 	public PlantList type;
 	public int growthCur;
 	public int growthMax;
@@ -89,8 +100,8 @@ public class Plant : MapObject {
 	public int waterCons;
 
 	public Plant(PlantList type) : base(){
-		this.type = type;
 		initStatic();
+		this.type = type;
 		growthCur = 0;
 		growthMax = 16;
 		growthStep = 1;
@@ -119,7 +130,10 @@ public class Plant : MapObject {
 	public static void initStatic(){
         if( bank == null ) {
             bank = Resources.LoadAll<Sprite>("celian");
-            bankIndices = new int [(int)PlantList.plant_number, 3];
+			beginMonths = new List<Months>[(int)Months.months_number];
+			endMonths = new List<Months>[(int)Months.months_number];
+
+			bankIndices = new int [(int)PlantList.plant_number, 3];
             bankIndices[(int)PlantList.carotte, 0] = 36;
             bankIndices[(int)PlantList.carotte, 1] = 37;
             bankIndices[(int)PlantList.carotte, 2] = 38;
@@ -297,7 +311,10 @@ public class MapTile {
 		m_object.map = map;
 		m_object.moveGameObject();
 	}
-	public void removeObject(){ m_object = null; } //Incomplet ?
+	public void removeObject(){
+		
+		m_object = null;
+	} //Incomplet ?
 	public void useTool(FarmTools tool){
 		if( tool < FarmTools.WateringCan ){
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
@@ -472,11 +489,40 @@ public class Map{
 	 * Fonction gerant les evenements meteo 
 	 */
 	public static void globalEvent(EventType type){
+		if( type == EventType.rain ){
+			foreach( Map mapRef in mapList ){
+				for( int x = 0; x < mapRef.width; ++x ){
+					for( int y = 0; y < mapRef.height; ++y ){
+						mapRef.map[x,y].water();
+					}
+				}
+			}
+		}
 		
 	}
 
+	/**
+	 * Utilisation d outils sur une case designe par tilePos sa localisation dans le repere de la scene 
+	 */
 	public static void useTool(FarmTools tool, Vector3 tilePos){
 		MapTile tile = Map.getTileAt(tilePos);
 		if( tile != null ){ tile.useTool(tool); }		
 	}
+
+	/**
+	 * Ajoute une plante a la case designed par tilePos sa localisation dans le repere de la scene
+	 *
+	 */
+	public static bool ajoutPlante(PlantList type, Vector3 tilePos){
+		MapTile tile = Map.getTileAt(tilePos);
+		if( tile != null ){
+			if( tile.m_object == null ){
+				Plant ajout = new Plant(type);
+				tile.addObject(ajout);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
