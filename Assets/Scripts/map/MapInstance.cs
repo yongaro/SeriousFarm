@@ -77,14 +77,7 @@ public class MapInstance : MonoBehaviour {
 			//planTest.defineType(ObstacleType.Bois);
 			test.addObject(plantTest);
 			test.waterCur = 10000;
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
-			plantTest.growth();
+			
 			return true;
 			
 		}

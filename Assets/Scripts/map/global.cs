@@ -25,8 +25,12 @@ public abstract class MapObject{
 	public FarmTools tool2Destroy;
 	public Map map;
 	public GameObject objectView;
+	public static GameObject Meteo;
 	
 	public MapObject(){
+		if (Meteo == null) {
+			Meteo = GameObject.Find("GameTimer");
+		}
 		mapX = 0;
 		mapY = 0;
 		collision = false;
@@ -89,29 +93,67 @@ public enum Months{ Janvier, Fevrier, Mars, Avril, Mai, Juin,
  */
 public class Plant : MapObject {
 	public static Sprite[] bank;
-	public static int[,] bankIndices;
-	public static List<Months>[] beginMonths;
-	public static List<Months>[] endMonths;
-	
+	public static int[,] bankIndices;	
 	public PlantList type;
 	public int growthCur;
 	public int growthMax;
 	public int growthStep;
 	public int waterCons;
 
+
+	public int firstGoodMonth;
+	public int lastGoodMonth;
+	public int firstEndingMonth;
+	public int lastEndingMonth;
+	public int bonusCroissance;
+
+
 	public Plant(PlantList type) : base(){
 		initStatic();
 		this.type = type;
 		growthCur = 0;
-		growthMax = 16;
-		growthStep = 1;
+		growthMax = 30;
 		waterCons = 5;
+		initGrowthSettings();
+		determineGrowthStep();
 		updateSprite();
 	}
 
-	public void growth(){ 
-		if( growthCur < growthMax ){ 
-			growthCur += growthStep; 
+	
+	public int getMonth() {
+		return Map.currentMonth;
+	}
+	public bool propiceMonth() {
+		return (getMonth() >= firstGoodMonth) && (getMonth() <= lastGoodMonth);
+	}
+
+	public bool growableMonth() {
+		return (getMonth() <= lastGoodMonth) && (getMonth() <= firstEndingMonth);
+	}
+
+	public bool latestMonth() {
+		return (getMonth() >= firstEndingMonth) && (getMonth() <= lastEndingMonth);
+	}
+	
+	public void determineGrowthStep () {
+		if (propiceMonth()) {
+			bonusCroissance = 30;
+		} else if (growableMonth()) {
+			growthStep /= 2;
+			bonusCroissance = 10;
+		} else if (latestMonth()) {
+			growthStep /= 3;
+			bonusCroissance = 5;
+		}
+	}
+
+	public void growth() { 
+		if ((growthCur < growthMax)){ 
+			growthCur += growthStep;
+			int bonus = Random.Range(0, 100);
+			if (bonus <= bonusCroissance) {
+				growthCur += 1;
+			}
 			updateSprite();
 		} 
 	}
@@ -130,8 +172,8 @@ public class Plant : MapObject {
 	public static void initStatic(){
         if( bank == null ) {
             bank = Resources.LoadAll<Sprite>("celian");
-			beginMonths = new List<Months>[(int)Months.months_number];
-			endMonths = new List<Months>[(int)Months.months_number];
+			//beginMonths = new List<Months>[(int)Months.months_number];
+			//endMonths = new List<Months>[(int)Months.months_number];
 
 			bankIndices = new int [(int)PlantList.plant_number, 3];
             bankIndices[(int)PlantList.carotte, 0] = 36;
@@ -195,6 +237,113 @@ public class Plant : MapObject {
             bankIndices[(int)PlantList.chou_fleur, 1] = 52;
             bankIndices[(int)PlantList.chou_fleur, 2] = 53;
         }
+    }
+
+    public void initGrowthSettings () {
+    	switch (type) {
+    		case PlantList.aubergine :
+	    		firstGoodMonth = (int)Months.Fevrier;
+	    		lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Juin;
+				lastEndingMonth = (int)Months.Septembre;
+				growthStep = 2;
+    		break;
+    		case PlantList.ble :
+	    		firstGoodMonth = (int)Months.Septembre;
+	    		lastGoodMonth = (int)Months.Novembre;
+				firstEndingMonth = (int)Months.Juin;
+				lastEndingMonth = (int)Months.Aout;
+				growthStep = 1;
+    		break;
+    		case PlantList.carotte :
+	    		firstGoodMonth = (int)Months.Fevrier;
+	    		lastGoodMonth = (int)Months.Septembre;
+				firstEndingMonth = (int)Months.Novembre;
+				lastEndingMonth = (int)Months.Janvier;
+				growthStep = 4;
+    		break;
+    		case PlantList.chou :
+	    		firstGoodMonth = (int)Months.Septembre;
+	    		lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juillet;
+				lastEndingMonth = (int)Months.Janvier;
+				growthStep = 3;
+    		break;
+    		case PlantList.chou_fleur :
+	    		firstGoodMonth = (int)Months.Mars;
+	    		lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Aout;
+				lastEndingMonth = (int)Months.Octobre;
+				growthStep = 2;
+    		break;
+    		case PlantList.citrouille :
+	    		firstGoodMonth = (int)Months.Avril;
+	    		lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juillet;
+				lastEndingMonth = (int)Months.Aout;
+				growthStep = 4;
+    		break;
+    		case PlantList.concombre :
+	    		firstGoodMonth = (int)Months.Mars;
+	    		lastGoodMonth = (int)Months.Juillet;
+				firstEndingMonth = (int)Months.Juillet;
+				lastEndingMonth = (int)Months.Novembre;
+				growthStep = 3;
+    		break;
+    		case PlantList.fraise :
+	    		firstGoodMonth = (int)Months.Aout;
+	    		lastGoodMonth = (int)Months.Octobre;
+				firstEndingMonth = (int)Months.Mai;
+				lastEndingMonth = (int)Months.Juillet;
+				growthStep = 1;
+				//http://www.gnis.fr/index/action/page/id/531/title/Reussir-la-culture-des-fraisiers
+    		break;
+    		case PlantList.mais :
+	    		firstGoodMonth = (int)Months.Avril;
+	    		lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juin;
+				lastEndingMonth = (int)Months.Aout;
+				growthStep = 3;
+    		break;
+    		case PlantList.navet :
+	    		firstGoodMonth = (int)Months.Mars;
+	    		lastGoodMonth = (int)Months.Aout;
+				firstEndingMonth = (int)Months.Septembre;
+				lastEndingMonth = (int)Months.Novembre;
+				growthStep = 4;
+    		break;
+    		case PlantList.oignon :
+	    		firstGoodMonth = (int)Months.Mars;
+	    		lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Aout;
+				lastEndingMonth = (int)Months.Septembre;
+				growthStep = 3;
+    		break;
+    		case PlantList.patate :
+	    		firstGoodMonth = (int)Months.Fevrier;
+	    		lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Mai;
+				lastEndingMonth = (int)Months.Octobre;
+				growthStep = 3;
+    		break;
+    		case PlantList.poivron :
+	    		firstGoodMonth = (int)Months.Fevrier;
+	    		lastGoodMonth = (int)Months.Mai;
+				firstEndingMonth = (int)Months.Aout;
+				lastEndingMonth = (int)Months.Octobre;
+				growthStep = 1;
+    		break;
+    		case PlantList.salade :
+    		break;
+    		case PlantList.tomate :
+	    		firstGoodMonth = (int)Months.Janvier;
+	    		lastGoodMonth = (int)Months.Decembre;
+				firstEndingMonth = (int)Months.Juillet;
+				lastEndingMonth = (int)Months.Septembre;
+				growthStep = 3;
+    		break; 
+    	}
+
     }
 	
 	public void updateSprite () {
@@ -342,6 +491,7 @@ public class Map{
 	public Vector3 pos;
 	public float tileSize;
 	public MapTile[,] map;
+	public static int currentMonth;
 
 	/**
 	 * Sprites a fournir depuis une Map Instance pour creer une zone carree / rectangulaire
@@ -363,10 +513,12 @@ public class Map{
 	private static List<Map> mapList;
 	
 	
-	public Map(){
+	public Map() {
 		width = 10;
 		height = 10;
+		currentMonth = 0;
 	}
+
 	public void init(int w, int h, float tileSize, Transform worldPos){
 		width = w;
 		height = h;
@@ -461,6 +613,13 @@ public class Map{
 			if( res != null ){ return res; }
 		}
 		return null;
+	}
+
+	/**
+	 * Fonction permettant de changer le mois courant
+	 */
+	public static void setMonth (int numMonth){
+		currentMonth = numMonth;
 	}
 
 	/**

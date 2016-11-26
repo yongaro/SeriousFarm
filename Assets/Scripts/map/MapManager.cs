@@ -9,4 +9,5 @@ public class MapManager : MonoBehaviour {
 	public void neiger(){ Map.globalEvent(EventType.snow); }
 	public void beginDay(){ Map.globalBeginDay(); }
 	public void endDay(){ Map.globalEndDay(); }
+	public void setMonth(int numMonth){ Map.setMonth(numMonth); }
 }

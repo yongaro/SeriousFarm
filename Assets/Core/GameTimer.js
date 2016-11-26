@@ -1,4 +1,4 @@
-﻿#pragma strict
+#pragma strict
 
 var secondSinceBegin : float;
 var timer : UI.Text;
@@ -8,7 +8,7 @@ var sun : Light;
 var modeCouleur : boolean;
 
 
-		var rend : Renderer;
+var rend : Renderer;
 var secondGamedByRealSecond : int;
 var heure : int;
 var minute : int;
@@ -19,7 +19,6 @@ var annee : int;
 var rangeTime : int;
 var sunInitialIntensity : float;
 var numMois : int;
-var lastDay : int;
 
 var pluie : GameObject;
 var neige : GameObject;
@@ -98,8 +97,6 @@ function Start () {
 		numMois = numMois % 12;
 	}
 
-	lastDay = jour;
-
 	rangeTime += minute * 60;
 	rangeTime += heure * 3600;
 
@@ -126,15 +123,16 @@ function Start () {
 
 function tick () {
 	while (true) {
-		yield WaitForSeconds(0.5);
+		var tmp : float;
+		tmp = 300.0f / secondGamedByRealSecond;
+		//Debug.Log("Temps : " + tmp);
+		yield WaitForSeconds(tmp);
 
 
-		if (Input.GetAxis("Horizontal")) {
-			dormir();
-		}
+		var currentMonth = numMois;
+		var lastDay = jour;
 
 		rangeTime += (secondGamedByRealSecond / 2);
-		
 		heure = (rangeTime / 3600) % 24;
 		minute = ((rangeTime / 300) * 5 ) % 60; // Toutes les 5 minutes
 		jour = (rangeTime / (3600 * 24)) % 3;
@@ -144,10 +142,14 @@ function tick () {
 		saison = (rangeTime / (3600 * 24 * 3)) % 12 / 4;
 
 		if (isMidnight() || lastDay != jour) {
+			Debug.Log("Changement de jour : " + jour + " " + mois);
 			selectSunCurve();
 		}
+
+		if (currentMonth  != numMois) {
+			mapManager.SendMessage("setMonth", numMois);
+		}
 		
-		lastDay = jour;
 		timer.text = " " + heure + "H" + minute + " "  + mois  + " : " + jour + " annee " + annee;
 
 		updateSun();
@@ -190,8 +192,8 @@ function clearMeteo() {
 
 }
 
+
 function selectSunCurve() {
-    Debug.Log("selectSunCurve");
     var v : Vector3;
     v = new Vector3();
 
@@ -266,55 +268,35 @@ function selectSunCurve() {
 
 		case 0 :
 			rand = Random.Range(0.0f, 1.0f);
-			Debug.Log(rand);
 			if (rand <= 0.40f) {
-				Debug.Log("Il pleut");
 				pleuvoir();
 			} else {
 				rand = Random.Range(0.0f, 1.0f);
 				if (rand < 0.50) {
 					neiger();
-					Debug.Log("Il neige");
-				} else {
-					Debug.Log("Il fait rien");
 				}
-
 			}
 		break;
 
 		case 1 :
 			rand = Random.Range(0.0f, 1.0f);
 			if (rand <= 0.15f) {
-				Debug.Log("Il pleut");
-				//pluie.setActive(true);
-				rend = pluie.GetComponent.<Renderer>();
-				rend.enabled = true;
-			}
-			// gestion effet météo		
+				pleuvoir();
+			}		
 		break;
 		
 		case 2 :
 			rand = Random.Range(0.0f, 1.0f);
 			if (rand < 0.10) {
-				//pluie.setActive(true);
-				pluie.GetComponent.<Renderer>();
-				rend.enabled = true;
+				pleuvoir();
 			} 
-
-			// gestion effet météo
-			
 		break;
 
 		case 3 :
-			
 			var rand = Random.Range(0.0f, 1.0f);
 			if (rand < 0.20) {
-				//pluie.setActive(true);
-				rend = pluie.GetComponent.<Renderer>();
-				rend.enabled = true;
+				pleuvoir();
 			}
-			// gestion effet météo
-			
 		break;
 	}
 	
@@ -324,6 +306,9 @@ function updateSun() {
 	var u : float;
 	u = (heure * 60 + minute) / (24.0 * 60); // on actualise toutes les minutes
 
+	var tmp : float;
+	tmp = sun.intensity;
+	//sun.intensity = sunInitialIntensity * intensityMultiplier(u);
 	sun.intensity = sunInitialIntensity * intensityMultiplier(u);
 	if (modeCouleur) {
 		var i : int;
@@ -365,10 +350,7 @@ function updateSun() {
 			//sun.color.r ;
 			//sun.intensity *= 1.1;
 		}
-		Debug.Log(i);
-
 	}
-	
 }
 
 
@@ -389,34 +371,16 @@ function getFragmentOfDay(u : float) {
 }
 
 function intensityMultiplier(u : float) {
-	// On recherche notre point sur la courbe
 	var i = getFragmentOfDay(u);
 	
 	if (i == 0) {
-		//return sunPointIntensity[i];
 		return sunPointIntensity[i];
     } else {
 		var previous = i - 1;
     	return sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
     }
-
-
-
-		//sun.intensity = sunInitialIntensity * sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
-		
-		// Interpolation et renvoi de la bonne intensité
-		//sun.intensity = sunInitialIntensity * sunPointIntensity[previous] + (sunPointIntensity[i] - sunPointIntensity[previous]) * (( u - sunPointTime[previous]) / ( sunPointTime[i] - sunPointTime[previous]));
-		
-//	}
-	
-	//return 1.0;
 }
 
 function Update () { 
-
-	//pluie.GetComponent.<ParticleSystem>().emission.enabled = false;
-	//neige.GetComponent.<ParticleSystem>().emission.enabled = false;
-
-	//if (neige.GetComponent.<ParticleSystem>().isPlaying) neige.GetComponent.<ParticleSystem>().Stop();
 
 }
