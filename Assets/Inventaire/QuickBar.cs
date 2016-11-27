@@ -150,5 +150,14 @@ public class QuickBar : MonoBehaviour
         draggingItem = false;
         draggedItemObject.SetActive(false);
     }
+
+    public void deleteItem(int id )
+    {
+        for (int i = 0; i < Items.Count; i++)
+        {
+            if (Items[i].itemID == id  )
+                Items[i] = new Item();
+        }
+    }
     
 }

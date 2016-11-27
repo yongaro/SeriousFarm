@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
     private float timeTooling = 1.0f;
     private float timeToolingCounter;
 
-    public GameObject shopPanel;
+    public GameObject shop;
 
     // Use this for initialization
     void Start () {
@@ -102,7 +102,11 @@ public class PlayerController : MonoBehaviour {
     {
         if (collider.gameObject.name == "Shop")
         {
-            shopPanel.SetActive(true);
+            shop.SetActive(true);
+            shop.transform.GetChild(1).gameObject.SetActive(true);
+            shop.transform.GetChild(2).gameObject.SetActive(false);
+            shop.transform.GetChild(3).gameObject.SetActive(false);
+
         }
 
     }

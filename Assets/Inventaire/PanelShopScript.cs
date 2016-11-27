@@ -17,22 +17,19 @@ public class PanelShopScript : MonoBehaviour {
     Text descriptionText;
     Button buyButton;
     QuickBar quickBar;
-    int monnaie;
-    Text monnaieText;
-    public GameObject monnaiePanel;
+    ShopGlobalScrip shopGlobal;
 
     // Use this for initialization
     void Start()
     {
-        monnaie = 50;
+        shopGlobal = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<ShopGlobalScrip>();
+        
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         description = GameObject.FindGameObjectWithTag("Description");
         descriptionText = description.transform.GetChild(1).GetComponent<Text>();
         buyButton = description.transform.GetChild(2).GetComponent<Button>();
         buyButton.onClick.AddListener(buyProduct);
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
-        monnaieText = monnaiePanel.transform.GetChild(1).GetComponent<Text>();
-        monnaieText.text = " : " + monnaie;
         categorie = Item.ItemType.Graine;
         slotamount = 0;
         for (int i = 0; i < 4; i++)
@@ -71,11 +68,10 @@ public class PanelShopScript : MonoBehaviour {
     private void buyProduct()
     {
         Debug.Log(Items[indexSlotSelected].itemName);
-        if (!quickBar.estPlein() && monnaie - Items[indexSlotSelected].itemPrice >= 0 )
+        if (!quickBar.estPlein() && shopGlobal.monnaie - Items[indexSlotSelected].itemPrice >= 0 )
         {
             quickBar.addItem(Items[indexSlotSelected].itemID);
-            monnaie -= Items[indexSlotSelected].itemPrice;
-            monnaieText.text = " : " + monnaie;
+            shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
         }
         else
             buyButton.GetComponent<Image>().color = Color.grey;
