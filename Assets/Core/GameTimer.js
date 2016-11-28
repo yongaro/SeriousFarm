@@ -123,10 +123,13 @@ function Start () {
 
 function tick () {
 	while (true) {
-		var tmp : float;
-		tmp = 300.0f / secondGamedByRealSecond;
-		//Debug.Log("Temps : " + tmp);
-		yield WaitForSeconds(tmp);
+		var waitTime : float;
+		waitTime = 300.0f / secondGamedByRealSecond;
+		if (waitTime> 1.5) {
+			waitTime = 1.5;
+		}
+
+		yield WaitForSeconds(waitTime);
 
 
 		var currentMonth = numMois;
@@ -142,7 +145,6 @@ function tick () {
 		saison = (rangeTime / (3600 * 24 * 3)) % 12 / 4;
 
 		if (isMidnight() || lastDay != jour) {
-			Debug.Log("Changement de jour : " + jour + " " + mois);
 			selectSunCurve();
 		}
 
