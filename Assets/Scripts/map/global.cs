@@ -468,7 +468,7 @@ public class MapTile {
 		if( tool < FarmTools.WateringCan ){
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
 		}
-		else{ water(); }
+		else{ water();  }
 	}
 	public void setPosition(int x, int y, Transform worldPos){
 		
@@ -665,7 +665,8 @@ public class Map{
 	 */
 	public static void useTool(FarmTools tool, Vector3 tilePos){
 		MapTile tile = Map.getTileAt(tilePos);
-		if( tile != null ){ tile.useTool(tool); }		
+		if( tile != null ){
+            tile.useTool(tool); }		
 	}
 
 	/**

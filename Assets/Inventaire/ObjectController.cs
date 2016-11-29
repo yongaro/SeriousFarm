@@ -16,7 +16,7 @@ public class ObjectController : MonoBehaviour {
         objectCurrent = itemDatabase.items[4];
         Debug.Log(objectCurrent.itemName);
         tool = transform.GetChild(0).gameObject;
-        tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Pelle;
+        tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
         objet = transform.GetChild(1).gameObject;
 	}
 	
@@ -28,19 +28,17 @@ public class ObjectController : MonoBehaviour {
             {
                 //tool.SetActive(true);
                 objet.SetActive(false);
-                if (objectCurrent.itemName == "pelle")
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Pelle;
                 if (objectCurrent.itemName == "Axe")
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Axe;
+                    tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
                 if (objectCurrent.itemName == "Hoe")
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Hoe;
+                    tool.GetComponent<toolController>().currentTool = FarmTools.Hoe;
                 if (objectCurrent.itemName == "Pickaxe")
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Pickaxe;
+                    tool.GetComponent<toolController>().currentTool = FarmTools.Pickaxe;
                 if (objectCurrent.itemName == "Scythe")
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Scythe;
+                    tool.GetComponent<toolController>().currentTool = FarmTools.Scythe;
                 if (objectCurrent.itemName == "WateringCan")
                 {
-                    tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.WateringCan;
+                    tool.GetComponent<toolController>().currentTool = FarmTools.WateringCan;
                 }
             }
             else
@@ -48,7 +46,7 @@ public class ObjectController : MonoBehaviour {
                 objet.GetComponent<SpriteRenderer>().sprite = objectCurrent.itemIcon;
                 objet.SetActive(true);
                 tool.SetActive(false);
-                tool.GetComponent<toolController>().currentTool = toolController.FarmerTools.Pelle;
+                tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
             }
         } 
         else
@@ -67,11 +65,14 @@ public class ObjectController : MonoBehaviour {
                 if (objectCurrent.itemValue <= 0) { 
                     objet.SetActive(false);
                     objectCurrent = new Item();
+                        
                 }
             }
-            else if (objectCurrent.itemName == "WateringCan")
+            else 
             {
-                if (objectCurrent.itemPower > 0)
+                Map.useTool(tool.GetComponent<toolController>().currentTool,  transform.position);
+                if (objectCurrent.itemName == "WateringCan")
+                    if (objectCurrent.itemPower > 0)
                     objectCurrent.itemPower--;
 
             }
