@@ -70,31 +70,31 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
 
     public void OnPointerDown(PointerEventData eventData)
     {
-       
-        if (item.itemValue == 0 && inventaire.draggingItem)
-        {
-            quickBar.Items[slotNumber] = inventaire.draggedItem;
-            item = inventaire.draggedItem;
-            itemAmount.text = "" + inventaire.draggedItem.itemValue;
-            inventaire.closeDraggedItem();
-        }
-         
+        //if (eventData != null) {
+            if (item.itemValue == 0 && inventaire.draggingItem)
+            {
+                quickBar.Items[slotNumber] = inventaire.draggedItem;
+                item = inventaire.draggedItem;
+                itemAmount.text = "" + inventaire.draggedItem.itemValue;
+                inventaire.closeDraggedItem();
+            }
+             
 
-        if (quickBar.Items[slotNumber].itemName == null && quickBar.draggingItem)
-        {
-            quickBar.Items[slotNumber] = quickBar.draggedItem;
-          
-            item = quickBar.draggedItem;
-            quickBar.closeDraggedItem();
-        }
+            if (quickBar.Items[slotNumber].itemName == null && quickBar.draggingItem)
+            {
+                quickBar.Items[slotNumber] = quickBar.draggedItem;
+              
+                item = quickBar.draggedItem;
+                quickBar.closeDraggedItem();
+            }
 
-        if (!quickBar.draggingItem)
-        {
-            objectC.objectCurrent = item;
-            quickBar.indexSelectItem = slotNumber;
-        }
-        
-
+            if (!quickBar.draggingItem)
+            {
+                objectC.objectCurrent = item;
+                quickBar.indexSelectItem = slotNumber;
+            }
+            
+        //}
     }
 
     public void OnDrag(PointerEventData eventData)

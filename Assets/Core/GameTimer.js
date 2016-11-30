@@ -66,7 +66,7 @@ function dormir () {
 
 function Start () {
 	sunInitialIntensity = sun.intensity;
-	canvasObj = GameObject.Find("Canvas");
+	//canvasObj = GameObject.Find("Canvas");
 	child = canvasObj.transform.Find("TimerText");
 	timer = child.GetComponent(UI.Text);
 	mapManager = GameObject.Find("MapManager");

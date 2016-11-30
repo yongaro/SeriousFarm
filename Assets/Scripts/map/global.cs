@@ -44,6 +44,10 @@ public abstract class MapObject{
 	public virtual void beginDay(){}
 	public virtual void endDay(){}
 	public virtual void activate(){}
+	public virtual Item recolt() {
+		Debug.Log("Je ne suis pas une plante");
+		return null;
+	}
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
 	public virtual void moveGameObject(){
 		Vector3 newPos = new Vector3();
@@ -99,6 +103,7 @@ public class Plant : MapObject {
 	public int growthMax;
 	public int growthStep;
 	public int waterCons;
+	public int quality;
 
 
 	public int firstGoodMonth;
@@ -108,18 +113,26 @@ public class Plant : MapObject {
 	public int bonusCroissance;
 
 
-	public Plant(PlantList type) : base(){
+	public Plant(PlantList type) : base() {
 		initStatic();
 		this.type = type;
 		growthCur = 0;
 		growthMax = 30;
 		waterCons = 5;
+		quality = 0;
 		initGrowthSettings();
 		determineGrowthStep();
 		updateSprite();
 	}
 
 	
+	public override Item recolt() {
+		
+		Debug.Log("Je suis une plante");
+		return new Item("plante", (int)type, "miam miam", 10, 0, 1, quality, 0);
+		
+	}
+
 	public int getMonth() {
 		return Map.currentMonth;
 	}
@@ -138,12 +151,15 @@ public class Plant : MapObject {
 	public void determineGrowthStep () {
 		if (propiceMonth()) {
 			bonusCroissance = 30;
+			quality = 100;
 		} else if (growableMonth()) {
 			growthStep /= 2;
 			bonusCroissance = 10;
+			quality = 70;
 		} else if (latestMonth()) {
 			growthStep /= 3;
 			bonusCroissance = 5;
+			quality = 60;
 		}
 	}
 
@@ -155,13 +171,23 @@ public class Plant : MapObject {
 				growthCur += 1;
 			}
 			updateSprite();
-		} 
+		} else {
+			quality -= 2;
+		}
 	}
 	public override void beginDay(){}
 	public override void endDay(){
 		MapTile tile = map.tileAt(mapX,mapY);
-		if( tile != null ){
-			if( tile.waterCur >= waterCons ){ growth(); tile.waterCur -= waterCons; }
+		if (tile != null) {
+			if (tile.waterCur >= waterCons) {
+				growth();
+				tile.waterCur -= waterCons;
+				} else {
+					quality -= 10;
+					if (quality < 0) {
+						quality = 0;
+					}
+				}
 		}
 	}
 	public override void activate(){
@@ -464,12 +490,22 @@ public class MapTile {
 		
 		m_object = null;
 	} //Incomplet ?
+
 	public void useTool(FarmTools tool){
 		if( tool < FarmTools.WateringCan ){
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
 		}
 		else{ water();  }
 	}
+
+	public Item recolt() {
+		if (m_object != null) {
+			return m_object.recolt();	
+		} else {
+			return null;
+		}
+	}
+	
 	public void setPosition(int x, int y, Transform worldPos){
 		
 	}
@@ -683,6 +719,28 @@ public class Map{
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Collecte une plante a la case designed par tilePos sa localisation dans le repere de la scene
+	 *
+	 */
+	public static Item collectPlant(Vector3 tilePos) {
+		MapTile tile = Map.getTileAt(tilePos);
+		if (tile != null){
+			//Debug.Log("Je suis sur une plante");
+			return tile.recolt();
+			/*
+			if( tile.m_object == null ){
+				Plant ajout = new Plant(type);
+				tile.addObject(ajout);
+				return true;
+			}*/
+		} else {
+			Debug.Log("Je ne suis pas sur une plante");
+			return null;
+		}
+		//return plant as Plant;
 	}
 	
 }

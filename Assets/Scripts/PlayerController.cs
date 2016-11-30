@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
 
     private Animator anim;
+    public QuickBar quickBar;
+    public Inventaire inventaire;
     public bool playerMoving;
     public Vector2 lastMove;
     public Vector2 move;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour {
         myRigidbody = GetComponent<Rigidbody2D>();
         moves = new Stack<Vector2>();
         objectC = GetComponent<ObjectController>();
+        inventaire = quickBar.inventairePanel.GetComponent<Inventaire>();
        
     }
 
@@ -67,16 +70,21 @@ public class PlayerController : MonoBehaviour {
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
+        if (Input.GetKeyDown(KeyCode.Space)) {
             timeToolingCounter = timeTooling;
             tool.SetActive(true);
             tooling = true;
             myRigidbody.velocity = Vector2.zero;
             anim.SetBool("useTool", true);
             objectC.useObject();
-
+        }
+        
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown("enter") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("return")) {
+            Item recolt = Map.collectPlant(transform.position);
+            if (recolt != null) {
+                inventaire.addItem(recolt);
+                Debug.Log(recolt.itemName);
+            }
         }
     }
         if (timeToolingCounter >= 0)

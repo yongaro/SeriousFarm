@@ -14,7 +14,6 @@ public class ObjectController : MonoBehaviour {
         itemDatabase =  GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         
         objectCurrent = itemDatabase.items[4];
-        Debug.Log(objectCurrent.itemName);
         tool = transform.GetChild(0).gameObject;
         tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
         objet = transform.GetChild(1).gameObject;
