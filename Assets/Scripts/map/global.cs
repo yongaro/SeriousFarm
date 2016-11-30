@@ -130,9 +130,6 @@ public class Plant : MapObject {
 		
 		Debug.Log("Je suis une plante");
         return new Item(type.ToString(), 0, "miam miam", 10, 0, 1, quality, Item.ItemType.Plante);
-       
-
-		//return new Item("plante", (int)type, "miam miam", 10, 0, 1, quality, 0);
 		
 	}
 

@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour {
     private Animator anim;
     public QuickBar quickBar;
     public Inventaire inventaire;
+
     ItemDatabase database;
+
     public bool playerMoving;
     public Vector2 lastMove;
     public Vector2 move;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour {
         objectC = GetComponent<ObjectController>();
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
+
 
     }
 
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             Item recolt = Map.collectPlant(transform.position);
             if (recolt != null) {
                 quickBar.addItem(database.addItem(recolt));
-                
+
             }
         }
     }
