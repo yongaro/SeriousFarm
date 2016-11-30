@@ -30,7 +30,6 @@ function Start () {
 
 function separate (target : Collider2D) {
 	var dist = Vector2.Distance(transform.position, target.gameObject.transform.position);
-	Debug.Log(dist);
 	if ((target.gameObject.tag == "Sheep") && (Vector2.Distance(transform.position, target.gameObject.transform.position) < distanceMin)) {
 		vSeparate += new Vector2((transform.position.x - target.gameObject.transform.position.x), (transform.position.y - target.gameObject.transform.position.y));
 	} else if ((target.gameObject.name == "Player") && (Vector2.Distance(transform.position, target.gameObject.transform.position) < distanceMin)) {
@@ -80,7 +79,6 @@ function move() {
 			//var noise = Vector2(100 - Random.Range(0,200), 100 - Random.Range(0,200));
 			//var noise = Vector2(0,0);
 			direction = (vSeparate.normalized + 0.5 * vCenter.normalized + 100 * vGoal.normalized + noise.normalized).normalized;
-			Debug.Log("direction :" + direction);
 			
 			if ( (direction.x * direction.x) > (direction.y * direction.y)) {
 				direction.y = 0;
@@ -103,8 +101,6 @@ function move() {
 }
 
 function antiShake() {
-	
-	Debug.Log(direction.x * direction.x);
 			if ((direction.x * direction.x) < 0.9) {
 				direction.x = 0;
 			}

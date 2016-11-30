@@ -18,9 +18,19 @@ public class Item  {
 
     public enum ItemType
     {
-        Tool, Graine, Fruit, Pierre, Batton, Engrais, Pesticides, Insecticides, Mobilier 
+        Tool, Graine, Plante, Pierre, Batton, Engrais, Pesticides, Insecticides, Mobilier 
     }
 
+    /*
+     * name : nom de l'objet
+     * id : indice dans la itemDatabase
+     * desc : text de description du produit
+     * power : si l'object a une quantité propre a lui ex : l'eau dans l'arrosoir
+     * saison : quand on peut planter le legume  // à modifier
+     * value : quantité de l'item 
+     * price : prix de l'item
+     * type : categorie 
+     */
 
     public Item (string name, int id, string desc, int power, int saison, int value, int price, ItemType type)
     {
@@ -43,7 +53,7 @@ public class Item  {
                 sprites = Resources.LoadAll<Sprite>("sprite2");
 
         }
-        else if (type == ItemType.Graine)
+        else if (type == ItemType.Graine || type == ItemType.Plante)
             sprites = Resources.LoadAll<Sprite>("Graine");
         else
             sprites = Resources.LoadAll<Sprite>("Sprite");

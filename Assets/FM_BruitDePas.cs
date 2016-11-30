@@ -9,6 +9,7 @@ public class FM_BruitDePas : MonoBehaviour {
     {
         pc = transform.GetComponent<PlayerController>();
         marche = FMODUnity.RuntimeManager.CreateInstance("event:/Deplacement/humain-terre");
+        
     }
 
     void Update()

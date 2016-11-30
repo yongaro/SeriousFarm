@@ -14,7 +14,6 @@ public class ObjectController : MonoBehaviour {
         itemDatabase =  GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         
         objectCurrent = itemDatabase.items[4];
-        Debug.Log(objectCurrent.itemName);
         tool = transform.GetChild(0).gameObject;
         tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
         objet = transform.GetChild(1).gameObject;
@@ -70,6 +69,7 @@ public class ObjectController : MonoBehaviour {
 
     public void useObject()
     {
+        Debug.Log("ok");
         if (objectCurrent != null)
         {
             if (objectCurrent.itemType != Item.ItemType.Tool)
@@ -84,6 +84,7 @@ public class ObjectController : MonoBehaviour {
             else 
             {
                 FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
+                
                 Map.useTool(tool.GetComponent<toolController>().currentTool,  transform.position);
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)

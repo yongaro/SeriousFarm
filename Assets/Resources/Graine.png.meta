@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a069fbd0246be5745971e246b39916cd
-timeCreated: 1479928125
+timeCreated: 1480526460
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -41,26 +41,26 @@ TextureImporter:
     21300068: Graine_34
     21300070: Graine_35
     21300072: Graine_36
-    21300074: Ble
+    21300074: ble
     21300076: Graine_38
     21300078: Graine_39
-    21300080: Salade
-    21300082: Aubergine
-    21300084: Choufleur
-    21300086: Brocoli
-    21300088: Courgette
-    21300090: Pattate
-    21300092: Ail
+    21300080: salade
+    21300082: aubergine
+    21300084: chou_fleur
+    21300086: brocoli
+    21300088: courgette
+    21300090: pattate
+    21300092: ail
     21300094: Graine_47
-    21300096: Poireau
-    21300098: Mais
-    21300100: Carotte
-    21300102: Poivron
-    21300104: Tomate
-    21300106: Navet
-    21300108: Citrouille
+    21300096: poireau
+    21300098: mais
+    21300100: carotte
+    21300102: poivron
+    21300104: tomate
+    21300106: navet
+    21300108: citrouille
     21300110: Graine_55
-    21300112: Haricot
+    21300112: haricot
     21300114: Graine_57
     21300116: Graine_58
     21300118: Graine_59
@@ -597,7 +597,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ble
+      name: ble
       rect:
         serializedVersion: 2
         x: 290
@@ -636,7 +636,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Salade
+      name: salade
       rect:
         serializedVersion: 2
         x: 1
@@ -649,7 +649,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Aubergine
+      name: aubergine
       rect:
         serializedVersion: 2
         x: 28
@@ -662,7 +662,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Choufleur
+      name: chou_fleur
       rect:
         serializedVersion: 2
         x: 49
@@ -675,7 +675,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Brocoli
+      name: brocoli
       rect:
         serializedVersion: 2
         x: 75
@@ -688,7 +688,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Courgette
+      name: courgette
       rect:
         serializedVersion: 2
         x: 97
@@ -701,7 +701,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pattate
+      name: pattate
       rect:
         serializedVersion: 2
         x: 121
@@ -714,7 +714,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ail
+      name: ail
       rect:
         serializedVersion: 2
         x: 147
@@ -740,7 +740,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Poireau
+      name: poireau
       rect:
         serializedVersion: 2
         x: 192
@@ -753,7 +753,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mais
+      name: mais
       rect:
         serializedVersion: 2
         x: 217
@@ -766,7 +766,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Carotte
+      name: carotte
       rect:
         serializedVersion: 2
         x: 240
@@ -779,7 +779,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Poivron
+      name: poivron
       rect:
         serializedVersion: 2
         x: 269
@@ -792,7 +792,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Tomate
+      name: tomate
       rect:
         serializedVersion: 2
         x: 292
@@ -805,7 +805,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Navet
+      name: navet
       rect:
         serializedVersion: 2
         x: 314
@@ -818,7 +818,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Citrouille
+      name: citrouille
       rect:
         serializedVersion: 2
         x: 336
@@ -844,7 +844,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Haricot
+      name: haricot
       rect:
         serializedVersion: 2
         x: 26

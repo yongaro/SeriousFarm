@@ -98,7 +98,7 @@ public class Inventaire : MonoBehaviour
         }
     }
 
-    void addItem(int id)
+    public void addItem(int id)
     {
 
         for (int i = 0; i < database.items.Count; i++)
@@ -117,6 +117,10 @@ public class Inventaire : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void addItem(Item item) {
+                    addItemAtEmptySlot(item);
     }
 
     void addItemAtEmptySlot(Item item)
