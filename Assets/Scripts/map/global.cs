@@ -466,6 +466,7 @@ public class MapTile {
 	} //Incomplet ?
 	public void useTool(FarmTools tool){
 		if( tool < FarmTools.WateringCan ){
+            if (m_object != null)
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
 		}
 		else{ water();  }

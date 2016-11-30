@@ -31,6 +31,9 @@
         <relationship name="parameters">
             <destination>{ab78a26a-123f-4b11-a415-51802cdbef6b}</destination>
         </relationship>
+        <relationship name="banks">
+            <destination>{d8d08637-6473-4870-b5dd-bd28d4b144f2}</destination>
+        </relationship>
         <relationship name="folder">
             <destination>{4d8a1227-07c5-4782-aa1a-30a927f2a782}</destination>
         </relationship>
@@ -76,9 +79,6 @@
         </relationship>
         <relationship name="automationCurves">
             <destination>{88e4c9c7-b908-4ac4-aae9-f7cb8a7f2970}</destination>
-        </relationship>
-        <relationship name="markers">
-            <destination>{a27109a1-442c-4bc0-80f7-2fc89f5a7626}</destination>
         </relationship>
     </object>
     <object class="GameParameter" id="{ab78a26a-123f-4b11-a415-51802cdbef6b}">
@@ -169,20 +169,6 @@
             <destination>{8b930b81-1253-4942-829d-4af16d8524ff}</destination>
             <destination>{2c47860c-58da-46d8-bde3-66f783b842e2}</destination>
             <destination>{69c25f9b-ce1f-4360-93a2-1b2153a5513a}</destination>
-        </relationship>
-    </object>
-    <object class="LoopRegion" id="{a27109a1-442c-4bc0-80f7-2fc89f5a7626}">
-        <property name="position">
-            <value>0</value>
-        </property>
-        <property name="length">
-            <value>1.5</value>
-        </property>
-        <relationship name="timeline">
-            <destination>{48e34565-2600-47ca-975f-f39b0187a638}</destination>
-        </relationship>
-        <relationship name="markerTrack">
-            <destination>{68a6b97c-ce5d-4dae-9030-4ec5161058a6}</destination>
         </relationship>
     </object>
     <object class="AutomationCurve" id="{3717d651-fdd2-4724-8fea-6d42ddfbb5ee}">

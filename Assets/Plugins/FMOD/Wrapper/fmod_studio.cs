@@ -1605,6 +1605,8 @@ namespace FMOD.Studio
             return FMOD_Studio_EventInstance_IsValid(rawPtr);
         }
 
+       
+
         #endregion
     }
 

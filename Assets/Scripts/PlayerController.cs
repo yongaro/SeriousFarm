@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     public ObjectController objectC;
 
     private bool tooling;
-    private float timeTooling = 1.0f;
+    private float timeTooling = 0.3f;
     private float timeToolingCounter;
 
     public GameObject shop;
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour {
         myRigidbody = GetComponent<Rigidbody2D>();
         moves = new Stack<Vector2>();
         objectC = GetComponent<ObjectController>();
-       
     }
 
     // Update is called once per frame
@@ -89,6 +88,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("useTool", false);
             tool.SetActive(false);
         }
+        
 
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));

@@ -7,7 +7,7 @@ public class ObjectController : MonoBehaviour {
     ItemDatabase itemDatabase;
     GameObject tool;
     GameObject objet;
-
+    string pathSoundObject;
 
 	// Use this for initialization
 	void Start () {
@@ -29,16 +29,29 @@ public class ObjectController : MonoBehaviour {
                 //tool.SetActive(true);
                 objet.SetActive(false);
                 if (objectCurrent.itemName == "Axe")
+                {
                     tool.GetComponent<toolController>().currentTool = FarmTools.Axe;
+                    pathSoundObject = "event:/Outil/Hache";
+                }
                 if (objectCurrent.itemName == "Hoe")
+                {
                     tool.GetComponent<toolController>().currentTool = FarmTools.Hoe;
+                    pathSoundObject = "event:/Outil/Binette";
+                }
                 if (objectCurrent.itemName == "Pickaxe")
+                {
                     tool.GetComponent<toolController>().currentTool = FarmTools.Pickaxe;
+                    pathSoundObject = "event:/Outil/Pioche";
+                }
                 if (objectCurrent.itemName == "Scythe")
+                {
                     tool.GetComponent<toolController>().currentTool = FarmTools.Scythe;
+                    pathSoundObject = "event:/Outil/Fauche";
+                }
                 if (objectCurrent.itemName == "WateringCan")
                 {
                     tool.GetComponent<toolController>().currentTool = FarmTools.WateringCan;
+                    pathSoundObject = "event:/Outil/Arrosoir";
                 }
             }
             else
@@ -70,6 +83,7 @@ public class ObjectController : MonoBehaviour {
             }
             else 
             {
+                FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
                 Map.useTool(tool.GetComponent<toolController>().currentTool,  transform.position);
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)

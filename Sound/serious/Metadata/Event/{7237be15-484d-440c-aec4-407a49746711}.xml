@@ -28,6 +28,9 @@
         <relationship name="timeline">
             <destination>{53d6d7ec-37b2-4dfd-94f5-d20c98074236}</destination>
         </relationship>
+        <relationship name="banks">
+            <destination>{d8d08637-6473-4870-b5dd-bd28d4b144f2}</destination>
+        </relationship>
         <relationship name="folder">
             <destination>{4d8a1227-07c5-4782-aa1a-30a927f2a782}</destination>
         </relationship>
@@ -72,9 +75,6 @@
         </relationship>
         <relationship name="automationCurves">
             <destination>{7687a17a-85cf-4841-8068-05834ed767b8}</destination>
-        </relationship>
-        <relationship name="markers">
-            <destination>{6af5d8fb-3d58-41ac-83e3-a94a5757410b}</destination>
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{0d8ecb96-3aef-4daf-813c-97b23a114bfe}">
@@ -147,20 +147,6 @@
             <destination>{d7883d62-7c50-46cc-9600-4a3cf901a70a}</destination>
             <destination>{01f4bb13-5d1e-4793-9636-3770a394596c}</destination>
             <destination>{f5e525ea-b849-473f-a170-9fc94847be36}</destination>
-        </relationship>
-    </object>
-    <object class="LoopRegion" id="{6af5d8fb-3d58-41ac-83e3-a94a5757410b}">
-        <property name="position">
-            <value>0</value>
-        </property>
-        <property name="length">
-            <value>0.70000000000000007</value>
-        </property>
-        <relationship name="timeline">
-            <destination>{53d6d7ec-37b2-4dfd-94f5-d20c98074236}</destination>
-        </relationship>
-        <relationship name="markerTrack">
-            <destination>{7b5a81a9-df41-44c8-9553-5b696e77cb34}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{694c628d-46e0-4430-a8aa-c3dd772dad8c}">

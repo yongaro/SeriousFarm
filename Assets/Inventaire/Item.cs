@@ -33,16 +33,27 @@ public class Item  {
         itemType = type;
         itemPrice = price;
         if (type == ItemType.Tool)
-            sprites = Resources.LoadAll<Sprite>("sprite2");
+        {
+            if (name == "WateringCan")
+            {
+                sprites = Resources.LoadAll<Sprite>("arrosoir");
+                   
+            }
+            else
+                sprites = Resources.LoadAll<Sprite>("sprite2");
+
+        }
         else if (type == ItemType.Graine)
             sprites = Resources.LoadAll<Sprite>("Graine");
         else
             sprites = Resources.LoadAll<Sprite>("Sprite");
-        for (int i = 0; i < sprites.Length; i++) { 
+        for (int i = 0; i < sprites.Length; i++) {
             
             if (sprites[i].name == name)
             {
+                Debug.Log(sprites[i].name);
                 itemIcon = sprites[i];
+                
             }
         }
     }
