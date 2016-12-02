@@ -11,7 +11,7 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
     public int slotNumber;
     QuickBar quickBar;
     Inventaire inventaire;
-
+    Image itemEtoiles;
     ObjectController objectC;
     Text itemAmount;
 
@@ -22,6 +22,7 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
         inventaire = quickBar.inventairePanel.GetComponent<Inventaire>();
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
+        itemEtoiles = gameObject.transform.GetChild(2).GetComponent<Image>();
     }
 	
 	// Update is called once per frame
@@ -38,9 +39,26 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
             {
                 itemAmount.text = "" + item.itemValue;
                 itemAmount.enabled = true;
+                if (item.itemPower >=25 && item.itemPower < 50)
+                    itemEtoiles.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                else if (item.itemPower >= 50 && item.itemPower < 75)
+                {
+                    itemEtoiles.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                    itemEtoiles.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                }
+                if (item.itemPower >= 75)
+                {
+                    itemEtoiles.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                    itemEtoiles.transform.GetChild(1).GetComponent<Image>().enabled = true;
+                    itemEtoiles.transform.GetChild(2).GetComponent<Image>().enabled = true;
+                }
+
             }
             else
             {
+                itemEtoiles.transform.GetChild(0).GetComponent<Image>().enabled = false;
+                itemEtoiles.transform.GetChild(1).GetComponent<Image>().enabled = false;
+                itemEtoiles.transform.GetChild(2).GetComponent<Image>().enabled = false;
                 itemAmount.enabled = false;
                 if (item.itemName == "WateringCan")
                 {
@@ -57,7 +75,10 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
             itemImage.enabled = false;
             itemAmount.enabled = false;
             item = new Item();
-           // objectC.objectCurrent = quickBar.Items[slotNumber ];
+            itemEtoiles.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            itemEtoiles.transform.GetChild(1).GetComponent<Image>().enabled = false;
+            itemEtoiles.transform.GetChild(2).GetComponent<Image>().enabled = false;
+            // objectC.objectCurrent = quickBar.Items[slotNumber ];
         }
         if (quickBar.indexSelectItem == slotNumber) 
         {
@@ -70,7 +91,6 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //if (eventData != null) {
             if (item.itemValue == 0 && inventaire.draggingItem)
             {
                 quickBar.Items[slotNumber] = inventaire.draggedItem;
@@ -93,8 +113,6 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
                 objectC.objectCurrent = item;
                 quickBar.indexSelectItem = slotNumber;
             }
-            
-        //}
     }
 
     public void OnDrag(PointerEventData eventData)

@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour {
         objectC = GetComponent<ObjectController>();
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
-
-
     }
 
     // Update is called once per frame
@@ -48,10 +46,10 @@ public class PlayerController : MonoBehaviour {
 
         if (!tooling) { 
 
+            //deplacement du joueur
         move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
         {
-            //transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
             myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
             playerMoving = true;
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
@@ -59,7 +57,6 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
         {
-            //transform.Translate(new Vector3(0f, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime, 0f));
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
             playerMoving = true;
             lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
@@ -75,6 +72,7 @@ public class PlayerController : MonoBehaviour {
             myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
         }
 
+        //touche espace pour utiliser outils ou object 
         if (Input.GetKeyDown(KeyCode.Space)) {
             timeToolingCounter = timeTooling;
             tool.SetActive(true);
@@ -83,7 +81,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("useTool", true);
             objectC.useObject();
         }
-        
+        // touche entré rammasse object
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown("enter") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("return")) {
             Item recolt = Map.collectPlant(transform.position);
             if (recolt != null) {
@@ -92,10 +90,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+        // mise a jour de l'animation des outils
         if (timeToolingCounter >= 0)
         {
             timeToolingCounter -= Time.deltaTime;
         }
+
         if (timeToolingCounter < 0)
         {
             tooling = false;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour {
             tool.SetActive(false);
         }
         
-
+        //mise a jour de l'animation de deplacement
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         anim.SetBool("PlayerMoving", playerMoving);
@@ -112,16 +112,27 @@ public class PlayerController : MonoBehaviour {
     }
 
 
+    void OnCollisionStay2D(Collision2D collider)
+    {
+        // collision avec le puit et touche espace pour remplir l'arrosoire
+        if (collider.gameObject.name == "Puit" && Input.GetKeyDown(KeyCode.Space))
+        { 
+                if (objectC.objectCurrent.itemName == "WateringCan")
+                {
+
+                    objectC.objectCurrent.itemPower = 41;
+                }
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.name == "Shop")
+        if (collider.gameObject.name == "Shop") //collision avec le magasin
         {
             shop.SetActive(true);
             shop.transform.GetChild(1).gameObject.SetActive(true);
             shop.transform.GetChild(2).gameObject.SetActive(false);
             shop.transform.GetChild(3).gameObject.SetActive(false);
-
         }
-
     }
 }

@@ -25,7 +25,7 @@ public class Item  {
      * name : nom de l'objet
      * id : indice dans la itemDatabase
      * desc : text de description du produit
-     * power : si l'object a une quantité propre a lui ex : l'eau dans l'arrosoir
+     * power : quantité pour l'eau dans l'arrosoir ou qualité pour une plante
      * saison : quand on peut planter le legume  // à modifier
      * value : quantité de l'item 
      * price : prix de l'item

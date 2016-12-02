@@ -27,17 +27,17 @@ public class ItemDatabase  : MonoBehaviour{
         items.Add(new Item("aubergine", 11, "L’aubergine (Solanum melongena L.) est une plante potagère herbacée de la famille des Solanacées, cultivée pour son fruit consommé comme légume-fruit.", 10, 2, 1, 20,Item.ItemType.Graine));
         items.Add(new Item("ble", 12, "casse les pierres", 10, 3, 1, 10, Item.ItemType.Graine));
         items.Add(new Item("brocoli", 13, "coupe les herbes", 10, 3, 1, 10, Item.ItemType.Graine));
-        items.Add(new Item("carotte", 14, "reservoir a eau", 40, 3, 1, 10, Item.ItemType.Graine));
+        items.Add(new Item("carotte", 14, "reservoir a eau", 10, 3, 1, 10, Item.ItemType.Graine));
         items.Add(new Item("chou_fleur", 15, "tape tape", 10, 2, 1, 30,Item.ItemType.Graine));
         items.Add(new Item("citrouille", 16, "coupe les branches et les arbres", 10, 2, 1, 40,Item.ItemType.Graine));
         items.Add(new Item("courgette", 17, "retourne la terre", 10, 2, 1, 20,Item.ItemType.Graine));
         items.Add(new Item("haricot", 18, "casse les pierres", 10, 3, 1, 40,Item.ItemType.Graine));
         items.Add(new Item("mais", 19, "coupe les herbes", 10, 3, 1, 20,Item.ItemType.Graine));
-        items.Add(new Item("navet", 20, "reservoir a eau", 40, 4, 1, 30,Item.ItemType.Graine));
+        items.Add(new Item("navet", 20, "reservoir a eau", 10, 4, 1, 30,Item.ItemType.Graine));
         items.Add(new Item("pattate", 21, "tape tape", 10, 2, 1, 10, Item.ItemType.Graine));
         items.Add(new Item("poireau", 22, "casse les pierres", 10, 1, 1, 20,Item.ItemType.Graine));
         items.Add(new Item("poivron", 23, "coupe les herbes", 10, 1, 1, 10,Item.ItemType.Graine));
-        items.Add(new Item("tomate", 24, "reservoir a eau", 40, 1, 1, 10,Item.ItemType.Graine));
+        items.Add(new Item("tomate", 24, "reservoir a eau", 10, 1, 1, 10,Item.ItemType.Graine));
         items.Add(new Item("salade", 25, "tape tape", 10, 4, 1, 10,Item.ItemType.Graine));
 
     }
@@ -47,11 +47,13 @@ public class ItemDatabase  : MonoBehaviour{
         bool present = false;
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && items[i].itemPrice == item.itemPrice)
+            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && items[i].itemPower == item.itemPower)
             {
                 item = items[i];
                 present = true;
             }
+            else if(items[i].itemName == item.itemName)
+                item.itemPrice = items[i].itemPrice * (items[i].itemPower/4);
         }
         if (!present)
         {

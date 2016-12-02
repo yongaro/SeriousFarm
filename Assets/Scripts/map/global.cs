@@ -129,7 +129,7 @@ public class Plant : MapObject {
 	public override Item recolt() {
 		
 		Debug.Log("Je suis une plante");
-        return new Item(type.ToString(), 0, "miam miam", 10, 0, 1, quality, Item.ItemType.Plante);
+        return new Item(type.ToString(), 0, "miam miam", quality, 0, 1, 0, Item.ItemType.Plante);
 		
 	}
 

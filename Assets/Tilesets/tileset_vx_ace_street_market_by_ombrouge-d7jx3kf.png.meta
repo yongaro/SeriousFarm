@@ -1,9 +1,34 @@
 fileFormatVersion: 2
 guid: a506ce18cfc914a03bff9d1c112cdf74
-timeCreated: 1476998248
+timeCreated: 1480718028
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_0
+    21300002: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_1
+    21300004: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_2
+    21300006: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_3
+    21300008: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_4
+    21300010: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_5
+    21300012: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_6
+    21300014: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_7
+    21300016: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_8
+    21300018: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_9
+    21300020: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_10
+    21300022: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_11
+    21300024: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_12
+    21300026: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_13
+    21300028: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_14
+    21300030: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_15
+    21300032: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_16
+    21300034: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_17
+    21300036: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_18
+    21300038: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_19
+    21300040: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_20
+    21300042: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_21
+    21300044: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_22
+    21300046: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_23
+    21300048: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_24
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,20 +63,345 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 30
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 412
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 412
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 412
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 412
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 312
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_6
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 312
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 312
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 312
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_9
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 312
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 212
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_11
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 140
+        width: 132
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_12
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 212
+        width: 37
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 212
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_14
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 212
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_16
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 112
+        width: 100
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_17
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 112
+        width: 23
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_18
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 86
+        width: 113
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_19
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 112
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_21
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 12
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_22
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 12
+        width: 88
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 12
+        width: 100
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: tileset_vx_ace_street_market_by_ombrouge-d7jx3kf_24
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 12
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
