@@ -74,12 +74,28 @@ public class ObjectController : MonoBehaviour {
         {
             if (objectCurrent.itemType != Item.ItemType.Tool)
             {
-                objectCurrent.itemValue--;
+                if (objectCurrent.itemType == Item.ItemType.Graine)
+                {
+                    for (int i = 0; i < (int)PlantList.plant_number; i++)
+                    {
+                        if (((PlantList) i).ToString() == objectCurrent.itemName)
+                           if ( Map.ajoutPlante(((PlantList)i), transform.position))
+                            {
+                                objectCurrent.itemValue--;
+                            }
+
+                    }
+                }
+                else
+                {
+                    objectCurrent.itemValue--;
+                }
                 if (objectCurrent.itemValue <= 0) { 
                     objet.SetActive(false);
                     objectCurrent = new Item();
                         
                 }
+                
             }
             else 
             {

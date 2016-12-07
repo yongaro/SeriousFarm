@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a069fbd0246be5745971e246b39916cd
-timeCreated: 1480526460
+timeCreated: 1481096757
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -48,10 +48,10 @@ TextureImporter:
     21300082: aubergine
     21300084: chou_fleur
     21300086: brocoli
-    21300088: courgette
-    21300090: pattate
+    21300088: concombre
+    21300090: patate
     21300092: ail
-    21300094: Graine_47
+    21300094: oignon
     21300096: poireau
     21300098: mais
     21300100: carotte
@@ -688,7 +688,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: courgette
+      name: concombre
       rect:
         serializedVersion: 2
         x: 97
@@ -701,7 +701,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: pattate
+      name: patate
       rect:
         serializedVersion: 2
         x: 121
@@ -727,7 +727,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Graine_47
+      name: oignon
       rect:
         serializedVersion: 2
         x: 174
