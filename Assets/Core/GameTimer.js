@@ -44,7 +44,7 @@ var month = [
 	"Décembre"
 ];
 
-var marche : FMOD.Studio.EventInstance;
+//var marche : FMOD.Studio.EventInstance;
 
 function dormir () {
 	// Le joueur se lève à 7h
@@ -72,9 +72,9 @@ function Start () {
 	child = canvasObj.transform.Find("TimerText");
 	timer = child.GetComponent(UI.Text);
 	mapManager = GameObject.Find("MapManager");
-	marche = FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/saison");
-	marche.start();
-	marche.setParameterValue("saison", saison);
+	//marche = FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/saison");
+	//marche.start();
+	//marche.setParameterValue("saison", saison);
 	
 
 	if (heure < 0) {
@@ -159,7 +159,7 @@ function tick () {
 			mapManager.SendMessage("setMonth", numMois);
 		}
 		
-		marche.setParameterValue("saison", saison);
+		//marche.setParameterValue("saison", saison);
 		timer.text = " " + heure + "H" + minute + " "  + mois  + " : " + jour + " annee " + annee;
 
 		updateSun();

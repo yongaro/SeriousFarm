@@ -57,23 +57,7 @@ public abstract class MapObject{
 	}
 }
 
-/**
- * Structure permettant de contenir tous les sprites d un legume pour
- * toutes ses etapes de croissance.
- */
-/*
-public class LegumeSprites{
-	public Sprite[] sprites;
-	public int nbSprites;
-	
-	public LegumeSprites(){}
-	public LegumeSprites(int nb, string[] spritesPath){
-		sprites = new Sprite[nb];
-		for( int i = 0; i < nb; ++i ){
-			sprites[i] = Resources.Load<Sprite>(spritesPath[i]);
-		}
-	}
-}*/
+
 /**
  * Enumeration de toutes les plantes possibles
  */
@@ -119,7 +103,7 @@ public class Plant : MapObject {
 		growthCur = 0;
 		growthMax = 30;
 		waterCons = 5;
-		quality = 0;
+		quality = 100;
 		initGrowthSettings();
 		determineGrowthStep();
 		updateSprite();
@@ -162,30 +146,33 @@ public class Plant : MapObject {
 	}
 
 	public void growth() { 
-		if ((growthCur < growthMax)){ 
+		if( (growthCur < growthMax) ){ 
 			growthCur += growthStep;
 			int bonus = Random.Range(0, 100);
-			if (bonus <= bonusCroissance) {
-				growthCur += 1;
-			}
+			if( bonus <= bonusCroissance ){ growthCur += 1; }
 			updateSprite();
-		} else {
-			quality -= 2;
 		}
 	}
-	public override void beginDay(){}
+	public override void beginDay(){
+		if( quality <= 0 ){
+			Debug.Log("JE MEURS");
+			MapTile tile = map.tileAt(mapX,mapY);
+			if( tile != null ){
+				tile.removeObject();
+			}
+		}
+	}
 	public override void endDay(){
 		MapTile tile = map.tileAt(mapX,mapY);
-		if (tile != null) {
-			if (tile.waterCur >= waterCons) {
+		if( tile != null ){
+			if( tile.waterCur >= waterCons ){
 				growth();
 				tile.waterCur -= waterCons;
-				} else {
-					quality -= 10;
-					if (quality < 0) {
-						quality = 0;
-					}
-				}
+			}
+			else {
+				quality -= 25;
+				Debug.Log("Baisse de K LI T");
+			}
 		}
 	}
 	public override void activate(){
@@ -484,9 +471,9 @@ public class MapTile {
 		m_object.map = map;
 		m_object.moveGameObject();
 	}
-	public void removeObject(){
-		
-		m_object = null;
+	public void removeObject(){		
+		Object.Destroy(m_object.objectView,0.0f);
+		//m_object = null;
 	} //Incomplet ?
 
 	public void useTool(FarmTools tool){
