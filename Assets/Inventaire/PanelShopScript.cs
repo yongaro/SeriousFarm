@@ -26,7 +26,7 @@ public class PanelShopScript : MonoBehaviour {
         
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         description = GameObject.FindGameObjectWithTag("Description");
-        descriptionText = description.transform.GetChild(1).GetComponent<Text>();
+        descriptionText = description.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         buyButton = description.transform.GetChild(2).GetComponent<Button>();
         buyButton.onClick.AddListener(buyProduct);
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
@@ -83,14 +83,8 @@ public class PanelShopScript : MonoBehaviour {
         descriptionText.text = Items[indexSlotSelected].itemDesc;
         description.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Items[indexSlotSelected].itemName;
         description.transform.GetChild(3).GetComponent<Text>().text = "Prix : "+Items[indexSlotSelected].itemPrice;
-        if (Items[indexSlotSelected].itemSaison == 1)
-            description.transform.GetChild(4).GetComponent<Text>().text = "Saison : Hiver";
-        if (Items[indexSlotSelected].itemSaison == 2)
-            description.transform.GetChild(4).GetComponent<Text>().text = "Saison : Printemps";
-        if (Items[indexSlotSelected].itemSaison == 3)
-            description.transform.GetChild(4).GetComponent<Text>().text = "Saison : Ete";
-        if (Items[indexSlotSelected].itemSaison == 4)
-            description.transform.GetChild(4).GetComponent<Text>().text = "Saison : Automne";
+        description.transform.GetChild(4).GetComponent<Text>().text = "Plantation : "+ Items[indexSlotSelected].itemSaison;
+
     }
 
     

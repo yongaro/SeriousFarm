@@ -11,7 +11,7 @@ public class Item  {
     public Sprite itemIcon;
     public GameObject itemModel;
     public int itemPower;
-    public int itemSaison;  // 1 hiver , 2 printemps, 3 ete, 4 hiver
+    public string itemSaison;  // 1 hiver , 2 printemps, 3 ete, 4 hiver
     public int itemValue;
     public int itemPrice;
     public ItemType itemType;
@@ -32,7 +32,7 @@ public class Item  {
      * type : categorie 
      */
 
-    public Item (string name, int id, string desc, int power, int saison, int value, int price, ItemType type)
+    public Item (string name, int id, string desc, int power, string saison, int value, int price, ItemType type)
     {
         itemName = name;
         itemID = id;
@@ -61,9 +61,7 @@ public class Item  {
             
             if (sprites[i].name == name)
             {
-                Debug.Log(sprites[i].name);
-                itemIcon = sprites[i];
-                
+                itemIcon = sprites[i];   
             }
         }
     }

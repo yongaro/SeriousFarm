@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour {
         // touche entré rammasse object
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown("enter") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("return")) {
             Item recolt = Map.collectPlant(transform.position);
+                Debug.Log("nn "+recolt.itemName +" "+recolt.itemPower);
             if (recolt != null) {
                 quickBar.addItem(database.addItem(recolt));
 

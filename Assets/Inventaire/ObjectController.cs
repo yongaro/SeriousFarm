@@ -69,7 +69,6 @@ public class ObjectController : MonoBehaviour {
 
     public void useObject()
     {
-        Debug.Log("ok");
         if (objectCurrent != null)
         {
             if (objectCurrent.itemType != Item.ItemType.Tool)

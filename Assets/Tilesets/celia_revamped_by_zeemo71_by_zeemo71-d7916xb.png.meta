@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: ee1a0a25b5b194087bc1139fc15f26d1
-timeCreated: 1476998250
+timeCreated: 1481144735
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_0
+    21300002: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_1
+    21300004: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_2
+    21300006: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_3
+    21300008: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_4
+    21300010: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_5
+    21300012: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_6
+    21300014: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_7
+    21300016: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_8
+    21300018: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_9
+    21300020: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_10
+    21300022: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +42,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -51,7 +63,163 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 218
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 218
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 218
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 100
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_5
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 118
+        width: 63
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_6
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 118
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 118
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 46
+        width: 87
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 18
+        width: 64
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_10
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 18
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: celia_revamped_by_zeemo71_by_zeemo71-d7916xb_11
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 18
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
