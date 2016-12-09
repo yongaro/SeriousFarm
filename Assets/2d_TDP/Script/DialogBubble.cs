@@ -165,6 +165,10 @@ public class DialogBubble : MonoBehaviour {
 	}
 
 
+	public void setMonth(int m) {
+		numeroMois = m;
+	}
+
 	public string getRandomDialogByMounth(int mois) {
 
 		switch (mois) {
@@ -361,4 +365,6 @@ public class DialogBubble : MonoBehaviour {
 
 	return "echec";
 	}
+
+	
 }

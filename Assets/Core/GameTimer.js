@@ -28,6 +28,7 @@ var rand : float;
 var sunPointIntensity = [ 0f ];
 var sunPointTime = [ 0f ];
 var mapManager : GameObject;
+var robot : GameObject;
 
 var month = [
 	"Janvier",
@@ -72,6 +73,7 @@ function Start () {
 	child = canvasObj.transform.Find("TimerText");
 	timer = child.GetComponent(UI.Text);
 	mapManager = GameObject.Find("MapManager");
+	robot = GameObject.Find("Robot");
 	//marche = FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/saison");
 	//marche.start();
 	//marche.setParameterValue("saison", saison);
@@ -157,6 +159,7 @@ function tick () {
 
 		if (currentMonth  != numMois) {
 			mapManager.SendMessage("setMonth", numMois);
+			robot.SendMessage("setMonth", numMois);
 		}
 		
 		//marche.setParameterValue("saison", saison);
