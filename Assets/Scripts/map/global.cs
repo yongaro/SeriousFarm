@@ -108,7 +108,8 @@ public class Plant : MapObject {
 
 	
 	public override Item recolt(){
-		if( growthCur == growthMax ){
+        Debug.Log(growthCur);
+		if( growthCur >= growthMax ){
 			MapTile tile = map.tileAt(mapX, mapY);
 			if( tile != null ){ tile.removeObject(); }
 			return new Item(type.ToString(), 0, "miam miam", quality, "", 1, 0, Item.ItemType.Plante);

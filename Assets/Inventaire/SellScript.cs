@@ -18,7 +18,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
     public GameObject droppedItem;
     int nbProductSell;
     ShopGlobalScrip shopGlobal;
-
+    MarchandeScript marchande;
    
 
     // Use this for initialization
@@ -34,6 +34,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
         moinsButton = quantitePanel.transform.GetChild(1).GetComponent<Button>();
         moinsButton.onClick.AddListener(moinsQuantite);
         shopGlobal = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<ShopGlobalScrip>();
+        marchande = GameObject.FindGameObjectWithTag("Sale").GetComponent<MarchandeScript>();
         item = new Item();
         nbProductSell = 0;
     }
@@ -105,6 +106,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
             quickBar.addItem(item.itemID);
             nbProductSell = item.itemValue;
             Debug.Log(item.itemValue);
+            marchande.dialogueQualite(item);
         }
     }
 

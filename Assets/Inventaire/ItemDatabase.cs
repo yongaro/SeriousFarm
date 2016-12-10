@@ -47,7 +47,7 @@ public class ItemDatabase  : MonoBehaviour{
         bool present = false;
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && items[i].itemPower == item.itemPower)
+            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && (items[i].itemPower / 25 == item.itemPower / 25 || (item.itemPower == 100 && items[i].itemPower / 25 >= 3) ))
             {
                 item = items[i];
                 present = true;

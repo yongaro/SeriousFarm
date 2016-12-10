@@ -18,7 +18,8 @@ public class PanelShopScript : MonoBehaviour {
     Button buyButton;
     QuickBar quickBar;
     ShopGlobalScrip shopGlobal;
-
+    MarchandeScript marchande;
+    public Boolean boolMarchande;
     // Use this for initialization
     void Start()
     {
@@ -30,6 +31,8 @@ public class PanelShopScript : MonoBehaviour {
         buyButton = description.transform.GetChild(2).GetComponent<Button>();
         buyButton.onClick.AddListener(buyProduct);
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
+        marchande = GameObject.FindGameObjectWithTag("Shop").GetComponent<MarchandeScript>();
+        boolMarchande = false;
         categorie = Item.ItemType.Graine;
         slotamount = 0;
         for (int i = 0; i < 4; i++)
@@ -67,14 +70,30 @@ public class PanelShopScript : MonoBehaviour {
 
     private void buyProduct()
     {
-        Debug.Log(Items[indexSlotSelected].itemName);
-        if (!quickBar.estPlein() && shopGlobal.monnaie - Items[indexSlotSelected].itemPrice >= 0 )
+        if (boolMarchande)
         {
-            quickBar.addItem(Items[indexSlotSelected].itemID);
-            shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
+            boolMarchande = false;
+            Debug.Log(Items[indexSlotSelected].itemName);
+            if (!quickBar.estPlein() && shopGlobal.monnaie - Items[indexSlotSelected].itemPrice >= 0)
+            {
+                quickBar.addItem(Items[indexSlotSelected].itemID);
+                shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
+            }
+            else
+                buyButton.GetComponent<Image>().color = Color.grey;
         }
-        else
-            buyButton.GetComponent<Image>().color = Color.grey;
+        else if (marchande.LegumeDeSaison(Items[indexSlotSelected]))
+        {
+            Debug.Log(Items[indexSlotSelected].itemName);
+            if (!quickBar.estPlein() && shopGlobal.monnaie - Items[indexSlotSelected].itemPrice >= 0)
+            {
+                quickBar.addItem(Items[indexSlotSelected].itemID);
+                shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
+            }
+            else
+                buyButton.GetComponent<Image>().color = Color.grey;
+        }
+        else { boolMarchande = true; }
     }
 
     // Update is called once per frame

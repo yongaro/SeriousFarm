@@ -50,6 +50,7 @@ public class SlotShopScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        shopScript.boolMarchande = false;
         shopScript.indexSlotSelected = slotNumber;
     }
 
