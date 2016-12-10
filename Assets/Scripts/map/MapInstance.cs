@@ -66,20 +66,22 @@ public class MapInstance : MonoBehaviour {
 		testPos.x = -15.0f;
 		testPos.y = 1.0f;
 		testPos.z = 0.0f;
-		MapTile test = Map.getTileAt(testPos);
-		if( test == null ){ print("NURUPO"); }
+		MapTile test1 = Map.getTileAt(testPos);
+		testPos.x = -18.0f;
+		testPos.y = 1.0f;
+		testPos.z = 0.0f;
+		MapTile test2 = Map.getTileAt(testPos);
+		if( test1 == null && test2 == null ){ print("NURUPO"); }
 		else{
-			/*Obstacle obsTest = new Obstacle();
-			obsTest.defineType(ObstacleType.Bois);
-			test.addObject(obsTest);
-			return true;
-			*/
-			//Plant plantTest = new Plant(PlantList.chou_fleur);
-			//planTest.defineType(ObstacleType.Bois);
-			Sprinkler obj = new Sprinkler();
-			test.addObject(obj);
-			//test.waterCur = 10000;
+			Sprinkler obj1 = new Sprinkler();
+			test1.addObject(obj1);
 			
+			GenericObject obj2 = new GenericObject();
+			obj2.defineType(GenericObjectTypes.Torche);
+			test2.addObject(obj2);
+
+			
+			Map.randomFillAll();
 			return true;
 			
 		}
