@@ -159,7 +159,7 @@ function tick () {
 
 		if (currentMonth  != numMois) {
 			mapManager.SendMessage("setMonth", numMois);
-			robot.SendMessage("setMonth", numMois);
+			//robot.SendMessage("setMonth", numMois);
 		}
 		
 		//marche.setParameterValue("saison", saison);

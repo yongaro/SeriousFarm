@@ -143,6 +143,7 @@ public class DialogBubble : MonoBehaviour {
 
 	void Update () 
 	{
+		Debug.Log("Je tourne :" + numeroMois);
 		//check if we have the mouse over the character
 		ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 	
