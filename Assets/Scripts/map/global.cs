@@ -12,7 +12,7 @@ public enum FarmTools{  Axe, Hoe, Pickaxe, Scythe, WateringCan }
 
 
 /**
- * Interface (sens java) de manipulation des objets
+ * Interface de manipulation des objets
  * Définit si les objets peuvent être traversés
  * Détermine un comportement journalier en début et fin de journée
  * Un objet possede ses coordonnées sur la map pour éventuellement agir sur d'autres objets de la map
@@ -39,41 +39,23 @@ public abstract class MapObject{
 		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
 		objectView.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		objectView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
 	}
-	public virtual bool collide(){ return collision; }
 	public virtual void beginDay(){}
 	public virtual void endDay(){}
 	public virtual void activate(){}
-	public virtual Item recolt() {
-		Debug.Log("Je ne suis pas une plante");
-		return null;
-	}
+	public virtual Item recolt() { return null; }
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
 	public virtual void moveGameObject(){
 		Vector3 newPos = new Vector3();
 		newPos.x = map.pos.x + mapX * map.tileSize;
 		newPos.y = map.pos.y + mapY * map.tileSize;
 		objectView.transform.position = newPos;
+		//Light light = objectView.GetComponent<Light>();
+		//if( light != null ){ light.transform.position = newPos; }
 	}
 }
 
-/**
- * Structure permettant de contenir tous les sprites d un legume pour
- * toutes ses etapes de croissance.
- */
-/*
-public class LegumeSprites{
-	public Sprite[] sprites;
-	public int nbSprites;
-	
-	public LegumeSprites(){}
-	public LegumeSprites(int nb, string[] spritesPath){
-		sprites = new Sprite[nb];
-		for( int i = 0; i < nb; ++i ){
-			sprites[i] = Resources.Load<Sprite>(spritesPath[i]);
-		}
-	}
-}*/
 /**
  * Enumeration de toutes les plantes possibles
  */
@@ -97,7 +79,8 @@ public enum Months{ Janvier, Fevrier, Mars, Avril, Mai, Juin,
  */
 public class Plant : MapObject {
 	public static Sprite[] bank;
-	public static int[,] bankIndices;	
+	public static int[,] bankIndices;
+	public static int maxQuality = 100;
 	public PlantList type;
 	public int growthCur;
 	public int growthMax;
@@ -126,32 +109,16 @@ public class Plant : MapObject {
 	}
 
 	
-	public override Item recolt() {
-		
-		Debug.Log("Je suis une plante");
-        return new Item(type.ToString(), 0, "miam miam", quality, "", 1, 0, Item.ItemType.Plante);
-		
-	}
-
-	public int getMonth() {
-		return Map.currentMonth;
-	}
-	public bool propiceMonth() {
-		return (getMonth() >= firstGoodMonth) && (getMonth() <= lastGoodMonth);
-	}
-
-	public bool growableMonth() {
-		return (getMonth() <= lastGoodMonth) && (getMonth() <= firstEndingMonth);
-	}
-
-	public bool latestMonth() {
-		return (getMonth() >= firstEndingMonth) && (getMonth() <= lastEndingMonth);
-	}
+	public override Item recolt(){ return new Item(type.ToString(), 0, "miam miam", quality, "", 1, 0, Item.ItemType.Plante); }
+	public int getMonth(){ return Map.currentMonth; }
+	public bool propiceMonth(){ return (getMonth() >= firstGoodMonth) && (getMonth() <= lastGoodMonth); }
+	public bool growableMonth(){ return (getMonth() <= lastGoodMonth) && (getMonth() <= firstEndingMonth); }
+	public bool latestMonth(){ return (getMonth() >= firstEndingMonth) && (getMonth() <= lastEndingMonth); }
 	
 	public void determineGrowthStep () {
 		if (propiceMonth()) {
 			bonusCroissance = 30;
-			quality = 100;
+			quality = Plant.maxQuality;
 		} else if (growableMonth()) {
 			growthStep /= 2;
 			bonusCroissance = 10;
@@ -167,28 +134,30 @@ public class Plant : MapObject {
 		if ((growthCur < growthMax)){ 
 			growthCur += growthStep;
 			int bonus = Random.Range(0, 100);
-			if (bonus <= bonusCroissance) {
-				growthCur += 1;
-			}
+			if( bonus <= bonusCroissance ){ growthCur += 1; }
 			updateSprite();
-		} else {
-			quality -= 2;
 		}
 	}
-	public override void beginDay(){}
+	public override void beginDay(){
+		if( quality <= 0 ){
+			MapTile tile = map.tileAt(mapX,mapY);
+			if( tile != null ){ tile.removeObject(); }
+		}
+	}
 	public override void endDay(){
 		MapTile tile = map.tileAt(mapX,mapY);
 		if (tile != null) {
-			if (tile.waterCur >= waterCons) {
+			if( tile.waterCur >= waterCons ){
 				growth();
 				tile.waterCur -= waterCons;
-				} else {
-					quality -= 10;
-					if (quality < 0) {
-						quality = 0;
-					}
-				}
+			}
+			else{ quality -= 20; }
 		}
+		//updateColor();
+	}
+
+	public void updateColor(){
+		objectView.GetComponent<SpriteRenderer>().color = new Color( (float)quality / (float)Plant.maxQuality, (float)quality / ((float)Plant.maxQuality * 3.0f), 0.0f, 1.0f );
 	}
 	public override void activate(){
 		//TODO donner un fruit une fois growthMax
@@ -197,175 +166,100 @@ public class Plant : MapObject {
 
 	public static void initStatic(){
         if( bank == null ) {
-            bank = Resources.LoadAll<Sprite>("celian");
-			//beginMonths = new List<Months>[(int)Months.months_number];
-			//endMonths = new List<Months>[(int)Months.months_number];
+			bank = Resources.LoadAll<Sprite>("celian");
 
 			bankIndices = new int [(int)PlantList.plant_number, 3];
-            bankIndices[(int)PlantList.carotte, 0] = 36;
-            bankIndices[(int)PlantList.carotte, 1] = 37;
-            bankIndices[(int)PlantList.carotte, 2] = 38;
- 
-            bankIndices[(int)PlantList.navet, 0] = 0;
-            bankIndices[(int)PlantList.navet, 1] = 1;
-            bankIndices[(int)PlantList.navet, 2] = 2;
- 
-            bankIndices[(int)PlantList.chou, 0] = 3;
-            bankIndices[(int)PlantList.chou, 1] = 4;
-            bankIndices[(int)PlantList.chou, 2] = 5;
- 
-            bankIndices[(int)PlantList.oignon, 0] = 6;
-            bankIndices[(int)PlantList.oignon, 1] = 7;
-            bankIndices[(int)PlantList.oignon, 2] = 8;
-           
-            bankIndices[(int)PlantList.tomate, 0] = 9;
-            bankIndices[(int)PlantList.tomate, 1] = 10;
-            bankIndices[(int)PlantList.tomate, 2] = 11;
- 
-            bankIndices[(int)PlantList.patate, 0] = 27;
-            bankIndices[(int)PlantList.patate, 1] = 28;
-            bankIndices[(int)PlantList.patate, 2] = 29;
- 
-            bankIndices[(int)PlantList.mais, 0] = 30;
-            bankIndices[(int)PlantList.mais, 1] = 31;
-            bankIndices[(int)PlantList.mais, 2] = 32;
- 
-            bankIndices[(int)PlantList.ble, 0] = 33;
-            bankIndices[(int)PlantList.ble, 1] = 34;
-            bankIndices[(int)PlantList.ble, 2] = 35;
- 
-            bankIndices[(int)PlantList.aubergine, 0] = 48;
-            bankIndices[(int)PlantList.aubergine, 1] = 49;
-            bankIndices[(int)PlantList.aubergine, 2] = 50;
- 
-            bankIndices[(int)PlantList.citrouille, 0] = 54;
-            bankIndices[(int)PlantList.citrouille, 1] = 55;
-            bankIndices[(int)PlantList.citrouille, 2] = 56;
- 
-            bankIndices[(int)PlantList.poivron, 0] = 57;
-            bankIndices[(int)PlantList.poivron, 1] = 58;
-            bankIndices[(int)PlantList.poivron, 2] = 59;
- 
-            bankIndices[(int)PlantList.concombre, 0] = 72;
-            bankIndices[(int)PlantList.concombre, 1] = 73;
-            bankIndices[(int)PlantList.concombre, 2] = 74;
-           
-            bankIndices[(int)PlantList.fraise, 0] = 75;
-            bankIndices[(int)PlantList.fraise, 1] = 76;
-            bankIndices[(int)PlantList.fraise, 2] = 77;
- 
-            bankIndices[(int)PlantList.salade, 0] = 78;
-            bankIndices[(int)PlantList.salade, 1] = 79;
-            bankIndices[(int)PlantList.salade, 2] = 80;
- 
- 
-            bankIndices[(int)PlantList.chou_fleur, 0] = 51;
-            bankIndices[(int)PlantList.chou_fleur, 1] = 52;
-            bankIndices[(int)PlantList.chou_fleur, 2] = 53;
+			bankIndices[(int)PlantList.carotte, 0] = 36;     bankIndices[(int)PlantList.carotte, 1] = 37;     bankIndices[(int)PlantList.carotte, 2] = 38;
+			bankIndices[(int)PlantList.navet, 0] = 0;        bankIndices[(int)PlantList.navet, 1] = 1;        bankIndices[(int)PlantList.navet, 2] = 2;
+			bankIndices[(int)PlantList.chou, 0] = 3;         bankIndices[(int)PlantList.chou, 1] = 4;         bankIndices[(int)PlantList.chou, 2] = 5;
+			bankIndices[(int)PlantList.oignon, 0] = 6;       bankIndices[(int)PlantList.oignon, 1] = 7;       bankIndices[(int)PlantList.oignon, 2] = 8;
+			bankIndices[(int)PlantList.tomate, 0] = 9;       bankIndices[(int)PlantList.tomate, 1] = 10;      bankIndices[(int)PlantList.tomate, 2] = 11;
+			bankIndices[(int)PlantList.patate, 0] = 27;      bankIndices[(int)PlantList.patate, 1] = 28;      bankIndices[(int)PlantList.patate, 2] = 29;
+			bankIndices[(int)PlantList.mais, 0] = 30;        bankIndices[(int)PlantList.mais, 1] = 31;        bankIndices[(int)PlantList.mais, 2] = 32;
+			bankIndices[(int)PlantList.ble, 0] = 33;         bankIndices[(int)PlantList.ble, 1] = 34;         bankIndices[(int)PlantList.ble, 2] = 35;
+			bankIndices[(int)PlantList.aubergine, 0] = 48;   bankIndices[(int)PlantList.aubergine, 1] = 49;   bankIndices[(int)PlantList.aubergine, 2] = 50;
+			bankIndices[(int)PlantList.citrouille, 0] = 54;  bankIndices[(int)PlantList.citrouille, 1] = 55;  bankIndices[(int)PlantList.citrouille, 2] = 56;
+			bankIndices[(int)PlantList.poivron, 0] = 57;     bankIndices[(int)PlantList.poivron, 1] = 58;     bankIndices[(int)PlantList.poivron, 2] = 59;
+			bankIndices[(int)PlantList.concombre, 0] = 72;   bankIndices[(int)PlantList.concombre, 1] = 73;   bankIndices[(int)PlantList.concombre, 2] = 74;
+			bankIndices[(int)PlantList.fraise, 0] = 75;      bankIndices[(int)PlantList.fraise, 1] = 76;      bankIndices[(int)PlantList.fraise, 2] = 77;
+			bankIndices[(int)PlantList.salade, 0] = 78;      bankIndices[(int)PlantList.salade, 1] = 79;      bankIndices[(int)PlantList.salade, 2] = 80;
+            bankIndices[(int)PlantList.chou_fleur, 0] = 51;  bankIndices[(int)PlantList.chou_fleur, 1] = 52;  bankIndices[(int)PlantList.chou_fleur, 2] = 53;
         }
     }
 
     public void initGrowthSettings () {
     	switch (type) {
     		case PlantList.aubergine :
-	    		firstGoodMonth = (int)Months.Fevrier;
-	    		lastGoodMonth = (int)Months.Avril;
-				firstEndingMonth = (int)Months.Juin;
-				lastEndingMonth = (int)Months.Septembre;
+	    		firstGoodMonth = (int)Months.Fevrier;  lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Juin;   lastEndingMonth = (int)Months.Septembre;
 				growthStep = 2;
     		break;
     		case PlantList.ble :
-	    		firstGoodMonth = (int)Months.Septembre;
-	    		lastGoodMonth = (int)Months.Novembre;
-				firstEndingMonth = (int)Months.Juin;
-				lastEndingMonth = (int)Months.Aout;
+	    		firstGoodMonth = (int)Months.Septembre; lastGoodMonth = (int)Months.Novembre;
+				firstEndingMonth = (int)Months.Juin;    lastEndingMonth = (int)Months.Aout;
 				growthStep = 1;
     		break;
     		case PlantList.carotte :
-	    		firstGoodMonth = (int)Months.Fevrier;
-	    		lastGoodMonth = (int)Months.Septembre;
-				firstEndingMonth = (int)Months.Novembre;
-				lastEndingMonth = (int)Months.Janvier;
+	    		firstGoodMonth = (int)Months.Fevrier;    lastGoodMonth = (int)Months.Septembre;
+				firstEndingMonth = (int)Months.Novembre; lastEndingMonth = (int)Months.Janvier;
 				growthStep = 4;
     		break;
     		case PlantList.chou :
-	    		firstGoodMonth = (int)Months.Septembre;
-	    		lastGoodMonth = (int)Months.Juin;
-				firstEndingMonth = (int)Months.Juillet;
-				lastEndingMonth = (int)Months.Janvier;
+	    		firstGoodMonth = (int)Months.Septembre;  lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juillet;  lastEndingMonth = (int)Months.Janvier;
 				growthStep = 3;
     		break;
     		case PlantList.chou_fleur :
-	    		firstGoodMonth = (int)Months.Mars;
-	    		lastGoodMonth = (int)Months.Juin;
-				firstEndingMonth = (int)Months.Aout;
-				lastEndingMonth = (int)Months.Octobre;
+	    		firstGoodMonth = (int)Months.Mars;    lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Aout;  lastEndingMonth = (int)Months.Octobre;
 				growthStep = 2;
     		break;
     		case PlantList.citrouille :
-	    		firstGoodMonth = (int)Months.Avril;
-	    		lastGoodMonth = (int)Months.Juin;
-				firstEndingMonth = (int)Months.Juillet;
-				lastEndingMonth = (int)Months.Aout;
+	    		firstGoodMonth = (int)Months.Avril;      lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juillet;  lastEndingMonth = (int)Months.Aout;
 				growthStep = 4;
     		break;
     		case PlantList.concombre :
-	    		firstGoodMonth = (int)Months.Mars;
-	    		lastGoodMonth = (int)Months.Juillet;
-				firstEndingMonth = (int)Months.Juillet;
-				lastEndingMonth = (int)Months.Novembre;
+	    		firstGoodMonth = (int)Months.Mars;       lastGoodMonth = (int)Months.Juillet;
+				firstEndingMonth = (int)Months.Juillet;  lastEndingMonth = (int)Months.Novembre;
 				growthStep = 3;
     		break;
     		case PlantList.fraise :
-	    		firstGoodMonth = (int)Months.Aout;
-	    		lastGoodMonth = (int)Months.Octobre;
-				firstEndingMonth = (int)Months.Mai;
-				lastEndingMonth = (int)Months.Juillet;
+	    		firstGoodMonth = (int)Months.Aout;     lastGoodMonth = (int)Months.Octobre;
+				firstEndingMonth = (int)Months.Mai;    lastEndingMonth = (int)Months.Juillet;
 				growthStep = 1;
 				//http://www.gnis.fr/index/action/page/id/531/title/Reussir-la-culture-des-fraisiers
     		break;
     		case PlantList.mais :
-	    		firstGoodMonth = (int)Months.Avril;
-	    		lastGoodMonth = (int)Months.Juin;
-				firstEndingMonth = (int)Months.Juin;
-				lastEndingMonth = (int)Months.Aout;
+	    		firstGoodMonth = (int)Months.Avril;    lastGoodMonth = (int)Months.Juin;
+				firstEndingMonth = (int)Months.Juin;   lastEndingMonth = (int)Months.Aout;
 				growthStep = 3;
     		break;
     		case PlantList.navet :
-	    		firstGoodMonth = (int)Months.Mars;
-	    		lastGoodMonth = (int)Months.Aout;
-				firstEndingMonth = (int)Months.Septembre;
-				lastEndingMonth = (int)Months.Novembre;
+	    		firstGoodMonth = (int)Months.Mars;          lastGoodMonth = (int)Months.Aout;
+				firstEndingMonth = (int)Months.Septembre;   lastEndingMonth = (int)Months.Novembre;
 				growthStep = 4;
     		break;
     		case PlantList.oignon :
-	    		firstGoodMonth = (int)Months.Mars;
-	    		lastGoodMonth = (int)Months.Avril;
-				firstEndingMonth = (int)Months.Aout;
-				lastEndingMonth = (int)Months.Septembre;
+	    		firstGoodMonth = (int)Months.Mars;     lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Aout;   lastEndingMonth = (int)Months.Septembre;
 				growthStep = 3;
     		break;
     		case PlantList.patate :
-	    		firstGoodMonth = (int)Months.Fevrier;
-	    		lastGoodMonth = (int)Months.Avril;
-				firstEndingMonth = (int)Months.Mai;
-				lastEndingMonth = (int)Months.Octobre;
+	    		firstGoodMonth = (int)Months.Fevrier;   lastGoodMonth = (int)Months.Avril;
+				firstEndingMonth = (int)Months.Mai;     lastEndingMonth = (int)Months.Octobre;
 				growthStep = 3;
     		break;
     		case PlantList.poivron :
-	    		firstGoodMonth = (int)Months.Fevrier;
-	    		lastGoodMonth = (int)Months.Mai;
-				firstEndingMonth = (int)Months.Aout;
-				lastEndingMonth = (int)Months.Octobre;
+	    		firstGoodMonth = (int)Months.Fevrier;   lastGoodMonth = (int)Months.Mai;
+				firstEndingMonth = (int)Months.Aout;    lastEndingMonth = (int)Months.Octobre;
 				growthStep = 1;
     		break;
     		case PlantList.salade :
     		break;
     		case PlantList.tomate :
-	    		firstGoodMonth = (int)Months.Janvier;
-	    		lastGoodMonth = (int)Months.Decembre;
-				firstEndingMonth = (int)Months.Juillet;
-				lastEndingMonth = (int)Months.Septembre;
+	    		firstGoodMonth = (int)Months.Janvier;    lastGoodMonth = (int)Months.Decembre;
+				firstEndingMonth = (int)Months.Juillet;  lastEndingMonth = (int)Months.Septembre;
 				growthStep = 3;
     		break; 
     	}
@@ -374,13 +268,10 @@ public class Plant : MapObject {
 	
 	public void updateSprite () {
 		float stade = ((float)growthCur / (float)growthMax);
-		if (stade < 0.33) {
-			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 0] ];
-		} else if (stade < 0.66) {
-			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 1] ];
-		} else {
-			objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 2] ];
-		}
+		
+		if (stade < 0.33) { objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 0] ]; }
+		else if( stade < 0.66 ){ objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 1] ]; }
+		else{ objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 2] ]; }
 	}
 }
 
@@ -389,7 +280,6 @@ public class Plant : MapObject {
  * en debut de chaque journee arrose ses 8 voisins
  */
 public class Sprinkler : MapObject{
-
 	public Sprinkler() : base(){
 		objectView.AddComponent<BoxCollider2D>();
 		collision = false;
@@ -412,39 +302,58 @@ public class Sprinkler : MapObject{
 /**
  * Enumeration des differents types d'obstacles 
  */
-public enum ObstacleType { Bois, Rocher, obstacles_number }
+public enum GenericObjectTypes { Bois, Rocher, Torche, GenericObjectTypes_number }
  
 /**
- * Classe gerant tous les objets de types obstacles ( pierres, branches, etc...)
+ * Classe gerant tous les objets de types obstacles ( pierres, branches, etc...) et objets decoratifs
  */
-public class Obstacle : MapObject{
+public class GenericObject : MapObject{
 	public static Sprite[] obstacleSprites;
-	public static int[] obstaclesIndices;
+	public static Sprite[] marcheSprites;
+	
+	public static int[] spritesIndices;
 	
 	
 	public static void initStatic(){
 		if( obstacleSprites == null ){
 			obstacleSprites = Resources.LoadAll<Sprite>("champ");
-			obstaclesIndices = new int[(int)ObstacleType.obstacles_number];
-			obstaclesIndices[(int)ObstacleType.Bois] = 297;
-			obstaclesIndices[(int)ObstacleType.Rocher] = 292;
+			marcheSprites = Resources.LoadAll<Sprite>("marché");
+
+			spritesIndices = new int[(int)GenericObjectTypes.GenericObjectTypes_number];
+			spritesIndices[(int)GenericObjectTypes.Bois] = 297;
+			spritesIndices[(int)GenericObjectTypes.Rocher] = 292;
+			spritesIndices[(int)GenericObjectTypes.Torche] = 9;
 		}
 	}
 	
-	public Obstacle() : base(){
-		objectView.AddComponent<BoxCollider2D>();
+	public GenericObject() : base(){
+		//objectView.AddComponent<BoxCollider2D>();
 		collision = false;
 		initStatic();
 	}
 	
-	public void defineType(ObstacleType type){
-		if( type == ObstacleType.Bois ){ objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ obstaclesIndices[(int)ObstacleType.Bois] ]; }
-		if( type == ObstacleType.Rocher ){ objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ obstaclesIndices[(int)ObstacleType.Bois] ]; }
+	public void defineType(GenericObjectTypes type){
+		if( type == GenericObjectTypes.Bois ){
+			objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ spritesIndices[(int)GenericObjectTypes.Bois] ];
+			tool2Destroy = FarmTools.Axe;
+		}
+		if( type == GenericObjectTypes.Rocher ){  objectView.GetComponent<SpriteRenderer>().sprite = obstacleSprites[ spritesIndices[(int)GenericObjectTypes.Rocher] ]; }
+		if( type == GenericObjectTypes.Torche ){
+			objectView = (GameObject)GameObject.Instantiate( Resources.Load("Torche") );
+			objectView.GetComponent<Light>().renderMode = LightRenderMode.ForcePixel;
+			/*
+			objectView.GetComponent<SpriteRenderer>().sprite = marcheSprites[ spritesIndices[(int)GenericObjectTypes.Torche] ];
+			objectView.GetComponent<SpriteRenderer>().transform.localScale = new Vector3(3.5f,3.5f,3.5f);
+			objectView.AddComponent<Light>();
+			objectView.GetComponent<Light>().type = LightType.Point;
+			objectView.GetComponent<Light>().range = 5.12f;
+			objectView.GetComponent<Light>().intensity = 8.0f;
+			objectView.GetComponent<Light>().color = Color.yellow;
+			objectView.GetComponent<Light>().bounceIntensity = 0;
+			*/
+		}
 	}
 }
-
-
-
 
 /**
  * Tuile d une zone cultivable 
@@ -463,35 +372,30 @@ public class MapTile {
 	public GameObject tileView;
 	
 	public MapTile(){
-		tileX = 0;
-		tileY = 0;
-		waterCur = 0;
-		waterMax = 10;
+		tileX = 0;      tileY = 0;
+		waterCur = 0;   waterMax = 10;
 		m_object = null;
 	}
 	
 	
-	public bool collide(){
-		if( m_object != null ){ return false; }
-		else{ return m_object.collide(); }
-	}
 	
 	public void beginDay(){ if( m_object != null ){ m_object.beginDay(); } }
 	public void endDay(){ if( m_object != null ){ m_object.endDay(); } }
 	public void water(){ waterCur = waterMax; }
 	public void addObject(MapObject obj){
 		m_object = obj;
-		m_object.mapX = tileX;
-		m_object.mapY = tileY;
-		m_object.map = map;
-		m_object.moveGameObject();
+		m_object.mapX = tileX;    m_object.mapY = tileY;
+		m_object.map = map;       m_object.moveGameObject();
 	}
 	public void removeObject(){
-		
-		m_object = null;
-	} //Incomplet ?
+		if( m_object != null ){
+			Object.Destroy(m_object.objectView);
+			m_object = null;
+		}	
+	}
 
 	public void useTool(FarmTools tool){
+		Debug.Log("TOOL USED");
 		if( tool < FarmTools.WateringCan ){
             if (m_object != null)
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
@@ -500,21 +404,19 @@ public class MapTile {
 	}
 
 	public Item recolt() {
-		if (m_object != null) {
-			return m_object.recolt();	
-		} else {
-			return null;
-		}
+		if( m_object != null ){ return m_object.recolt(); }
+		else{ return null; }
 	}
-	
-	public void setPosition(int x, int y, Transform worldPos){
-		
-	}
-	public void setSprite(string spriteName){
-		//var spriteShiet = Resources.Load<Sprite>("fubar");
-	}
+
+	//To remove ?
+	public void setPosition(int x, int y, Transform worldPos){}
+	public void setSprite(string spriteName){}
 }
 
+
+/**
+ * Enumeration des effets meteo
+ */
 public enum EventType{ rain, snow, event_number };
 
 
@@ -575,6 +477,7 @@ public class Map{
 				map[x,y].tileView = new GameObject("MapTile");
 				map[x,y].tileView.AddComponent<SpriteRenderer>();
 				map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = M_Sprite;
+				map[x,y].tileView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
 				temp = new Vector3();
 				temp.x = worldPos.position.x + x*tileSize;
 				temp.y = worldPos.position.y + y*tileSize;
@@ -583,9 +486,7 @@ public class Map{
 		}
 	}
 	public MapTile tileAt(int x, int y){
-		if( x < 0 || y < 0 || x >= width || y >= height ){
-			return null;
-		}
+		if( x < 0 || y < 0 || x >= width || y >= height ){ return null; }
 		return map[x,y];
 	}
 	
@@ -628,6 +529,33 @@ public class Map{
 		return null;
 	}
 
+	/**
+	 * Fonction d'initialisation remplissant une zone cultivable avec toutes sortes d'objets ou de plantes
+	 */
+	public void randomFill(){
+		float spawn = 0.0f;
+		int type = 0;
+		MapObject temp;
+		
+		for( int x = 0; x < width; ++x ){
+			for( int y = 0; y < height; ++y ){
+				spawn = Random.Range(0.0f, 100.0f);
+				if( spawn <= 20.0f ){
+					type = (int)Random.Range(0,2);
+					temp = new GenericObject();
+					((GenericObject)temp).defineType((GenericObjectTypes)type);
+					map[x,y].addObject(temp);
+				}
+				if( spawn > 20.0f && spawn <= 40.0f ){
+					type = (int)Random.Range(0,(int)PlantList.plant_number);
+					temp = new Plant( (PlantList)type );
+					map[x,y].addObject(temp);
+				}
+			}
+		}
+	}
+
+	
 	/**
 	 * Ajoute une zone cultivable a une liste statique qui repertorie toutes les zones.
 	 * Cette structure sert a modifier une tuile de n importe quelle zone cultivable
@@ -702,8 +630,7 @@ public class Map{
 	 */
 	public static void useTool(FarmTools tool, Vector3 tilePos){
 		MapTile tile = Map.getTileAt(tilePos);
-		if( tile != null ){
-            tile.useTool(tool); }		
+		if( tile != null ){ tile.useTool(tool); }		
 	}
 
 	/**
@@ -729,19 +656,11 @@ public class Map{
 	public static Item collectPlant(Vector3 tilePos) {
 		MapTile tile = Map.getTileAt(tilePos);
 		if (tile != null){
-			//Debug.Log("Je suis sur une plante");
 			return tile.recolt();
-			/*
-			if( tile.m_object == null ){
-				Plant ajout = new Plant(type);
-				tile.addObject(ajout);
-				return true;
-			}*/
-		} else {
-			Debug.Log("Je ne suis pas sur une plante");
-			return null;
 		}
-		//return plant as Plant;
+		return null;
 	}
-	
+	public static void randomFillAll(){
+		foreach( Map mapRef in mapList ){ mapRef.randomFill(); }
+	}
 }

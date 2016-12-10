@@ -48,6 +48,7 @@ public class MapInstance : MonoBehaviour {
 		//ajout de la zone cultivable dans la liste des map
 		Map.ajoutMap(map);
 		test_tileFromWorldPos();
+		Map.randomFillAll();
 	}
 	
 	// Update is called once per frame
@@ -73,10 +74,13 @@ public class MapInstance : MonoBehaviour {
 			test.addObject(obsTest);
 			return true;
 			*/
-			Plant plantTest = new Plant(PlantList.chou_fleur);
+			//Plant plantTest = new Plant(PlantList.chou_fleur);
 			//planTest.defineType(ObstacleType.Bois);
-			test.addObject(plantTest);
-			test.waterCur = 10000;
+			GenericObject.initStatic();
+			GenericObject obj = new GenericObject();
+			obj.defineType(GenericObjectTypes.Torche);
+			test.addObject(obj);
+			//test.waterCur = 10000;
 			
 			return true;
 			
