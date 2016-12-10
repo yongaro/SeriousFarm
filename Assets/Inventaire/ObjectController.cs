@@ -97,14 +97,12 @@ public class ObjectController : MonoBehaviour {
                 
             }
             else 
-            {
-                FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
-                
+            {   
                 Map.useTool(tool.GetComponent<toolController>().currentTool,  transform.position);
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)
                     objectCurrent.itemPower--;
-
+				FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
             }
         }
         

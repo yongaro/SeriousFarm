@@ -21,7 +21,6 @@ public enum FarmTools{  Axe, Hoe, Pickaxe, Scythe, WateringCan }
 public abstract class MapObject{
 	public int mapX;
 	public int mapY;
-	public bool collision;
 	public FarmTools tool2Destroy;
 	public Map map;
 	public GameObject objectView;
@@ -33,17 +32,15 @@ public abstract class MapObject{
 		}
 		mapX = 0;
 		mapY = 0;
-		collision = false;
 		tool2Destroy = FarmTools.Pickaxe;
 		map = null;
 		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
 		objectView.GetComponent<SpriteRenderer>().sortingOrder = 1;
-		objectView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
+		//objectView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
 	}
 	public virtual void beginDay(){}
 	public virtual void endDay(){}
-	public virtual void activate(){}
 	public virtual Item recolt() { return null; }
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
 	public virtual void moveGameObject(){
@@ -51,8 +48,8 @@ public abstract class MapObject{
 		newPos.x = map.pos.x + mapX * map.tileSize;
 		newPos.y = map.pos.y + mapY * map.tileSize;
 		objectView.transform.position = newPos;
-		//Light light = objectView.GetComponent<Light>();
-		//if( light != null ){ light.transform.position = newPos; }
+		Light light = objectView.GetComponent<Light>();
+		if( light != null ){ light.transform.position = newPos; }
 	}
 }
 
@@ -102,7 +99,7 @@ public class Plant : MapObject {
 		growthCur = 0;
 		growthMax = 30;
 		waterCons = 5;
-		quality = 0;
+		quality = Plant.maxQuality;
 		initGrowthSettings();
 		determineGrowthStep();
 		updateSprite();
@@ -150,17 +147,16 @@ public class Plant : MapObject {
 			if( tile.waterCur >= waterCons ){
 				growth();
 				tile.waterCur -= waterCons;
+				if( quality <= 90 ){ quality += 10; }
 			}
 			else{ quality -= 20; }
 		}
-		//updateColor();
+		updateColor();
 	}
 
 	public void updateColor(){
-		objectView.GetComponent<SpriteRenderer>().color = new Color( (float)quality / (float)Plant.maxQuality, (float)quality / ((float)Plant.maxQuality * 3.0f), 0.0f, 1.0f );
-	}
-	public override void activate(){
-		//TODO donner un fruit une fois growthMax
+		if( quality <= 75 ){ objectView.GetComponent<SpriteRenderer>().color = new Color(1.0f, (float)quality/(float)Plant.maxQuality, (float)quality/(float)Plant.maxQuality, 1.0f); }
+		else{ objectView.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f); }
 	}
 
 
@@ -280,9 +276,14 @@ public class Plant : MapObject {
  * en debut de chaque journee arrose ses 8 voisins
  */
 public class Sprinkler : MapObject{
+	public static Sprite sprite;
+
 	public Sprinkler() : base(){
+		if( sprite == null ){
+			sprite = Resources.Load<Sprite>("Science Plus2 Math");
+		}
 		objectView.AddComponent<BoxCollider2D>();
-		collision = false;
+		objectView.GetComponent<SpriteRenderer>().sprite = Sprinkler.sprite;
 	}
 
 	public override void beginDay(){
@@ -328,7 +329,6 @@ public class GenericObject : MapObject{
 	
 	public GenericObject() : base(){
 		//objectView.AddComponent<BoxCollider2D>();
-		collision = false;
 		initStatic();
 	}
 	
@@ -373,7 +373,7 @@ public class MapTile {
 	
 	public MapTile(){
 		tileX = 0;      tileY = 0;
-		waterCur = 0;   waterMax = 10;
+		waterCur = 10;   waterMax = 10;
 		m_object = null;
 	}
 	
@@ -383,9 +383,11 @@ public class MapTile {
 	public void endDay(){ if( m_object != null ){ m_object.endDay(); } }
 	public void water(){ waterCur = waterMax; }
 	public void addObject(MapObject obj){
-		m_object = obj;
-		m_object.mapX = tileX;    m_object.mapY = tileY;
-		m_object.map = map;       m_object.moveGameObject();
+		if( m_object == null ){
+			m_object = obj;
+			m_object.mapX = tileX;    m_object.mapY = tileY;
+			m_object.map = map;       m_object.moveGameObject();
+		}
 	}
 	public void removeObject(){
 		if( m_object != null ){

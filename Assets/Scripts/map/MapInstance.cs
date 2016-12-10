@@ -76,9 +76,7 @@ public class MapInstance : MonoBehaviour {
 			*/
 			//Plant plantTest = new Plant(PlantList.chou_fleur);
 			//planTest.defineType(ObstacleType.Bois);
-			GenericObject.initStatic();
-			GenericObject obj = new GenericObject();
-			obj.defineType(GenericObjectTypes.Torche);
+			Sprinkler obj = new Sprinkler();
 			test.addObject(obj);
 			//test.waterCur = 10000;
 			
