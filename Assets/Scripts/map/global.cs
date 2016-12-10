@@ -37,7 +37,7 @@ public abstract class MapObject{
 		objectView = new GameObject("MapObject");
 		objectView.AddComponent<SpriteRenderer>();
 		objectView.GetComponent<SpriteRenderer>().sortingOrder = 1;
-		//objectView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
+		objectView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
 	}
 	public virtual void beginDay(){}
 	public virtual void endDay(){}
@@ -47,6 +47,7 @@ public abstract class MapObject{
 		Vector3 newPos = new Vector3();
 		newPos.x = map.pos.x + mapX * map.tileSize;
 		newPos.y = map.pos.y + mapY * map.tileSize;
+		newPos.z = -3;
 		objectView.transform.position = newPos;
 		Light light = objectView.GetComponent<Light>();
 		if( light != null ){ light.transform.position = newPos; }
@@ -106,7 +107,14 @@ public class Plant : MapObject {
 	}
 
 	
-	public override Item recolt(){ return new Item(type.ToString(), 0, "miam miam", quality, "", 1, 0, Item.ItemType.Plante); }
+	public override Item recolt(){
+		if( growthCur == growthMax ){
+			MapTile tile = map.tileAt(mapX, mapY);
+			if( tile != null ){ tile.removeObject(); }
+			return new Item(type.ToString(), 0, "miam miam", quality, "", 1, 0, Item.ItemType.Plante);
+		}
+		return null;
+	}
 	public int getMonth(){ return Map.currentMonth; }
 	public bool propiceMonth(){ return (getMonth() >= firstGoodMonth) && (getMonth() <= lastGoodMonth); }
 	public bool growableMonth(){ return (getMonth() <= lastGoodMonth) && (getMonth() <= firstEndingMonth); }
@@ -317,12 +325,12 @@ public class GenericObject : MapObject{
 	
 	public static void initStatic(){
 		if( obstacleSprites == null ){
-			obstacleSprites = Resources.LoadAll<Sprite>("champ");
+			obstacleSprites = Resources.LoadAll<Sprite>("pokemon3-0");
 			marcheSprites = Resources.LoadAll<Sprite>("marché");
 
 			spritesIndices = new int[(int)GenericObjectTypes.GenericObjectTypes_number];
-			spritesIndices[(int)GenericObjectTypes.Bois] = 297;
-			spritesIndices[(int)GenericObjectTypes.Rocher] = 292;
+			spritesIndices[(int)GenericObjectTypes.Bois] = 344;
+			spritesIndices[(int)GenericObjectTypes.Rocher] = 996;
 			spritesIndices[(int)GenericObjectTypes.Torche] = 9;
 		}
 	}
