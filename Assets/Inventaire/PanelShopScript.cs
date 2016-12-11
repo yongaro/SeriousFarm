@@ -31,7 +31,7 @@ public class PanelShopScript : MonoBehaviour {
         buyButton = description.transform.GetChild(2).GetComponent<Button>();
         buyButton.onClick.AddListener(buyProduct);
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
-        marchande = GameObject.FindGameObjectWithTag("Shop").GetComponent<MarchandeScript>();
+        marchande = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<MarchandeScript>();
         boolMarchande = false;
         categorie = Item.ItemType.Graine;
         slotamount = 0;

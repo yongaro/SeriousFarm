@@ -34,7 +34,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
         moinsButton = quantitePanel.transform.GetChild(1).GetComponent<Button>();
         moinsButton.onClick.AddListener(moinsQuantite);
         shopGlobal = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<ShopGlobalScrip>();
-        marchande = GameObject.FindGameObjectWithTag("Sale").GetComponent<MarchandeScript>();
+        marchande = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<MarchandeScript>();
         item = new Item();
         nbProductSell = 0;
     }

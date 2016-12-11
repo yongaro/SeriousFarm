@@ -67,8 +67,9 @@ public class ObjectController : MonoBehaviour {
         }  
 	}
 
-    public void useObject()
+    public void useObject(Vector2 direction)
     {
+        Vector3 pos = transform.position;
         if (objectCurrent != null)
         {
             if (objectCurrent.itemType != Item.ItemType.Tool)
@@ -77,8 +78,8 @@ public class ObjectController : MonoBehaviour {
                 {
                     for (int i = 0; i < (int)PlantList.plant_number; i++)
                     {
-                        if (((PlantList) i).ToString() == objectCurrent.itemName)
-                           if ( Map.ajoutPlante(((PlantList)i), transform.position))
+                        if (((PlantList)i).ToString() == objectCurrent.itemName)
+                            if (Map.ajoutPlante(((PlantList)i), new Vector3(pos.x + direction.x, pos.y + direction.y, 0)))
                             {
                                 objectCurrent.itemValue--;
                             }
@@ -89,24 +90,26 @@ public class ObjectController : MonoBehaviour {
                 {
                     objectCurrent.itemValue--;
                 }
-                if (objectCurrent.itemValue <= 0) { 
+                if (objectCurrent.itemValue <= 0)
+                {
                     objet.SetActive(false);
                     objectCurrent = new Item();
-                        
                 }
-                
             }
-            else 
-            {   
-                Map.useTool(tool.GetComponent<toolController>().currentTool,  transform.position);
+            else
+            {
+                if (objectCurrent.itemName != "WateringCan" || (objectCurrent.itemName == "WateringCan" && objectCurrent.itemPower > 0))
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
+                    Map.useTool(tool.GetComponent<toolController>().currentTool, new Vector3(pos.x + direction.x, pos.y + direction.y, 0));
+                }
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)
-                    objectCurrent.itemPower--;
-				FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
+                        objectCurrent.itemPower--;
+
             }
         }
-        
-    }
 
+    }
 
 }

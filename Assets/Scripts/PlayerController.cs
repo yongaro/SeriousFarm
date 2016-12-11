@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
 
     public float moveSpeed;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     public Vector2 lastMove;
     public Vector2 move;
     public Stack<Vector2> moves;
- //   public Vector2 lastPosition;
+    //   public Vector2 lastPosition;
 
     private Rigidbody2D myRigidbody;
     public GameObject tool;
@@ -30,8 +31,9 @@ public class PlayerController : MonoBehaviour {
     public GameObject shop;
 
     // Use this for initialization
-    void Start () {
-        anim = GetComponent < Animator>();
+    void Start()
+    {
+        anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         moves = new Stack<Vector2>();
         objectC = GetComponent<ObjectController>();
@@ -40,57 +42,62 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         playerMoving = false;
 
-        if (!tooling) { 
+        if (!tooling)
+        {
 
             //deplacement du joueur
-        move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
-        {
-            myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
-            playerMoving = true;
-            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
-            moves.Push(lastMove);
-        }
-        if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
-        {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
-            playerMoving = true;
-            lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
-            moves.Push(lastMove);
-        }
+            move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
+            {
+                myRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidbody.velocity.y);
+                playerMoving = true;
+                lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+                moves.Push(lastMove);
+            }
+            if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
+            {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, Input.GetAxisRaw("Vertical") * moveSpeed);
+                playerMoving = true;
+                lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
+                moves.Push(lastMove);
+            }
 
-        if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
-        {
-            myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
-        }
-        if (Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
-        {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
-        }
+            if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
+            {
+                myRigidbody.velocity = new Vector2(0f, myRigidbody.velocity.y);
+            }
+            if (Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
+            {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0f);
+            }
 
-        //touche espace pour utiliser outils ou object 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            timeToolingCounter = timeTooling;
-            tool.SetActive(true);
-            tooling = true;
-            myRigidbody.velocity = Vector2.zero;
-            anim.SetBool("useTool", true);
-            objectC.useObject();
-        }
-        // touche entré rammasse object
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown("enter") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("return")) {
-            Item recolt = Map.collectPlant(transform.position);
-                Debug.Log("nn "+recolt.itemName +" "+recolt.itemPower);
-            if (recolt != null) {
-                quickBar.addItem(database.addItem(recolt));
+            //touche espace pour utiliser outils ou object 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                timeToolingCounter = timeTooling;
+                tool.SetActive(true);
+                tooling = true;
+                myRigidbody.velocity = Vector2.zero;
+                anim.SetBool("useTool", true);
+                objectC.useObject(lastMove);
+            }
+            // touche entré rammasse object
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown("enter") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("return"))
+            {
+                Item recolt = Map.collectPlant(new Vector3(transform.position.x + lastMove.x, transform.position.y + lastMove.y, 0));
+                Debug.Log("nn " + recolt.itemName + " " + recolt.itemPower);
+                if (recolt != null)
+                {
+                    quickBar.addItem(database.addItem(recolt));
 
+                }
             }
         }
-    }
         // mise a jour de l'animation des outils
         if (timeToolingCounter >= 0)
         {
@@ -103,7 +110,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("useTool", false);
             tool.SetActive(false);
         }
-        
+
         //mise a jour de l'animation de deplacement
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
@@ -117,12 +124,12 @@ public class PlayerController : MonoBehaviour {
     {
         // collision avec le puit et touche espace pour remplir l'arrosoire
         if (collider.gameObject.name == "Puit" && Input.GetKeyDown(KeyCode.Space))
-        { 
-                if (objectC.objectCurrent.itemName == "WateringCan")
-                {
+        {
+            if (objectC.objectCurrent.itemName == "WateringCan")
+            {
 
-                    objectC.objectCurrent.itemPower = 41;
-                }
+                objectC.objectCurrent.itemPower = 41;
+            }
         }
     }
 

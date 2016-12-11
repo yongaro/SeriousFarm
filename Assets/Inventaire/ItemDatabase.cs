@@ -45,23 +45,30 @@ public class ItemDatabase  : MonoBehaviour{
     public int addItem(Item item)
     {
         bool present = false;
+        int price = 0;
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && (items[i].itemPower / 25 == item.itemPower / 25 || (item.itemPower == 100 && items[i].itemPower / 25 >= 3) ))
+            if (items[i].itemName == item.itemName && items[i].itemType == item.itemType && (items[i].itemPower / 25 == item.itemPower / 25 || (item.itemPower / 25 >= 3 && items[i].itemPower / 25 >= 3)))
             {
                 item = items[i];
                 present = true;
             }
             else if (items[i].itemName == item.itemName)
             {
-                item.itemPrice = items[i].itemPrice * (2 * item.itemPower / 25);
-                Debug.Log(item.itemPrice +" "+ item.itemPower + " " + 2 * item.itemPower / 25);
+                price = items[i].itemPrice;
+                /*if (item.itemPower / 25 != 0)
+                    item.itemPrice = items[i].itemPrice * (item.itemPower / 25);
+                else
+                    item.itemPrice = items[i].itemPrice;*/
             }
         }
         if (!present)
         {
             item.itemID = items.Count;
-           // item.itemPrice = item.itemPrice * (item.itemPower / 25);
+            if (item.itemPower / 25 != 0)
+                item.itemPrice = price * (item.itemPower / 25);
+            else
+                item.itemPrice = price;
             //Debug.Log(item.itemPower +" "+ item.itemPower / 25);
             items.Add(item);
         }

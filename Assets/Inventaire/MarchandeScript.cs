@@ -12,7 +12,6 @@ public class MarchandeScript : MonoBehaviour {
 	void Start () {
         numMois = Map.currentMonth;
         dialogue = panel.transform.GetChild(0).GetComponent<Text>();
-
     }
 	
 	// Update is called once per frame
