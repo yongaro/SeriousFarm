@@ -382,15 +382,15 @@ public class MapTile {
 	
 	public MapTile(){
 		tileX = 0;      tileY = 0;
-		waterCur = 10;   waterMax = 10;
+		waterCur = 0;   waterMax = 10;
 		m_object = null;
 	}
 	
 	
 	
-	public void beginDay(){ if( m_object != null ){ m_object.beginDay(); } }
-	public void endDay(){ if( m_object != null ){ m_object.endDay(); } }
-	public void water(){ waterCur = waterMax; }
+	public void beginDay(){ if( m_object != null ){ m_object.beginDay(); } updateColor(); }
+	public void endDay(){ if( m_object != null ){ m_object.endDay(); } updateColor(); }
+	public void water(){ waterCur = waterMax; updateColor(); }
 	public void addObject(MapObject obj){
 		if( m_object == null ){
 			m_object = obj;
@@ -406,7 +406,6 @@ public class MapTile {
 	}
 
 	public void useTool(FarmTools tool){
-		Debug.Log("TOOL USED");
 		if( tool < FarmTools.WateringCan ){
             if (m_object != null)
 			if( m_object.destroyWithTool(tool) ){ removeObject(); }
@@ -418,10 +417,10 @@ public class MapTile {
 		if( m_object != null ){ return m_object.recolt(); }
 		else{ return null; }
 	}
-
-	//To remove ?
-	public void setPosition(int x, int y, Transform worldPos){}
-	public void setSprite(string spriteName){}
+	
+	public void updateColor(){
+		tileView.GetComponent<SpriteRenderer>().color = new Color(1.5f - (float)waterCur / (float)waterMax, 1.5f - (float)waterCur / (float)waterMax, 1.5f - (float)waterCur / (float)waterMax, 1.0f);
+	}
 }
 
 
@@ -457,7 +456,7 @@ public class Map{
 	public Sprite MR_Sprite;
 	public Sprite MU_Sprite;
 	public Sprite ULC_Sprite;
-	public Sprite ULR_Sprite;
+	public Sprite URC_Sprite;
 
 	//Gestion de l'ensemble des maps sur une scene
 	private static List<Map> mapList;
@@ -488,11 +487,24 @@ public class Map{
 				map[x,y].tileView = new GameObject("MapTile");
 				map[x,y].tileView.AddComponent<SpriteRenderer>();
 				map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = M_Sprite;
+				
+				if( x == 0 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = ML_Sprite; }
+				if( x == width-1 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = MR_Sprite; }
+				if( y == 0 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = MD_Sprite; }
+				if( y == height-1 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = MU_Sprite; }
+				
+				if( x == 0 && y == 0 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = DLC_Sprite; } 
+				if( x == 0 && y == height-1 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = ULC_Sprite; }
+				if( x == width-1 && y == 0 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = DRC_Sprite; } 
+				if( x == width-1 && y == height-1 ){ map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = URC_Sprite; }
+				
 				map[x,y].tileView.GetComponent<SpriteRenderer>().material = new Material(Shader.Find("Sprites/Diffuse"));
 				temp = new Vector3();
 				temp.x = worldPos.position.x + x*tileSize;
 				temp.y = worldPos.position.y + y*tileSize;
 				map[x,y].tileView.transform.position = temp;
+				map[x,y].updateColor();
+				
 			}
 		}
 	}
@@ -557,7 +569,7 @@ public class Map{
 					((GenericObject)temp).defineType((GenericObjectTypes)type);
 					map[x,y].addObject(temp);
 				}
-				if( spawn > 20.0f && spawn <= 40.0f ){
+				if( spawn > 20.0f && spawn <= 25.0f ){
 					type = (int)Random.Range(0,(int)PlantList.plant_number);
 					temp = new Plant( (PlantList)type );
 					map[x,y].addObject(temp);

@@ -27,7 +27,7 @@ public class MapInstance : MonoBehaviour {
 	public Sprite MR_Sprite;
 	public Sprite MU_Sprite;
 	public Sprite ULC_Sprite;
-	public Sprite ULR_Sprite;
+	public Sprite URC_Sprite;
 	
 	// Use this for initialization
 	void Start () {
@@ -42,7 +42,7 @@ public class MapInstance : MonoBehaviour {
 		map.MR_Sprite  = MR_Sprite;
 		map.MU_Sprite  = MU_Sprite;
 		map.ULC_Sprite = ULC_Sprite;
-		map.ULR_Sprite = ULR_Sprite;
+		map.URC_Sprite = URC_Sprite;
 		float tileSize = M_Sprite.bounds.size.x;
 		map.init(width, height, tileSize, transform);
 		//ajout de la zone cultivable dans la liste des map
