@@ -339,7 +339,7 @@ public class GenericObject : MapObject{
 	}
 	
 	public GenericObject() : base(){
-		//objectView.AddComponent<BoxCollider2D>();
+		objectView.AddComponent<BoxCollider2D>();
 		initStatic();
 	}
 	
