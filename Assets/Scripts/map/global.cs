@@ -44,6 +44,8 @@ public abstract class MapObject{
 	public virtual Item recolt() { return null; }
 	public virtual bool destroyWithTool(FarmTools tool){ return tool == tool2Destroy; }
 	public virtual void moveGameObject(){
+		MapTile tile = map.tileAt(mapX, mapY);
+		if( tile != null ){ objectView.transform.parent = tile.tileView.transform; }
 		Vector3 newPos = new Vector3();
 		newPos.x = map.pos.x + mapX * map.tileSize;
 		newPos.y = map.pos.y + mapY * map.tileSize;
@@ -440,6 +442,7 @@ public class Map{
 	public Vector3 pos;
 	public float tileSize;
 	public MapTile[,] map;
+	public GameObject instance;
 	public static int currentMonth;
 
 	/**
@@ -471,11 +474,13 @@ public class Map{
 	public void init(int w, int h, float tileSize, Transform worldPos){
 		width = w;
 		height = h;
+		instance = new GameObject("Map w:"+w+" h:"+h);
 		pos = new Vector3();
 		pos.x = worldPos.position.x;
 		pos.y = worldPos.position.y;
 		this.tileSize = tileSize;
-
+		instance.transform.position = pos;
+		
 		map = new MapTile[width,height];
 		Vector3 temp;
 		for( int x = 0; x < width; ++x ){
@@ -484,7 +489,8 @@ public class Map{
 				map[x,y].tileX = x;
 				map[x,y].tileY = y;
 				map[x,y].map = this;
-				map[x,y].tileView = new GameObject("MapTile");
+				map[x,y].tileView = new GameObject("MapTile("+x+","+y+")");
+				map[x,y].tileView.transform.parent = instance.transform;
 				map[x,y].tileView.AddComponent<SpriteRenderer>();
 				map[x,y].tileView.GetComponent<SpriteRenderer>().sprite = M_Sprite;
 				
@@ -562,17 +568,19 @@ public class Map{
 		
 		for( int x = 0; x < width; ++x ){
 			for( int y = 0; y < height; ++y ){
-				spawn = Random.Range(0.0f, 100.0f);
-				if( spawn <= 20.0f ){
-					type = (int)Random.Range(0,2);
-					temp = new GenericObject();
-					((GenericObject)temp).defineType((GenericObjectTypes)type);
-					map[x,y].addObject(temp);
-				}
-				if( spawn > 20.0f && spawn <= 25.0f ){
-					type = (int)Random.Range(0,(int)PlantList.plant_number);
-					temp = new Plant( (PlantList)type );
-					map[x,y].addObject(temp);
+				if( map[x,y].m_object == null ){
+					spawn = Random.Range(0.0f, 100.0f);
+					if( spawn <= 20.0f ){
+						type = (int)Random.Range(0,2);
+						temp = new GenericObject();
+						((GenericObject)temp).defineType((GenericObjectTypes)type);
+						map[x,y].addObject(temp);
+					}
+					if( spawn > 20.0f && spawn <= 25.0f ){
+						type = (int)Random.Range(0,(int)PlantList.plant_number);
+						temp = new Plant( (PlantList)type );
+						map[x,y].addObject(temp);
+					}
 				}
 			}
 		}
