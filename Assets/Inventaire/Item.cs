@@ -55,6 +55,8 @@ public class Item  {
         }
         else if (type == ItemType.Graine || type == ItemType.Plante)
             sprites = Resources.LoadAll<Sprite>("Graine");
+        else if (type == ItemType.Mobilier)
+            sprites = Resources.LoadAll<Sprite>("Science Plus2 Math");
         else
             sprites = Resources.LoadAll<Sprite>("Sprite");
         for (int i = 0; i < sprites.Length; i++) {
@@ -63,6 +65,11 @@ public class Item  {
             {
                 itemIcon = sprites[i];   
             }
+            
+        }
+        if (name == "sprinkler")
+        {
+            itemIcon = sprites[0];
         }
     }
 

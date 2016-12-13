@@ -9,13 +9,16 @@ public class PanelShopScript : MonoBehaviour {
     public List<Item> Items = new List<Item>();
     public GameObject slots;
     public List<GameObject> Slots = new List<GameObject>();
+
     ItemDatabase database;
-    Item.ItemType categorie;
+    public Item.ItemType categorie;
     public int slotamount;
     public GameObject description;
     public int indexSlotSelected;
     Text descriptionText;
     Button buyButton;
+    public Button graineButton;
+    public Button mobilierButton;
     QuickBar quickBar;
     ShopGlobalScrip shopGlobal;
     MarchandeScript marchande;
@@ -24,12 +27,13 @@ public class PanelShopScript : MonoBehaviour {
     void Start()
     {
         shopGlobal = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<ShopGlobalScrip>();
-        
         database = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<ItemDatabase>();
         description = GameObject.FindGameObjectWithTag("Description");
         descriptionText = description.transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         buyButton = description.transform.GetChild(2).GetComponent<Button>();
         buyButton.onClick.AddListener(buyProduct);
+        graineButton.onClick.AddListener(graineCategorie);
+        mobilierButton.onClick.AddListener(mobilierCategorie);
         quickBar = GameObject.FindGameObjectWithTag("QuickBar").GetComponent<QuickBar>();
         marchande = GameObject.FindGameObjectWithTag("ShopGlobal").GetComponent<MarchandeScript>();
         boolMarchande = false;
@@ -49,7 +53,41 @@ public class PanelShopScript : MonoBehaviour {
                 slotamount++;
             }
         }
+        graineCategorie();
+      /*  if (categorie == Item.ItemType.Graine) {
+            addItem(10);
+            addItem(11);
+            addItem(12);
+            addItem(13);
+            addItem(14);
+            addItem(15);
+            addItem(16);
+            addItem(17);
+            addItem(18);
+            addItem(19);
+            addItem(20);
+            addItem(21);
+            addItem(22);
+            
+        }*/
+        
+    }
 
+    private void mobilierCategorie()
+    {
+        for (int i = 0; i < 4 * 6; i++)
+        {
+            Items[i] = new Item();
+        }
+        addItem(23);
+    }
+
+    private void graineCategorie()
+    {
+        for (int i = 0; i < 4 * 6; i++)
+        {
+            Items[i] = new Item();
+        }
         addItem(10);
         addItem(11);
         addItem(12);
@@ -63,13 +101,12 @@ public class PanelShopScript : MonoBehaviour {
         addItem(20);
         addItem(21);
         addItem(22);
-        addItem(23);
-        addItem(24);
-        addItem(25);
     }
 
     private void buyProduct()
     {
+        if (Items[indexSlotSelected].itemValue == 0)
+            return;
         if (boolMarchande)
         {
             boolMarchande = false;
@@ -134,5 +171,9 @@ public class PanelShopScript : MonoBehaviour {
         }
     }
 
+    public void changeCategorie(Item.ItemType it)
+    {
+
+    }
 
 }

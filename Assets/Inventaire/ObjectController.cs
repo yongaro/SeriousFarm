@@ -69,6 +69,7 @@ public class ObjectController : MonoBehaviour {
 
     public void useObject(Vector2 direction)
     {
+       
         Vector3 pos = transform.position;
         if (objectCurrent != null)
         {
@@ -86,6 +87,19 @@ public class ObjectController : MonoBehaviour {
 
                     }
                 }
+                else if (objectCurrent.itemType == Item.ItemType.Mobilier)
+                {
+                    MapTile tile = Map.getTileAt(new Vector3(pos.x + direction.x, pos.y + direction.y, 0));
+                    if (tile != null)
+                    {
+                        if (objectCurrent.itemName == "sprinkler")
+                        {
+                            tile.addObject(new Sprinkler());
+                            objectCurrent.itemValue--;
+                        }
+                    }
+                }
+
                 else
                 {
                     objectCurrent.itemValue--;
@@ -100,8 +114,8 @@ public class ObjectController : MonoBehaviour {
             {
                 if (objectCurrent.itemName != "WateringCan" || (objectCurrent.itemName == "WateringCan" && objectCurrent.itemPower > 0))
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
                     Map.useTool(tool.GetComponent<toolController>().currentTool, new Vector3(pos.x + direction.x, pos.y + direction.y, 0));
+                    FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
                 }
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)

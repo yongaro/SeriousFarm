@@ -40,6 +40,8 @@ public class ItemDatabase  : MonoBehaviour{
         items.Add(new Item("tomate", 21, "reservoir a eau", 10, "fev, mars, avr", 1, 10,Item.ItemType.Graine));
         items.Add(new Item("salade", 22, "tape tape", 10, "fev, mars, avr, mai, juin", 1, 10,Item.ItemType.Graine));
         //fraise ?????
+        /* ************************* mobilier ****************************************/
+        items.Add(new global::Item("sprinkler", 23, "arrosage automatique des 8 voisins", 1, "", 1, 100, Item.ItemType.Mobilier));
     }
 
     public int addItem(Item item)

@@ -17,7 +17,6 @@ public class MarchandeScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         numMois = Map.currentMonth;
-        Debug.Log(numMois);
     }
 
     public void dialogueQualite (Item item)
