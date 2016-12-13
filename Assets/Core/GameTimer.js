@@ -175,6 +175,7 @@ function isMidnight() {
 }
 
 function pleuvoir () {
+
 	pluie.SetActive(true);
 	if (!pluie.GetComponent.<ParticleSystem>().isPlaying) {
 		pluie.GetComponent.<ParticleSystem>().Play();
@@ -184,6 +185,7 @@ function pleuvoir () {
 }
 
 function neiger() {
+
 	neige.SetActive(true);
 	if (!neige.GetComponent.<ParticleSystem>().isPlaying) {
 		neige.GetComponent.<ParticleSystem>().Play();
@@ -200,7 +202,7 @@ function clearMeteo() {
 	} 
 
 	if (neige.GetComponent.<ParticleSystem>().isPlaying) {
-		pluie.GetComponent.<ParticleSystem>().Stop();
+		neige.GetComponent.<ParticleSystem>().Stop();
 	}
 
 }
