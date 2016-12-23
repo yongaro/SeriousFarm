@@ -570,13 +570,13 @@ public class Map{
 			for( int y = 0; y < height; ++y ){
 				if( map[x,y].m_object == null ){
 					spawn = Random.Range(0.0f, 100.0f);
-					if( spawn <= 20.0f ){
+					if( spawn <= 10.0f ){
 						type = (int)Random.Range(0,2);
 						temp = new GenericObject();
 						((GenericObject)temp).defineType((GenericObjectTypes)type);
 						map[x,y].addObject(temp);
 					}
-					if( spawn > 20.0f && spawn <= 25.0f ){
+					if( spawn > 10.0f && spawn <= 15.0f ){
 						type = (int)Random.Range(0,(int)PlantList.plant_number);
 						temp = new Plant( (PlantList)type );
 						map[x,y].addObject(temp);
