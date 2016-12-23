@@ -31,3 +31,6 @@ sysinfo.txt
 Assets/Scripts/map/global.js
 ProjectSettings/TagManager.asset
 ProjectSettings/TagManager.asset
+
+# FMOD cache
+Assets/FMODStudioCache.asset
