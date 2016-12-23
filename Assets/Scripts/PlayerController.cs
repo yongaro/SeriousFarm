@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
                 playerMoving = true;
                 lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
                 moves.Push(lastMove);
+
+      
             }
 
             if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
@@ -93,6 +95,13 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("nn " + recolt.itemName + " " + recolt.itemPower);
                 if (recolt != null)
                 {
+                    if (recolt.itemPower >= 75) {
+                        this.SendMessage("showGood","");
+                    } else if (recolt.itemPower >= 50) {
+                        this.SendMessage("showMedium","");
+                    } else if (recolt.itemPower < 25) {
+                        this.SendMessage("showGood","");
+                    }
                     quickBar.addItem(database.addItem(recolt));
 
                 }
