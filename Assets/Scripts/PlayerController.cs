@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -100,7 +101,9 @@ public class PlayerController : MonoBehaviour
                         this.SendMessage("showMedium","");
                     } else if (recolt.itemPower < 25) {
                         this.SendMessage("showGood","");
+                        this.SendMessage("showBad","");
                     }
+                    
                     quickBar.addItem(database.addItem(recolt));
 
                 }
