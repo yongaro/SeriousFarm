@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{e82b8b08-b544-4e00-8dc1-fb4d2cf30858}">
+        <property name="assetPath">
+            <value>summer.ogg</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>145.20018140589571</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{5b86f9b3-07c3-4ecf-bbd5-33687639e8f4}</destination>
+        </relationship>
+    </object>
+</objects>

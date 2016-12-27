@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{2b5919e6-e102-4fb0-a896-9dfd496166aa}">
+        <property name="assetPath">
+            <value>interface/remplirArrosoir/remplirArrosoir1.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.6979591836734693</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{5b86f9b3-07c3-4ecf-bbd5-33687639e8f4}</destination>
+        </relationship>
+    </object>
+</objects>

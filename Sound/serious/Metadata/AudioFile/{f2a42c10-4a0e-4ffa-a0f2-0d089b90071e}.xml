@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{f2a42c10-4a0e-4ffa-a0f2-0d089b90071e}">
+        <property name="assetPath">
+            <value>interface/bruitFoule/ferme2.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>41.012244897959185</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{5b86f9b3-07c3-4ecf-bbd5-33687639e8f4}</destination>
+        </relationship>
+    </object>
+</objects>

@@ -194,4 +194,9 @@ public class FM_SonScript {
 
     }
 
+    public static void sonRobotDialogue()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiance/robotDialogue");
+    }
+
 }

@@ -20,6 +20,7 @@ public class DialogBubble : MonoBehaviour {
 	{
 		bool gotonextbubble = false;
 
+        FM_SonScript.sonRobotDialogue();
 		//if vcurrentbubble is still there, just close it
 		if (vActiveBubble != null) {
 			if (vActiveBubble.vClickToCloseBubble) {
