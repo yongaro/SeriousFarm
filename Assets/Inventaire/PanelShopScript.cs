@@ -53,28 +53,12 @@ public class PanelShopScript : MonoBehaviour {
                 slotamount++;
             }
         }
-        graineCategorie();
-      /*  if (categorie == Item.ItemType.Graine) {
-            addItem(10);
-            addItem(11);
-            addItem(12);
-            addItem(13);
-            addItem(14);
-            addItem(15);
-            addItem(16);
-            addItem(17);
-            addItem(18);
-            addItem(19);
-            addItem(20);
-            addItem(21);
-            addItem(22);
-            
-        }*/
-        
+        graineCategorie();  
     }
 
     private void mobilierCategorie()
     {
+        FM_SonScript.marchandButton();
         for (int i = 0; i < 4 * 6; i++)
         {
             Items[i] = new Item();
@@ -84,6 +68,7 @@ public class PanelShopScript : MonoBehaviour {
 
     private void graineCategorie()
     {
+        FM_SonScript.marchandButton();
         for (int i = 0; i < 4 * 6; i++)
         {
             Items[i] = new Item();
@@ -115,17 +100,20 @@ public class PanelShopScript : MonoBehaviour {
             {
                 quickBar.addItem(Items[indexSlotSelected].itemID);
                 shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
+                FM_SonScript.sonAchat();
             }
             else
                 buyButton.GetComponent<Image>().color = Color.grey;
         }
         else if (marchande.LegumeDeSaison(Items[indexSlotSelected]))
         {
+            
             Debug.Log(Items[indexSlotSelected].itemName);
             if (!quickBar.estPlein() && shopGlobal.monnaie - Items[indexSlotSelected].itemPrice >= 0)
             {
                 quickBar.addItem(Items[indexSlotSelected].itemID);
                 shopGlobal.monnaie -= Items[indexSlotSelected].itemPrice;
+                FM_SonScript.sonAchat();
             }
             else
                 buyButton.GetComponent<Image>().color = Color.grey;
@@ -171,9 +159,6 @@ public class PanelShopScript : MonoBehaviour {
         }
     }
 
-    public void changeCategorie(Item.ItemType it)
-    {
-
-    }
+  
 
 }

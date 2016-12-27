@@ -30,17 +30,17 @@ public class PoubelleScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log(inventaire.draggingItem);
+        
         if (inventaire.draggingItem )
         {
-            Debug.Log("ail");
             inventaire.closeDraggedItem();
+            FM_SonScript.poubelle();
         }
 
         if (quickBar.draggingItem)
         {
-            Debug.Log("ail");
             quickBar.closeDraggedItem();
+            FM_SonScript.poubelle();
         }
     }
 }

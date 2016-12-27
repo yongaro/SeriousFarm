@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
                 playerMoving = true;
                 lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
                 moves.Push(lastMove);
-
-      
             }
 
             if (Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
@@ -93,6 +91,7 @@ public class PlayerController : MonoBehaviour
             {
                 Item recolt = Map.collectPlant(new Vector3(transform.position.x + lastMove.x, transform.position.y + lastMove.y, 0));
                 Debug.Log("nn " + recolt.itemName + " " + recolt.itemPower);
+                FM_SonScript.sonQualite(recolt.itemPower);
                 if (recolt != null)
                 {
                     if (recolt.itemPower >= 75) {
@@ -119,7 +118,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("useTool", false);
             tool.SetActive(false);
         }
-
+        FM_SonScript.sonPas(playerMoving);
         //mise a jour de l'animation de deplacement
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
@@ -136,7 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             if (objectC.objectCurrent.itemName == "WateringCan")
             {
-
+                FM_SonScript.sonOutil("event:/Outil/remplirArrosoir");
                 objectC.objectCurrent.itemPower = 41;
             }
         }
@@ -146,6 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.gameObject.name == "Shop") //collision avec le magasin
         {
+            FM_SonScript.magasin();
             shop.SetActive(true);
             shop.transform.GetChild(1).gameObject.SetActive(true);
             shop.transform.GetChild(2).gameObject.SetActive(false);

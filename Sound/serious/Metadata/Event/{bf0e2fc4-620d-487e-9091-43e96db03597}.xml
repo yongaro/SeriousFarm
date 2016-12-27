@@ -76,9 +76,6 @@
         <relationship name="automationCurves">
             <destination>{19649f9b-0510-4d9a-af46-861c6c196af0}</destination>
         </relationship>
-        <relationship name="markers">
-            <destination>{98aa3647-f750-4b61-95d0-2f3c5880ec05}</destination>
-        </relationship>
     </object>
     <object class="EventMixerMaster" id="{83ac9073-711c-45d1-8179-2a350ebe8b42}">
         <property name="volume">
@@ -146,20 +143,6 @@
             <destination>{9e0d009d-9631-486b-8456-6ddd241fb735}</destination>
             <destination>{72f41edc-caa6-4bc3-a687-d5c7b534d93f}</destination>
             <destination>{a4ce73fb-5fa4-48c1-9f53-c7e87bffa5e0}</destination>
-        </relationship>
-    </object>
-    <object class="LoopRegion" id="{98aa3647-f750-4b61-95d0-2f3c5880ec05}">
-        <property name="position">
-            <value>0</value>
-        </property>
-        <property name="length">
-            <value>0.80000000000000004</value>
-        </property>
-        <relationship name="timeline">
-            <destination>{597ec870-66af-4ccd-8b0c-b7cbb4417978}</destination>
-        </relationship>
-        <relationship name="markerTrack">
-            <destination>{aa55c5c4-eaa5-4863-b5c1-502acb45acb8}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{8e49b75d-8cd1-4bd6-bd24-2e672e0e272d}">

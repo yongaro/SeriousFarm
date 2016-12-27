@@ -15,6 +15,8 @@ public class FM_BruitDePas : MonoBehaviour {
     void Update()
     {
         if (!pc.playerMoving)
+            marche.stop(0);
+        else
             marche.start();
     }
 

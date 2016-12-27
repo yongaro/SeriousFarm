@@ -48,6 +48,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        FM_SonScript.quickBarSelection();
         if (inventaire.Items[slotNumber].itemType != Item.ItemType.Tool)
         {
             //inventaire.Items[slotNumber].itemValue--;
@@ -91,6 +92,7 @@ public class SlotScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        
         if (inventaire.Items[slotNumber].itemName != null  )
         {
             inventaire.showTooltip(inventaire.Slots[slotNumber].GetComponent<RectTransform>().localPosition, inventaire.Items[slotNumber]);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="EventFolder" id="{f4382e04-94a9-4f13-a882-1e4979b80fae}">
+        <property name="name">
+            <value>QuickBar</value>
+        </property>
+        <relationship name="folder">
+            <destination>{80797568-7562-4ed7-9eca-8b0fa5838f05}</destination>
+        </relationship>
+    </object>
+</objects>

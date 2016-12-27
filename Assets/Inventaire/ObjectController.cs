@@ -83,6 +83,8 @@ public class ObjectController : MonoBehaviour {
                             if (Map.ajoutPlante(((PlantList)i), new Vector3(pos.x + direction.x, pos.y + direction.y, 0)))
                             {
                                 objectCurrent.itemValue--;
+                                pathSoundObject = "event:/Outil/Semer";
+                                FM_SonScript.sonOutil(pathSoundObject);
                             }
 
                     }
@@ -115,7 +117,8 @@ public class ObjectController : MonoBehaviour {
                 if (objectCurrent.itemName != "WateringCan" || (objectCurrent.itemName == "WateringCan" && objectCurrent.itemPower > 0))
                 {
                     Map.useTool(tool.GetComponent<toolController>().currentTool, new Vector3(pos.x + direction.x, pos.y + direction.y, 0));
-                    FMODUnity.RuntimeManager.PlayOneShot(pathSoundObject);
+                    FM_SonScript.sonOutil(pathSoundObject);
+                    
                 }
                 if (objectCurrent.itemName == "WateringCan")
                     if (objectCurrent.itemPower > 0)

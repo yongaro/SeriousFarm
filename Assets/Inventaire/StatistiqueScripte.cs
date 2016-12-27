@@ -11,6 +11,7 @@ public class StatistiqueScripte : MonoBehaviour {
 	void Start () {
 	    textarrosoir = gameObject.transform.GetChild(1).GetComponent<Text>();
         arrosoirStat = 0;
+
     }
 	
 	// Update is called once per frame

@@ -91,6 +91,7 @@ public class QuickSlot : MonoBehaviour, IPointerDownHandler, IDragHandler {
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        FM_SonScript.quickBarSelection();
             if (item.itemValue == 0 && inventaire.draggingItem)
             {
                 quickBar.Items[slotNumber] = inventaire.draggedItem;

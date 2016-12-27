@@ -19,8 +19,14 @@ public class MarchandeScript : MonoBehaviour {
         numMois = Map.currentMonth;
     }
 
+
+    /**
+     * fonction qui gere l'apparition de la marchande lors de la vente de legume en fonction de la qualité du legume vendu.
+     * */ 
+
     public void dialogueQualite (Item item)
     {
+        FM_SonScript.sonQualite(item.itemPower);
         if (item.itemPower / 25 >= 3)
         {
             panel.SetActive(true);
@@ -43,18 +49,22 @@ public class MarchandeScript : MonoBehaviour {
         }
     }
 
-
+    /**
+     *  fonction qui gere l'apparition de la marchande lors de l'achat de graine an fonction de si c'est la periode de planter ce legume.
+     * */
 
     public bool LegumeDeSaison(Item item){
         if (item.itemName == "aubergine") {
             if (numMois < 1)
             {
+                FM_SonScript.marchande();
                 dialogue.text = "C'est trop tot pour planter des aubergines, il serait mieux de les planter plus tard";
                 panel.SetActive(true);
                 return false;
                  }
             else if (numMois > 3)
             {
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 dialogue.text = "Il est trop tard pour planter des aubergines, attendre la bonne saison l'année prochaine serait plus judicieux";
                 return false;
@@ -66,6 +76,7 @@ public class MarchandeScript : MonoBehaviour {
             {
                 dialogue.text = "C'est trop tot pour planter du ble, il serait mieux de les planter plus tard";
                 panel.SetActive(true);
+                FM_SonScript.marchande();
                 return false;
                  }
             else if (numMois > 10)
@@ -81,14 +92,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 2)
             {
                 dialogue.text = "C'est trop tot pour planter des oignons, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
                   }
             else if (numMois > 3)
             {
                 dialogue.text = "Il est trop tard pour planter des oignons, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
            }
@@ -105,7 +116,7 @@ public class MarchandeScript : MonoBehaviour {
             else if (numMois > 8)
             {
                 dialogue.text = "Il est trop tard pour planter des carottes, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
                  }
@@ -115,7 +126,7 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 2)
             {
                 dialogue.text = "C'est trop tot pour planter des chou-fleur, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
                  }
@@ -132,14 +143,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 3)
             {
                 dialogue.text = "C'est trop tot pour planter des citrouilles, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
                 }
             else if (numMois > 5)
             {
                 dialogue.text = "Il est trop tard pour planter des citrouilles, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -149,14 +160,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 2)
             {
                 dialogue.text = "C'est trop tot pour planter des concombres, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
             else if (numMois > 6)
             {
                 dialogue.text = "Il est trop tard pour planter des concombres, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -166,7 +177,7 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 3)
             {
                 dialogue.text = "C'est trop tot pour planter des mais, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -183,14 +194,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 2)
             {
                 dialogue.text = "C'est trop tot pour planter des navets, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
             else if (numMois > 7)
             {
                 dialogue.text = "Il est trop tard pour planter des navets, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -217,14 +228,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 1)
             {
                 dialogue.text = "C'est trop tot pour planter des poivrons, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
             else if (numMois > 4)
             {
                 dialogue.text = "Il est trop tard pour planter des poivrons, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -234,7 +245,7 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 1)
             {
                 dialogue.text = "C'est trop tot pour planter des tomates, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
@@ -251,14 +262,14 @@ public class MarchandeScript : MonoBehaviour {
             if (numMois < 1)
             {
                 dialogue.text = "C'est trop tot pour planter des salades, il serait mieux de les planter plus tard";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }
             else if (numMois > 5)
             {
                 dialogue.text = "Il est trop tard pour planter des salades, attendre la bonne saison l'année prochaine serait plus judicieux";
-
+                FM_SonScript.marchande();
                 panel.SetActive(true);
                 return false;
             }

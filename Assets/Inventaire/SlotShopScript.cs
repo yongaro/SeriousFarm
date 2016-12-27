@@ -52,6 +52,7 @@ public class SlotShopScript : MonoBehaviour, IPointerDownHandler
     {
         shopScript.boolMarchande = false;
         shopScript.indexSlotSelected = slotNumber;
+        FM_SonScript.marchandSelection();
     }
 
 

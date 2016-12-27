@@ -41,6 +41,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
 
     private void plusQuantite()
     {
+        FM_SonScript.sonBoutonPlusVente();
         if (nbProductSell < item.itemValue)
         {
             nbProductSell++;
@@ -49,6 +50,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
 
     private void moinsQuantite()
     {
+        FM_SonScript.sonBoutonMoinsVente();
         if (nbProductSell > 1)
         {
             nbProductSell--;
@@ -59,6 +61,7 @@ public class SellScript : MonoBehaviour, IPointerDownHandler
     {
         if (item.itemValue != 0)
         {
+            FM_SonScript.sonVente(item.itemPower);
            shopGlobal.monnaie += nbProductSell * item.itemPrice;
             if (nbProductSell == item.itemValue)
             {
