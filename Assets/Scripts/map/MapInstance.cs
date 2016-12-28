@@ -47,51 +47,11 @@ public class MapInstance : MonoBehaviour {
 		map.init(width, height, tileSize, transform);
 		//ajout de la zone cultivable dans la liste des map
 		Map.ajoutMap(map);
-		test_tileFromWorldPos();
 		Map.randomFillAll();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-
-	/**
-	 * Test unitaire a effectuer avec au moins une map placee en (0,0) et w et h > 1
-	 * doit renvoyer vrai et afficher "1 1"
-	 */
-	bool test_tileFromWorldPos(){
-		Vector3 testPos = new Vector3();
-		testPos.x = -15.0f;
-		testPos.y = 1.0f;
-		testPos.z = 0.0f;
-		MapTile test1 = Map.getTileAt(testPos);
-		testPos.x = -18.0f;
-		testPos.y = 1.0f;
-		testPos.z = 0.0f;
-		MapTile test2 = Map.getTileAt(testPos);
-		if( test1 == null && test2 == null ){ print("NURUPO"); }
-		else{
-			Sprinkler obj1 = new Sprinkler();
-			test1.addObject(obj1);
-			
-			GenericObject obj2 = new GenericObject();
-			obj2.defineType(GenericObjectTypes.Torche);
-			test2.addObject(obj2);
-
-			
-			Map.randomFillAll();
-			return true;
-			
-		}
-		
-		
-		return false;
-	}
-
-	bool test_ajoutObjet(){
-
-		return false;
 	}
 }

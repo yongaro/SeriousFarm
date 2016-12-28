@@ -54,6 +54,7 @@ public abstract class MapObject{
 		Light light = objectView.GetComponent<Light>();
 		if( light != null ){ light.transform.position = newPos; }
 	}
+	public virtual int getWaterCons(){ return 0; }
 }
 
 /**
@@ -280,6 +281,8 @@ public class Plant : MapObject {
 		else if( stade < 0.66 ){ objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 1] ]; }
 		else{ objectView.GetComponent<SpriteRenderer>().sprite = bank[ bankIndices[(int)type, 2] ]; }
 	}
+	
+	public override int getWaterCons(){ return waterCons; }
 }
 
 /**
@@ -693,5 +696,31 @@ public class Map{
 	}
 	public static void randomFillAll(){
 		foreach( Map mapRef in mapList ){ mapRef.randomFill(); }
+	}
+	
+	/**
+	* Renvoie la consommation d'eau journaliere de la map
+	*/
+	public int getWaterCons(){
+		int res = 0;
+		for( int x = 0; x < width; ++x ){
+			for( int y = 0; y < height; ++y ){
+				if( map[x,y].m_object != null ){
+					res+= map[x,y].m_object.getWaterCons();
+				}
+			}
+		}
+		return res;
+	}
+
+	/**
+	* Renvoie la consommation d'eau journaliere de toutes les maps
+	*/
+	public static int getDailyWaterCons(){
+		int res = 0;
+		foreach( Map mapRef in mapList ){
+			res += mapRef.getWaterCons();
+		}
+		return res;
 	}
 }
