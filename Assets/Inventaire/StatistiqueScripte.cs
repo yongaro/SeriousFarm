@@ -16,7 +16,7 @@ public class StatistiqueScripte : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        textarrosoir.text = " / month     :     " + arrosoirStat;
-        arrosoirStat++; 
+        textarrosoir.text = " / jour     :     " + arrosoirStat;
+        arrosoirStat = Map.getDailyWaterCons(); 
 	}
 }

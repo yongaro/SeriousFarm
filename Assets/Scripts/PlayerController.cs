@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("useTool", false);
             tool.SetActive(false);
         }
-        FM_SonScript.sonPas(playerMoving);
+        FM_SonScript.sonPas(playerMoving, transform.position );
         //mise a jour de l'animation de deplacement
         anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));

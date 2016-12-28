@@ -9,15 +9,18 @@ using System.Collections;
 
 
 public class FM_SonScript {
-    static FMOD.Studio.EventInstance son;
-    static FMOD.Studio.EventInstance bruitMagasin;
-    static FMOD.Studio.EventInstance marche;
-    static bool marchedeja;
+    static FMOD.Studio.EventInstance son;   // different son de l'interface 
+    static FMOD.Studio.EventInstance bruitMagasin;  // son de fond lorsque le magasin est ouvert
+    static FMOD.Studio.EventInstance marche;    // son de marche du perso
+    static bool marchedeja; // si le joueur est deja entrain de marché =  true
+    static bool terre;  // si le perso marche sur de la terre ou de l'herbe
+    static string pathMarche = "event:/Deplacement/humain-herbe"; // chemin du son pour les bruits de pas
 
     // Use this for initialization
     void Start () {
         marche = FMODUnity.RuntimeManager.CreateInstance("event:/Deplacement/humain-terre");
         marchedeja = false;
+        terre = false;
 
     }
 
@@ -178,11 +181,28 @@ public class FM_SonScript {
         FMODUnity.RuntimeManager.PlayOneShot(path);
     }
 
-    public static void sonPas(bool isMoving)
+    public static void sonPas(bool isMoving, Vector3 pos)
     {
+        
+        if (Map.getTileAt(pos) == null && terre == true)
+        {
+            marche.stop(0);
+            pathMarche = "event:/Deplacement/humain-herbe";
+            marche = FMODUnity.RuntimeManager.CreateInstance(pathMarche);
+            marche.start();
+            terre = false;
+        }
+        else if (Map.getTileAt(pos) != null && terre == false)
+        {
+            marche.stop(0);
+            pathMarche = "event:/Deplacement/humain-terre";
+            marche = FMODUnity.RuntimeManager.CreateInstance(pathMarche);
+            marche.start();
+            terre = true;
+        }
         if (isMoving && !marchedeja)
         {
-            marche = FMODUnity.RuntimeManager.CreateInstance("event:/Deplacement/humain-terre");
+            marche = FMODUnity.RuntimeManager.CreateInstance(pathMarche);
             marche.start();
             marchedeja = true;
         }
