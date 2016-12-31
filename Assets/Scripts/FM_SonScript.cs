@@ -179,6 +179,7 @@ public class FM_SonScript {
     public static void sonOutil(string path)
     {
         FMODUnity.RuntimeManager.PlayOneShot(path);
+        Debug.Log(path);
     }
 
     public static void sonPas(bool isMoving, Vector3 pos)

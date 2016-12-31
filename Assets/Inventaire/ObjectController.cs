@@ -121,7 +121,7 @@ public class ObjectController : MonoBehaviour {
                     
                 }
                 if (objectCurrent.itemName == "WateringCan")
-                    if (objectCurrent.itemPower > 0)
+                    if (objectCurrent.itemPower > 0)    
                         objectCurrent.itemPower--;
 
             }

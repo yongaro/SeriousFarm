@@ -138,7 +138,7 @@
     </object>
     <object class="EventMixerGroup" id="{a0716316-c3ea-4914-9d5f-ece93c7d3556}">
         <property name="volume">
-            <value>-10.5</value>
+            <value>-17.5</value>
         </property>
         <property name="name">
             <value>Base</value>
@@ -333,7 +333,7 @@
             <value>0</value>
         </property>
         <property name="value">
-            <value>-12.5639496</value>
+            <value>-19.5</value>
         </property>
         <property name="curveShape">
             <value>-0.45902729</value>
@@ -344,7 +344,7 @@
             <value>0.9742540892089544</value>
         </property>
         <property name="value">
-            <value>-2</value>
+            <value>-8.93605042</value>
         </property>
     </object>
     <object class="MixerBusFader" id="{e3cf0598-e12d-4675-82ab-5a96f18ecc3b}"/>

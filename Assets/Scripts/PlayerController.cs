@@ -138,8 +138,8 @@ public class PlayerController : MonoBehaviour
         {
             if (objectC.objectCurrent.itemName == "WateringCan")
             {
-                FM_SonScript.sonOutil("event:/Outil/remplirArrosoir");
                 objectC.objectCurrent.itemPower = 41;
+                FM_SonScript.sonOutil("event:/Outil/remplirArrosoir");
             }
         }
     }
