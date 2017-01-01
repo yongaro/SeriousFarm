@@ -63,7 +63,7 @@ public class FM_SonScript {
 
     public static void sonAchat()
     {
-        son = son = FMODUnity.RuntimeManager.CreateInstance("event:/Magasin/achat");
+        son = FMODUnity.RuntimeManager.CreateInstance("event:/Magasin/achat");
         son.start();
     }
 

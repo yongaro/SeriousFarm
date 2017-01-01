@@ -47,6 +47,7 @@ var month = [
 
 var marche : FMOD.Studio.EventInstance;
 var sonNuit : FMOD.Studio.EventInstance;
+var sonPluie : FMOD.Studio.EventInstance;
 function dormir () {
 	// Le joueur se lève à 7h
 
@@ -76,6 +77,7 @@ function Start () {
 	robot = GameObject.Find("Robot");
 	marche = FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/Saison");
 	sonNuit =  FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/Nuit");
+	sonPluie = FMODUnity.RuntimeManager.CreateInstance("event:/Ambiance/pluie");
 	sonNuit.setParameterValue("saison", saison);
 	marche.start();
 	marche.setParameterValue("saison", saison);
@@ -190,7 +192,7 @@ function isMidnight() {
 }
 
 function pleuvoir () {
-
+    sonPluie.start();
 	pluie.SetActive(true);
 	if (!pluie.GetComponent.<ParticleSystem>().isPlaying) {
 		pluie.GetComponent.<ParticleSystem>().Play();
@@ -210,6 +212,7 @@ function neiger() {
 }
 
 function clearMeteo() {
+    sonPluie.stop(0);
 	pluie.SetActive(false);
 	neige.SetActive(false);
 	if (pluie.GetComponent.<ParticleSystem>().isPlaying) {
