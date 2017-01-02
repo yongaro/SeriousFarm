@@ -49,12 +49,49 @@ public class MapInstance : MonoBehaviour {
 		Map.ajoutMap(map);
 		Map.randomFillAll();
 		
-		
+		demoFill();
 	}
 	
 	// Update is called once per frame
 	void Update(){ }
 	
+	void demoFill(){
+		
+		MapTile tile1 = map.tileAt(5,5);
+		MapTile tile2 = map.tileAt(6,5);
+		MapTile tile3 = map.tileAt(7,5);
+		MapTile tile4 = map.tileAt(8,5);
+		
+		tile1.removeObject();
+		tile2.removeObject();
+		tile3.removeObject();
+		
+		Plant p1 = new Plant(PlantList.aubergine);
+		tile1.addObject(p1);
+		p1.growthCur = 999999;
+		p1.quality = 150;
+		p1.updateSprite();
+		
+		
+		Plant p2 = new Plant(PlantList.aubergine);
+		tile2.addObject(p2);
+		p2.growthCur = 999999;
+		p2.quality = 100;
+		p2.updateSprite();
+		
+		
+		Plant p3 = new Plant(PlantList.aubergine);
+		tile3.addObject(p3);
+		p3.growthCur = 999999;
+		p3.quality = 74;
+		p3.updateSprite();
 	
+
+		Plant p4 = new Plant(PlantList.aubergine);
+		tile4.addObject(p4);
+		p4.growthCur = 999999;
+		p4.quality = 50;
+		p4.updateSprite();
+	}
 	
 }

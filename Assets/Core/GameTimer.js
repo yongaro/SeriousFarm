@@ -202,7 +202,7 @@ function pleuvoir () {
 }
 
 function neiger() {
-
+	sonPluie.stop(0);
 	neige.SetActive(true);
 	if (!neige.GetComponent.<ParticleSystem>().isPlaying) {
 		neige.GetComponent.<ParticleSystem>().Play();

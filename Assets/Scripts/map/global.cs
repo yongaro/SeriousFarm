@@ -573,7 +573,7 @@ public class Map{
 			for( int y = 0; y < height; ++y ){
 				if( map[x,y].m_object == null ){
 					spawn = Random.Range(0.0f, 100.0f);
-					if( spawn <= 10.0f ){
+					if( spawn <= 5.0f ){
 						type = (int)Random.Range(0,2);
 						temp = new GenericObject();
 						((GenericObject)temp).defineType((GenericObjectTypes)type);
