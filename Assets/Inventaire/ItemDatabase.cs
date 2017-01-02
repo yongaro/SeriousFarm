@@ -58,6 +58,8 @@ public class ItemDatabase  : MonoBehaviour{
             else if (items[i].itemName == item.itemName)
             {
                 price = items[i].itemPrice;
+                Debug.Log(price);
+                break;
                 /*if (item.itemPower / 25 != 0)
                     item.itemPrice = items[i].itemPrice * (item.itemPower / 25);
                 else
@@ -73,6 +75,7 @@ public class ItemDatabase  : MonoBehaviour{
                 item.itemPrice = price;
             //Debug.Log(item.itemPower +" "+ item.itemPower / 25);
             items.Add(item);
+            Debug.Log("k" + item.itemPrice);
         }
         return item.itemID;
     }
