@@ -88,9 +88,8 @@
             <destination>{4b669e8d-7332-47c5-a92c-be18864e29e4}</destination>
             <destination>{a64dc548-9d70-434f-a7bc-7f22e3cc1c99}</destination>
             <destination>{556d9a52-a0de-4d3e-b8f3-120b1011c6cc}</destination>
-            <destination>{c8322628-3118-4ffc-a68b-9eea4d8ff889}</destination>
-            <destination>{1ab94f29-1f8e-497d-b026-5fced434cd1f}</destination>
             <destination>{dbcba67d-6e39-4fc8-8810-6270e61814bb}</destination>
+            <destination>{b7efe24b-dcd3-4b7a-8351-fbcb74a67844}</destination>
         </relationship>
         <relationship name="mixerGroup">
             <destination>{acd9ed75-7928-45b2-8109-8a7c831222fc}</destination>
@@ -115,9 +114,8 @@
         <relationship name="modules">
             <destination>{a0ece909-6312-461b-94be-3a9e978b497f}</destination>
             <destination>{556d9a52-a0de-4d3e-b8f3-120b1011c6cc}</destination>
-            <destination>{c8322628-3118-4ffc-a68b-9eea4d8ff889}</destination>
-            <destination>{1ab94f29-1f8e-497d-b026-5fced434cd1f}</destination>
             <destination>{dbcba67d-6e39-4fc8-8810-6270e61814bb}</destination>
+            <destination>{b7efe24b-dcd3-4b7a-8351-fbcb74a67844}</destination>
         </relationship>
         <relationship name="markers">
             <destination>{a600bfc4-4516-4661-9e44-9e7b6fa6c338}</destination>
@@ -282,31 +280,6 @@
             <destination>{e82b8b08-b544-4e00-8dc1-fb4d2cf30858}</destination>
         </relationship>
     </object>
-    <object class="SingleSound" id="{c8322628-3118-4ffc-a68b-9eea4d8ff889}">
-        <property name="start">
-            <value>405.48988662131524</value>
-        </property>
-        <property name="length">
-            <value>9.510113378684764</value>
-        </property>
-        <relationship name="audioFile">
-            <destination>{66f49532-e4bb-4d88-a29c-17922179618e}</destination>
-        </relationship>
-    </object>
-    <object class="SingleSound" id="{1ab94f29-1f8e-497d-b026-5fced434cd1f}">
-        <property name="start">
-            <value>415</value>
-        </property>
-        <property name="length">
-            <value>9.510113378684764</value>
-        </property>
-        <property name="pitch">
-            <value>-1.60000002</value>
-        </property>
-        <relationship name="audioFile">
-            <destination>{66f49532-e4bb-4d88-a29c-17922179618e}</destination>
-        </relationship>
-    </object>
     <object class="SingleSound" id="{dbcba67d-6e39-4fc8-8810-6270e61814bb}">
         <property name="start">
             <value>94</value>
@@ -316,6 +289,17 @@
         </property>
         <relationship name="audioFile">
             <destination>{231c42a2-8118-4a14-a984-01c1b847760d}</destination>
+        </relationship>
+    </object>
+    <object class="SingleSound" id="{b7efe24b-dcd3-4b7a-8351-fbcb74a67844}">
+        <property name="start">
+            <value>405.48988662131524</value>
+        </property>
+        <property name="length">
+            <value>45.336961451247163</value>
+        </property>
+        <relationship name="audioFile">
+            <destination>{cde0fb23-dd68-47df-a6f1-5b32c2e71de0}</destination>
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{acd9ed75-7928-45b2-8109-8a7c831222fc}">
@@ -418,7 +402,7 @@
             <value>405.48988662131524</value>
         </property>
         <property name="length">
-            <value>19.020226757369528</value>
+            <value>45.336961451247134</value>
         </property>
         <relationship name="timeline">
             <destination>{955f19c2-a116-47b9-8067-a39463012bd0}</destination>
@@ -432,7 +416,7 @@
             <value>260.28970521541953</value>
         </property>
         <property name="length">
-            <value>145.20018140589571</value>
+            <value>119.71029478458047</value>
         </property>
         <property name="quantizationInterval">
             <value>2</value>
@@ -481,7 +465,7 @@
             <value>405.48988662131524</value>
         </property>
         <property name="length">
-            <value>19.020226757369542</value>
+            <value>45.336961451247149</value>
         </property>
         <property name="quantizationInterval">
             <value>2</value>
@@ -575,7 +559,7 @@
             <value>260.28970521541953</value>
         </property>
         <property name="length">
-            <value>145.20018140589571</value>
+            <value>119.71029478458047</value>
         </property>
         <relationship name="timeline">
             <destination>{955f19c2-a116-47b9-8067-a39463012bd0}</destination>
