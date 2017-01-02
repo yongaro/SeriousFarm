@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+/*
+ * Enumération des types de sols
+ */
+public enum TypeSol{ Herbe, Terre, Nb_TS};
 
 /**
  * script qui gere les differents sons du jeu 
  * */
-
-
 public class FM_SonScript {
     static FMOD.Studio.EventInstance son;   // different son de l'interface 
     static FMOD.Studio.EventInstance bruitMagasin;  // son de fond lorsque le magasin est ouvert
     static FMOD.Studio.EventInstance marche;    // son de marche du perso
     static bool marchedeja; // si le joueur est deja entrain de marché =  true
-    static bool terre;  // si le perso marche sur de la terre ou de l'herbe
+    //static bool terre;  // si le perso marche sur de la terre ou de l'herbe
+	static TypeSol typeSol;
     static string pathMarche = "event:/Deplacement/humain-herbe"; // chemin du son pour les bruits de pas
 
     // Use this for initialization
     void Start () {
         marche = FMODUnity.RuntimeManager.CreateInstance("event:/Deplacement/humain-terre");
         marchedeja = false;
-        terre = false;
-
+        //terre = false;
+		FM_SonScript.changerTypeSol(TypeSol.Herbe);
     }
 
     // Update is called once per frame
@@ -182,9 +184,20 @@ public class FM_SonScript {
         Debug.Log(path);
     }
 
+	public static void changerTypeSol(TypeSol type){
+		if( type != typeSol ){
+			typeSol = type;
+			marche.stop(0);
+			if( type == TypeSol.Herbe ){ pathMarche = "event:/Deplacement/humain-herbe"; }
+			if( type == TypeSol.Terre ){ pathMarche = "event:/Deplacement/humain-terre"; }
+			marche = FMODUnity.RuntimeManager.CreateInstance(pathMarche);
+			marche.start();
+		}
+	}
+	
     public static void sonPas(bool isMoving, Vector3 pos)
     {
-        
+        /*
         if (Map.getTileAt(pos) == null && terre == true)
         {
             marche.stop(0);
@@ -201,6 +214,7 @@ public class FM_SonScript {
             marche.start();
             terre = true;
         }
+		*/
         if (isMoving && !marchedeja)
         {
             marche = FMODUnity.RuntimeManager.CreateInstance(pathMarche);

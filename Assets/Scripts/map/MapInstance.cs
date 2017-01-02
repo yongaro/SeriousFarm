@@ -48,10 +48,13 @@ public class MapInstance : MonoBehaviour {
 		//ajout de la zone cultivable dans la liste des map
 		Map.ajoutMap(map);
 		Map.randomFillAll();
+		
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update(){ }
 	
-	}
+	
+	
 }

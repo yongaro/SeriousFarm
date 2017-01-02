@@ -98,8 +98,26 @@
         <property name="length">
             <value>2</value>
         </property>
+        <property name="volume">
+            <value>2.5</value>
+        </property>
+        <property name="pitch">
+            <value>3.4000001</value>
+        </property>
+        <property name="polyphony">
+            <value>27</value>
+        </property>
+        <property name="minimumTimeBetweenSounds">
+            <value>50</value>
+        </property>
+        <property name="maximumTimeBetweenSounds">
+            <value>250</value>
+        </property>
+        <property name="minimumScatterDistance">
+            <value>4.80000019</value>
+        </property>
         <property name="maximumScatterDistance">
-            <value>10000</value>
+            <value>1000</value>
         </property>
         <relationship name="sound">
             <destination>{74c08775-a522-4c08-b3a6-74a69472008e}</destination>
